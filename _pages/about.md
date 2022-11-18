@@ -16,10 +16,10 @@ redirect_from:
 Research Interests
 ==================
 
-Largely, I'm interested in large scale computational math. Recently, that has
-brought me to the randomized numerical analysis group here at NCSU, working on
-ideas and models for:
+Largely, I'm interested in **large scale computational math**. Recently, that
+has brought me to the randomized numerical analysis group here at NCSU, working
+on ideas and models for:
 - Bayesian inverse problems
 - PDE-constrained optimization
 - Optimal experimental design
-- Uncertainty quantification for the above
+- Uncertainty quantification
