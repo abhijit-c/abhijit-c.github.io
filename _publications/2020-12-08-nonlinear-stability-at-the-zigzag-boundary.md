@@ -1,14 +1,13 @@
 ---
 title: "Nonlinear Stability at the Zigzag Boundary"
 collection: publications
-permalink: /publication/2020-12-08-nonlinear-stability-at-the-zigzag-boundary.md
+permalink: /publication/2020-12-08-nonlinear-stability-at-the-zigzag-boundary
 excerpt: 'An investigation into the dynamics of roll solutions at the zigzag
 boundary of the planar Swift-Hohenberg equation. Done as a part of an REU at
 Ohio University during the summer of 2019.'
 date: 2020-12-08
 venue: 'arXiv preprint'
 paperurl: 'https://arxiv.org/pdf/2012.04154'
-citation: 'Chowdhary, Abhijit. (2020). &quot;Nonlinear Stability at the Zigzag Boundary &quot; <i>arXiv preprint</i>'
 ---
 We investigate the dynamics of roll solutions at the zigzag boundary of the
 planar Swift-Hohenberg equation. Linear analysis shows an algebraic decay of
