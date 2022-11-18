@@ -1,0 +1,295 @@
+% resume.tex
+%
+% (c) 2002 Matthew Boedicker <mboedick@mboedick.org> (original author) http://mboedick.org
+% (c) 2003-2007 David J. Grant <davidgrant-at-gmail.com> http://www.davidgrant.ca
+%
+% This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 Unported License. To view a copy of this license, visit http://creativecommons.org/licenses/by-sa/3.0/ or send a letter to Creative Commons, 171 Second Street, Suite 300, San Francisco, California, 94105, USA.
+
+\documentclass[letterpaper,11pt]{article}
+
+\newlength{\outerbordwidth}
+\pagestyle{empty}
+\raggedbottom
+\raggedright
+\usepackage[svgnames]{xcolor}
+\usepackage{framed}
+\usepackage{tocloft}
+\usepackage{amssymb}
+\usepackage{etoolbox}
+\usepackage{hyperref, url}
+\robustify\cftdotfill
+
+%-----------------------------------------------------------
+%Edit these values as you see fit
+\setlength{\outerbordwidth}{3pt}  % Width of border outside of title bars
+\definecolor{shadecolor}{gray}{0.75}  % Outer background color of title bars (0 = black, 1 = white)
+\definecolor{shadecolorB}{gray}{0.93}  % Inner background color of title bars
+
+%-----------------------------------------------------------
+%Margin setup
+\setlength{\evensidemargin}{-0.25in}
+\setlength{\headheight}{-0.25in}
+\setlength{\headsep}{0in}
+\setlength{\oddsidemargin}{-0.25in}
+\setlength{\paperheight}{11in}
+\setlength{\paperwidth}{8.5in}
+\setlength{\tabcolsep}{0in}
+\setlength{\textheight}{9.75in}
+\setlength{\textwidth}{7in}
+\setlength{\topmargin}{-0.3in}
+\setlength{\topskip}{0in}
+\setlength{\voffset}{0.1in}
+
+%-----------------------------------------------------------
+%Custom commands
+\newcommand{\resitem}[1]{\item #1 \vspace{-2pt}}
+\newcommand{\resheading}[1]{\vspace{8pt}
+  \parbox{\textwidth}{\setlength{\FrameSep}{\outerbordwidth}
+    \begin{shaded}
+
+\setlength{\fboxsep}{0pt}\framebox[\textwidth][l]{\setlength{\fboxsep}{4pt}\fcolorbox{shadecolorB}{shadecolorB}{\textbf{\sffamily{\mbox{~}\makebox[6.762in][l]{\large #1} \vphantom{p\^{E}}}}}}
+    \end{shaded}
+  }\vspace{-5pt}
+}
+
+\newcommand{\ressubheading}[4]{
+\begin{tabular*}{6.5in}{l@{\cftdotfill{\cftsecdotsep}\extracolsep{\fill}}r}
+		\textbf{#1} & #2 \\
+		\textit{#3} & \textit{#4} \\
+\end{tabular*}\vspace{-6pt}}
+
+\begin{document}
+
+\begin{tabular*}{7in}{l@{\extracolsep{\fill}}r}
+\textbf{\Large Abhijit Chowdhary} & (240)-715-8308\\
+Department of Mathematics & achowdh2@ncsu.edu \\
+North Carolina State University & \url{https://abhijit-c.github.io/}\\
+Raleigh, NC & 
+\end{tabular*}
+\\
+
+\vspace{0.1in}
+
+\resheading{Education}
+\begin{itemize}
+\item
+	\ressubheading{North Carolina State University}
+  {Raleigh, NC}
+  {Applied Math PhD (GPA: 4.0)}
+  {Aug. 2020 - Present}
+  \begin{itemize}
+    \resitem{
+      (Aug. 2021 - Present) --- RA for
+      \href{https://aalexan3.math.ncsu.edu/}{Alen Alexanderian} 
+      via NSF-DMS-2111044
+    }
+    \resitem{
+      (Aug. 2021) --- Passed Qualification Exams (Matrix Theory, PDE, Analysis)
+    }
+    \resitem{(Aug. 2020 - May 2021) --- Recipient of the Siewert Fellowship}
+    \resitem{
+      Coursework: Analysis I/II, PDE I/II, Matrix Theory I/II, Modeling
+      I/II, Probability I, Uncertainty Quantification, Computational Inverse
+      Problems, Advanced Functional Analysis, Numerical Nonlinear PDEs,
+      Data-Driven Modeling and Analysis
+    }
+  \end{itemize}
+
+\item
+	\ressubheading{New York University}{New York, NY}{B.A. Joint Mathematics and
+    Computer Science, Classics Minor}{Sep.2016 - May.2020}
+	\begin{itemize} 
+    \resitem{(In Major GPA: 3.657)}
+		\resitem{Relevant undergraduate courses: 
+      Algorithms, 
+      Chaos and Dynamical Systems,
+      Computer System Organization, 
+      Operating Systems,
+      Honors Algebra I/II, 
+      Honors Analysis I/II, 
+      Honors Linear Algebra, 
+      Honors Probability Theory, 
+      Numerical Computation, 
+      Topology.}
+    \resitem{Relevant graduate courses: 
+      Algebra,
+      Basic Probability,
+      Convex and Nonsmooth Optimization,
+      Finite Element Method,
+      Fundamental Algorithms, 
+      Geometric Modeling, 
+      High Performance Computing,
+      Methods of Applied Math, 
+      Numerical Methods I/II, 
+      Partial Differential Equations.}
+	\end{itemize}
+
+\item
+	\ressubheading{University of Maryland}{College Park, MD}{Visiting
+    Student (GPA: 3.925)}{Summer 2017,2018}
+	\begin{itemize}
+		\resitem{Coursework: Complex analysis, Number theory, Partial
+        Differential Equations, Introduction to Artificial Intelligence.}
+	\end{itemize}
+
+\end{itemize}
+
+\resheading{Projects and Activities}
+\begin{itemize}
+
+\item
+  \ressubheading{HDSA enabling the Kullback Leibler Divergence as an UQ
+  objective}{}{(NCSU) Research with Alen Alexanderian}{Aug. 2021 - Present}
+  \begin{itemize}
+    \resitem{
+      As a main objective as a research assistant for Dr. Alen Alexanderian,
+      I worked on implementing theory from hyper-differential sensitvity
+      analysis to enable taking efficient and exact derivaitves via
+      adjoint-based gradient computation of the KL-Divergence in order to
+      undertand its sensitivity in the context of uncertainty quantification.
+    }
+    \resitem{
+      In the process, using FENiCS (Python) I implemented a Bayesian linear
+      inverse problem for a 3D linear elasticity model, stemming from the
+      real-world problem of earthquake modeling, that served as
+      a proof-of-concept of the theory. This model is planned to be reused in
+      further work in Bayesian inverse problems as an interesting test problem.
+    }
+    \resitem{
+      Paper with the resulting work is currently in writing.
+    }
+  \end{itemize}
+
+\item
+  \ressubheading{Well-Balanced Stochastic Galerkin for random PDEs}{}{(NCSU)
+  Numerical Nonlinear PDEs}{Apr. 2022 - May 2022}
+  \begin{itemize}
+    \resitem{
+      For a class final project, I along with Andrew Shedlock (NCSU) worked on
+      an implementation of a well-balanced stochastic Galerkin method for PDEs
+      with random forcing.
+    }
+    \resitem{
+        Verified the results in the original paper, and did smaller studies on
+        computational efficiency and noted places in the algorithm where one
+        could take advantage of symmetry to improve runtime.
+    }
+    \resitem{
+      Implemented first in MATLAB, and later rewritten in Julia to avoid
+      unecessary allocations and take advantage of its pre-compilation step,
+      achieving a 15x speedup.
+    }
+    \resitem{\href{https://abhijit-c.github.io/storage/WBSG-Report.pdf}{Link
+    to the report.}}
+  \end{itemize}
+
+\item
+  \ressubheading{HOGWILD!}{}{(NYU) Convex and Nonsmooth Optimization}{Apr. 2020 - May 2020}
+	\begin{itemize}
+    \resitem{
+      For a class final project, I looked into a lock-free parallel stochastic
+      gradient descent implementation, {\rm HOGWILD!}.
+    }
+    \resitem{
+      Implemented the algorithm, and did a case study on the convergence and
+      efficiency analysis. The goal was the to try and study the induced
+      asynchronous noise as a function of bandedness in order to apply them to
+      banded matrices arising from a discretization of a Poisson equation, but
+      COVID-19 cut the project short.
+    }
+    \resitem{Implementation with Eigen and OpenMP in C++.}
+    \resitem{\href{https://abhijit-c.github.io/storage/Hogwild.pdf}{Link
+    to the report.}}
+	\end{itemize}
+
+\item
+	\ressubheading{Math REU: Imperfect Periodic Patterns}{Athens, OH}{Ohio
+  University}{June 2019 - August 2019}
+	\begin{itemize}
+    \resitem{I joined a research team under professor Qiliang Wu, and another
+      undergraduate Mason Haberle from Berkeley in researching the field of
+      pattern formation.}
+    \resitem{Our team specifically set out to prove nonlinear stability of the
+      2D Swift-Hohenberg equation at the zigzag boundary, and as of now we've
+      completed the proof and the paper is in the draft stages.}
+    \resitem{The challenge here was mostly on how to adapt known techniques
+      first to the Swift-Hohenberg equation, and second to higher dimensions.
+      This was mostly a conceptual difficulty in the functional analysis
+      framework surrounding the current research which we had to resolve.}
+	\end{itemize}
+
+\item
+  \ressubheading{Parareal}{}{(NYU) High Performance Computing and Numerical Methods
+  II}{Apr. 2019 - May 2019}
+	\begin{itemize}
+    \resitem{For a class final project, I decided to look into parallel
+    techniques for solving ordinary differential equations, in particular the
+    parallel-in-time algorithm, \textit{Parareal}.}
+    \resitem{For this project, I implemented and analyzed this algorithm, and
+    further tested it's scaling properties on the HPC cluster Prince here at
+    NYU.}
+    \resitem{Implemented with Eigen and OpenMP in C++}
+    \resitem{\href{https://abhijit-c.github.io/storage/Parareal/Parareal.pdf}{Link
+    to the report.}}
+	\end{itemize}
+
+\item
+	\ressubheading{Algebraic Point Set Surfaces Implementation}{}{(NYU) Geometric
+    Modeling}{Apr. 2018 - May. 2018}
+	\begin{itemize}
+		\resitem{For a class final project, I implemented the theory in the
+        paper \textit{Algebraic Point Set Surfaces} by Ga\={e}l Gunnebaud and
+        Markus Gross from ETH Zurich.}
+    \resitem{The Paper presented an alternative method to take a point cloud
+      to a triangularized mesh, and another method to estimate normals from a
+      point cloud using algebraic fitting of a sphere.}
+		\resitem{This was mostly a challenge in comprehension of the paper and
+      implementation, notably fighting with Eigen to try and constuct and
+      solve the sytems in an efficient manner.}
+    \resitem{Implemented with Eigen, libigl, and nanoflann in C++}
+	\end{itemize}
+
+\item
+	\ressubheading{Tutor and TA at Courant}{New York, NY}{NYU
+    }{Sep. 2017 - May 2019}
+	\begin{itemize}
+		\resitem{
+      Worked as a Tutor and TA to Professor Siegel at NYU for his undergraduate
+      basic algorithms and graduate fundamental algorithms course.
+    }
+    \resitem{
+      Hosted office hours, final exam study sessions, and worked on some of the
+      course materials.
+    }
+	\end{itemize}
+
+\item
+	\ressubheading{First Robotics Team Member, Team 2849: Ursa Major}{Columbia, MD}{Hammond High
+    School}{Sep. 2012 - 2019}
+	\begin{itemize}
+		\resitem{A robotics team; every new year they gather for a challenge
+        created by FIRST Robotics to build a robot in six weeks.}
+        \resitem{I worked as a build-team / programming-team flex member and
+        team captain during my student years, and now I help as a programming
+        and design mentor during their season.}
+        \resitem{Has managed to consistantly reach eliminantion and championship
+        rounds at the regional level.}
+        \resitem{\href{https://github.com/teamursamajor}{Link to their Github}}
+	\end{itemize}
+
+\end{itemize}
+
+\resheading{Skills}
+
+\begin{description}
+\item[Programming Languages:]
+C, C++, Julia, Matlab, Python and a little Mathematica.
+\item[Libraries and Technologies:]
+  Num/Scipy, FEniCS, OpenMP, MPI, HPC Tooling (slurm, etc.), CUDA, Linux (have
+  been using for over 8 years, currently on Fedora).
+\item[Languages:]
+English, Latin, Broken spoken Hindi
+\item[Minor Mechanical Fabrication Skills]
+\end{description}
+
+\end{document}

@@ -1,0 +1,66 @@
+% --------------------------------------------------------------
+% Abhi's Standard math Preamble.
+% --------------------------------------------------------------
+ 
+% Document packages / layout
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} %1 inch margins
+
+% Figure Packages
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{subcaption}
+\usepackage{wrapfig}
+\usepackage[export]{adjustbox} %center option in include graphics
+
+% Math Packages
+\usepackage{amsmath,amsthm,amssymb,mathrsfs,bm}
+\usepackage{mathtools}
+\usepackage{commath}
+\usepackage{esvect} %For derivatives of vectors \vec{u}' -> \vv{u}'
+
+% Code input 
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+%Manual indentation 
+\algdef{SE}[SUBALG]{Indent}{EndIndent}{}{\algorithmicend\ }%
+\algtext*{Indent}
+\algtext*{EndIndent}
+\makeatletter
+\newenvironment{breakablealgorithm}
+  {% \begin{breakablealgorithm}
+   \begin{center}
+     \refstepcounter{algorithm}% New algorithm
+     \hrule height.8pt depth0pt \kern2pt% \@fs@pre for \@fs@ruled
+     \renewcommand{\caption}[2][\relax]{% Make a new \caption
+       {\raggedright\textbf{\ALG@name~\thealgorithm} ##2\par}%
+       \ifx\relax##1\relax % #1 is \relax
+         \addcontentsline{loa}{algorithm}{\protect\numberline{\thealgorithm}##2}%
+       \else % #1 is not \relax
+         \addcontentsline{loa}{algorithm}{\protect\numberline{\thealgorithm}##1}%
+       \fi
+       \kern2pt\hrule\kern2pt
+     }
+  }{% \end{breakablealgorithm}
+     \kern2pt\hrule\relax% \@fs@post for \@fs@ruled
+   \end{center}
+  }
+\makeatother
+
+% Quality of Life Packages
+\usepackage{enumerate}
+
+\newcommand{\coarse}{\mathcal{G}}
+\newcommand{\fine}{\mathcal{F}}
+
+\newtheorem*{lemma*}{Lemma}
+\newtheorem*{theorem*}{Theorem}
+ 
+\begin{document}
+ 
+\begin{minted}{python}
+  import numpy as np
+  print(np.arange(0,5))
+\end{minted}
+
+\end{document}

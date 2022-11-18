@@ -1,0 +1,94 @@
+% --------------------------------------------------------------
+% Abhi's Standard math Preamble.
+% --------------------------------------------------------------
+ 
+% Document packages / layout
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} %1 inch margins
+
+% Figure Packages
+\usepackage{float}
+\usepackage{hyperref}
+\usepackage{subcaption}
+\usepackage{wrapfig}
+\usepackage[export]{adjustbox} %center option in include graphics
+
+% Math Packages
+\usepackage{amsmath,amsthm,amssymb,mathrsfs,bm}
+\usepackage{mathtools}
+\usepackage{commath}
+\usepackage{esvect} %For derivatives of vectors \vec{u}' -> \vv{u}'
+
+% Code input 
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+%Manual indentation 
+\algdef{SE}[SUBALG]{Indent}{EndIndent}{}{\algorithmicend\ }%
+\algtext*{Indent}
+\algtext*{EndIndent}
+\makeatletter
+\newenvironment{breakablealgorithm}
+  {% \begin{breakablealgorithm}
+   \begin{center}
+     \refstepcounter{algorithm}% New algorithm
+     \hrule height.8pt depth0pt \kern2pt% \@fs@pre for \@fs@ruled
+     \renewcommand{\caption}[2][\relax]{% Make a new \caption
+       {\raggedright\textbf{\ALG@name~\thealgorithm} ##2\par}%
+       \ifx\relax##1\relax % #1 is \relax
+         \addcontentsline{loa}{algorithm}{\protect\numberline{\thealgorithm}##2}%
+       \else % #1 is not \relax
+         \addcontentsline{loa}{algorithm}{\protect\numberline{\thealgorithm}##1}%
+       \fi
+       \kern2pt\hrule\kern2pt
+     }
+  }{% \end{breakablealgorithm}
+     \kern2pt\hrule\relax% \@fs@post for \@fs@ruled
+   \end{center}
+  }
+\makeatother
+
+% Quality of Life Packages
+\usepackage{enumerate}
+
+\newcommand{\coarse}{\mathcal{G}}
+\newcommand{\fine}{\mathcal{F}}
+
+\newtheorem*{lemma*}{Lemma}
+\newtheorem*{theorem*}{Theorem}
+ 
+\begin{document}
+
+We all know that the Fourier transform is pretty magical, but it turns out to be
+extra special to deal with certain PDEs. As it turns out, since the Fourier
+basis gives spectral accuracy for smooth functions, we can approximate the
+derivative of functions with spectral accuracy and in $\theta(n\log(n))$ time,
+since we have the Fast Fourier Transform. Therefore, as a substitute to finite
+difference methods, we can use spectral methods to discretize the spacial
+derivative operator.
+
+\section{A Simple Heat Equation}
+
+Let's look at the initial-boundary value problem for the 1D heat equation:
+
+$$
+\begin{cases}
+  \frac{\partial u}{\partial t} = \alpha \frac{\partial^2 u}{\partial x^2}
+  & x \in [0, 2\pi), t \in (0, T] \\
+  u(x,0) = u_0(x), & x \in [0, 2\pi) \\
+  u(0,t) = u(2\pi, t) = 0
+\end{cases}
+$$
+
+This is a toy example, where we can directly solve this problem using the
+fourier
+
+\section{Code: Spectral Differentiation}
+
+If you would like to look at the code for spectral differentiation, I would have
+to reference you to Trefethen's excellent text called \textit{Spectral Methods
+in Matlab}; really excellent on the matter. As far as the code I used, take
+a look!
+
+\inputminted[fontsize=\footnotesize, linenos]{c}{./code/spectral_diff.h}
+
+\end{document}
