@@ -20,5 +20,3 @@ decaying modes in the Bloch-Fourier space, and a fixed-point argument,
 demonstrating the irrelevancy of the nonlinear terms.
 
 [Download paper here](https://arxiv.org/pdf/2012.04154)
-
-Recommended citation: Your Name, You. (2015). "Paper Title Number 3." <i>Journal 1</i>. 1(3).
