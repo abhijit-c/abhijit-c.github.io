@@ -9,9 +9,6 @@ redirect_from:
 ---
 
 
-About Me
-========
-
 - 3rd year Ph.D. student in Applied Math at NCSU.
   - Advisor: [Dr. Alen Alexanderian](https://aalexan3.math.ncsu.edu/)
 - BA in Math and Computer Science with minor in Classical Studies at NYU.
