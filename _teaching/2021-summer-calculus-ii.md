@@ -4,7 +4,7 @@ collection: teaching
 type: "Undergraduate course"
 permalink: /teaching/2021-summer-calculus-ii
 venue: "North Carolina State University, Department of Mathematics"
-date: 2020-01-21
+date: 2021-05-14
 location: "Raleigh, North Caroloina"
 ---
 

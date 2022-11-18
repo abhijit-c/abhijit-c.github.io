@@ -8,4 +8,5 @@ date: 2020-08-14
 location: "Raleigh, North Caroloina"
 ---
 
-In the fall semester of 2020, I taught a recitation section and graded for the 
+In the fall semester of 2020, I taught a recitation section and graded for the
+Elements of Calculus Course.
