@@ -1,0 +1,166 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{1}
+  \datalist[entry]{ydnt/global//global/global}
+    \entry{Chowdhary_Ahmed_Attia_2023}{article}{}
+      \name{author}{3}{}{%
+        {{hash=a9f8e1a8bc5439a5190da84e4d928823}{%
+           family={Chowdhary},
+           familyi={C\bibinitperiod},
+           given={Abhijit},
+           giveni={A\bibinitperiod}}}%
+        {{hash=7152d5ff6fc8528869aa5b03f91ed756}{%
+           family={Ahmed},
+           familyi={A\bibinitperiod},
+           given={Shady\bibnamedelima E.},
+           giveni={S\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=7418bcda8723d6d2b953b11080ab6fa0}{%
+           family={Attia},
+           familyi={A\bibinitperiod},
+           given={Ahmed},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {arXiv}%
+      }
+      \strng{namehash}{bd76c7841b21a4a3a2eecc400fba10f1}
+      \strng{fullhash}{bd76c7841b21a4a3a2eecc400fba10f1}
+      \strng{bibnamehash}{bd76c7841b21a4a3a2eecc400fba10f1}
+      \strng{authorbibnamehash}{bd76c7841b21a4a3a2eecc400fba10f1}
+      \strng{authornamehash}{bd76c7841b21a4a3a2eecc400fba10f1}
+      \strng{authorfullhash}{bd76c7841b21a4a3a2eecc400fba10f1}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{PyOED: An Extensible Suite for Data Assimilation and Model-Constrained Optimal Design of Experiments}
+      \field{year}{2023}
+      \verb{doi}
+      \verb 10.48550/ARXIV.2301.08336
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/2301.08336
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/2301.08336
+      \endverb
+    \endentry
+    \entry{Chowdhary_Haberle_Ofori-atta_Wu_2023}{article}{}
+      \name{author}{4}{}{%
+        {{hash=a9f8e1a8bc5439a5190da84e4d928823}{%
+           family={Chowdhary},
+           familyi={C\bibinitperiod},
+           given={Abhijit},
+           giveni={A\bibinitperiod}}}%
+        {{hash=3cb514fff9f94f5167f8ffaf2f3dfbad}{%
+           family={Haberle},
+           familyi={H\bibinitperiod},
+           given={Mason},
+           giveni={M\bibinitperiod}}}%
+        {{hash=b5e1b6ef8fd4f575cbf8ab1f19a8000a}{%
+           family={Ofori-atta},
+           familyi={O\bibinithyphendelim a\bibinitperiod},
+           given={William},
+           giveni={W\bibinitperiod}}}%
+        {{hash=e4199007ba10e938237b5ec7b668c6fd}{%
+           family={Wu},
+           familyi={W\bibinitperiod},
+           given={Qiliang},
+           giveni={Q\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {arXiv}%
+      }
+      \strng{namehash}{d8ff9c4b420c83c145b826bfeab90677}
+      \strng{fullhash}{7f0b46e1018a4c4506592515dc8d6150}
+      \strng{bibnamehash}{7f0b46e1018a4c4506592515dc8d6150}
+      \strng{authorbibnamehash}{7f0b46e1018a4c4506592515dc8d6150}
+      \strng{authornamehash}{d8ff9c4b420c83c145b826bfeab90677}
+      \strng{authorfullhash}{7f0b46e1018a4c4506592515dc8d6150}
+      \field{extraname}{1}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Weak Diffusive Stability of Roll Solutions at the Zigzag Boundary}
+      \field{year}{2023}
+      \verb{doi}
+      \verb 10.48550/ARXIV.2310.12365
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/2310.12365
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/2310.12365
+      \endverb
+    \endentry
+    \entry{Chowdhary_Tong_Stadler_Alexanderian_2023}{article}{}
+      \name{author}{4}{}{%
+        {{hash=a9f8e1a8bc5439a5190da84e4d928823}{%
+           family={Chowdhary},
+           familyi={C\bibinitperiod},
+           given={Abhijit},
+           giveni={A\bibinitperiod}}}%
+        {{hash=98ec05e731afc787f7b5aa5fc072dd3d}{%
+           family={Tong},
+           familyi={T\bibinitperiod},
+           given={Shanyin},
+           giveni={S\bibinitperiod}}}%
+        {{hash=c667a95f57c7f3ab7c6de064d36f5c52}{%
+           family={Stadler},
+           familyi={S\bibinitperiod},
+           given={Georg},
+           giveni={G\bibinitperiod}}}%
+        {{hash=a7250c5894db37d9dcfadaf8d5104ff1}{%
+           family={Alexanderian},
+           familyi={A\bibinitperiod},
+           given={Alen},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {arXiv}%
+      }
+      \strng{namehash}{d8ff9c4b420c83c145b826bfeab90677}
+      \strng{fullhash}{3f06f6954ac5b672593800d6810784df}
+      \strng{bibnamehash}{3f06f6954ac5b672593800d6810784df}
+      \strng{authorbibnamehash}{3f06f6954ac5b672593800d6810784df}
+      \strng{authornamehash}{d8ff9c4b420c83c145b826bfeab90677}
+      \strng{authorfullhash}{3f06f6954ac5b672593800d6810784df}
+      \field{extraname}{2}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Sensitivity Analysis of the Information Gain in Infinite-Dimensional Bayesian Linear Inverse Problems}
+      \field{year}{2023}
+      \verb{doi}
+      \verb 10.48550/ARXIV.2310.16906
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/2310.16906
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/2310.16906
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
