@@ -33,4 +33,4 @@ inverse problem governed by a scalar linear elliptic PDE, and an inverse problem
 governed by the three-dimensional equations of linear elasticity, which is motivated by
 the inversion of the fault-slip field after an earthquake.
 
-[Download paper here](https://arxiv.org/pdf/2012.04154)
+[Download paper here](https://arxiv.org/abs/2310.16906)
