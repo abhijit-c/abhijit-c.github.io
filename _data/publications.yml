@@ -7,7 +7,7 @@ main:
     conference: arXiv, 2024.
     pdf: https://arxiv.org/abs/2409.09137
     bibtex: https://abhijit-c.github.io/assets/files/bib/Chowdhary_Attia_Alexanderian_2024.txt
-    image: ./assets/img/publications/Chowdhary_Attia_Alexanderian_2024.png
+    image: ./assets/img/publications/Chowdhary_Attia_Alexanderian_2024.jpg
     notes: Preprint
 
   - title: Sensitivity Analysis of the Information Gain in Infinite-Dimensional Bayesian Linear Inverse Problems
