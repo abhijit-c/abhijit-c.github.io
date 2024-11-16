@@ -19,20 +19,20 @@ to the field of uncertainty quantification, within which I've been doing
 
 ## News
 
-- **[Sept 2024]** Our preprint [Robust OED for nonlinear inverse problems](https://arxiv.org/abs/2409.09137) is
-  on arXiv.
-- **[Oct 2024]** I will be presenting a poster at SIAM MDS 2024.
-- **[June 2024]** Our paper for [PyOED](https://gitlab.com/ahmedattia/pyoed/) is accepted to ACM TOMS.
-- **[May 2024]** I have been awarded a Givens internship at Argonne National Lab for
-  the summer.
-- **[Apr 2024]** Our paper for the [sensitivity analysis of infinite-dimensional inverse
-  problems](https://www.dl.begellhouse.com/journals/52034eb04b657aea,3de4227a72ef3945,37449bb77256ca54.html)
-  is accepted to IJUQ.
-- **[Feb 2024]** I will be presenting at a mini-symposium at SIAM UQ 2024.
-- **[May 2023]** I have been awarded a Givens internship at Argonne National Lab for
-  the summer.
-- **[Feb 2023]** I will be presenting at a mini-symposium at SIAM CSE 2023.
-
+<ul>
+<li><strong>[Mar. 2025]</strong> I will presenting at a mini-symposium at SIAM CSE 2025.</li>
+<li><strong>[Sept. 2024]</strong> Our preprint <a href="https://arxiv.org/abs/2409.09137">Robust OED for nonlinear inverse problems</a> is on arXiv.</li>
+<li><strong>[Oct. 2024]</strong> I will be presenting a poster at SIAM MDS 2024.</li>
+<li><strong>[June 2024]</strong> Our paper for <a href="https://gitlab.com/ahmedattia/pyoed/">PyOED</a> is accepted to ACM TOMS.</li>
+<li><strong>[May 2024]</strong> I have been awarded a Givens internship at Argonne National Lab for the summer.</li>
+<li><strong>[Apr. 2024]</strong> Our paper for the <a href="https://www.dl.begellhouse.com/journals/52034eb04b657aea,3de4227a72ef3945,37449bb77256ca54.html">sensitivity analysis of infinite-dimensional inverse problems</a> is accepted to IJUQ.</li>
+<li><strong>[Feb. 2024]</strong> I will be presenting at a mini-symposium at SIAM UQ 2024.</li>
+<li> <a href="javascript:toggle_vis('newsmore')">Show more</a> </li>
+<div id="newsmore" style="display:none"> 
+  <li><strong>[May. 2023]</strong> I have been awarded a Givens internship at Argonne National Lab for the summer.</li>
+  <li><strong>[Feb. 2023]</strong> I will be presenting at a mini-symposium at SIAM CSE 2023.</li>
+</div>
+</ul>
 
 {% include_relative _includes/publications.md %}
 
