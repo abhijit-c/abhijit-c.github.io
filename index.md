@@ -4,7 +4,7 @@ layout: homepage
 
 ## About Me
 
-I am a 5th year PhD student at North Carolina State University, studying under ![Dr. Alen
+I am a 5th year PhD student at North Carolina State University, studying under [Dr. Alen
 Alexanderian](https://aalexan3.math.ncsu.edu/).
 
 ## Research Interests
