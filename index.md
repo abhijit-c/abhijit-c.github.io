@@ -36,4 +36,6 @@ to the field of uncertainty quantification, within which I've been doing
 
 {% include_relative _includes/publications.md %}
 
+{% include_relative _includes/presentations.md %}
+
 <!--- {% include_relative _includes/services.md %} -->

@@ -1,0 +1,32 @@
+
+main:
+
+  - title: Robust optimal design of large-scale Bayesian nonlinear inverse problems
+    authors: Abhijit Chowdhary, Ahmed Attia, Alen Alexanderian
+    conference_short: CSE25
+    conference: SIAM CSE 2025.
+    pdf: ./assets/files/presentations/CSE25.pdf
+    image: ./assets/img/presentations/CSE25.png
+
+  - title: Robust optimal design of large-scale Bayesian nonlinear inverse problems
+    authors: Abhijit Chowdhary, Ahmed Attia, Alen Alexanderian
+    conference_short: MDS24
+    conference: SIAM MDS 2024.
+    pdf: ./assets/files/presentations/MDS24.pdf
+    image: ./assets/img/presentations/MDS24.png
+    notes: Poster
+
+  - title: PyOED An Extensible Suite for Data Assimilation and Model-Constrained Optimal Design of Experiments
+    authors: Abhijit Chowdhary, Shady E. Ahmed, Ahmed Attia
+    conference_short: UQ24
+    conference: SIAM UQ 2024.
+    pdf: ./assets/files/presentations/UQ24.pdf
+    page: https://gitlab.com/ahmedattia/pyoed/
+    image: ./assets/img/presentations/UQ24.png
+
+  - title: Sensitivity Analysis of the Information Gain in Infinite-Dimensional Bayesian Linear Inverse Problems
+    authors: Abhijit Chowdhary, Shanyin Tong, Georg Stadler, Alen Alexanderian
+    conference_short: CSE23
+    conference: SIAM CSE 2023.
+    pdf: ./assets/files/presentations/CSE23.pdf
+    image: ./assets/img/presentations/CSE23.png
