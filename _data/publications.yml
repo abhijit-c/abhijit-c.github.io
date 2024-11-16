@@ -22,7 +22,7 @@ main:
     authors: Abhijit Chowdhary, Shady E. Ahmed, Ahmed Attia
     conference_short: ACM TOMS
     conference: ACM Transactions on Mathematical Software, 2024.
-    pdf: https://arxiv.org/pdf/2409.09137.pdf
+    pdf: https://dl.acm.org/doi/10.1145/3653071
     page: https://gitlab.com/ahmedattia/pyoed/
     bibtex: https://abhijit-c.github.io/assets/files/bib/Chowdhary_Ahmed_Attia_2024.txt
     image: ./assets/img/publications/Chowdhary_Ahmed_Attia_2024.jpg
