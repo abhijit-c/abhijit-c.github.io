@@ -14,8 +14,7 @@ to the field of uncertainty quantification, within which I've been doing
 
 - Large-Scale / Infinite Dimensional Bayesian Inverse Problems
 - PDE-Constrained Optimization
-- Optimal Experimental Design
-- Sensitivity Analysis
+- Optimal Experimental Design and Sensitivity Analysis of Inverse Problems
 
 ## News
 
