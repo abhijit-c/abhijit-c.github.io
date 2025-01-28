@@ -4,13 +4,16 @@ layout: homepage
 
 ## About Me
 
-I am a 5th year PhD student at North Carolina State University, studying under [Dr. Alen
-Alexanderian](https://aalexan3.math.ncsu.edu/).
+I am a 5th year PhD student at North Carolina State University, studying under
+[Dr. Alen Alexanderian](https://aalexan3.math.ncsu.edu/).
 
-## Research Interests
-
-Largely, I’m interested in *large scale computational math*. Recently, that has brought
-to the field of uncertainty quantification, within which I've been doing
+I consider myself a computational mathematician and, overall, my research
+interests lie in wielding math to design algorithms for real-world problems.
+Towards that end, I am currently focused on large-scale inverse problems for
+physical phenomena governed by partial differential equations (PDEs). My goal
+is to develop scalable algorithms to quantify, analyze, and control the
+uncertainty inherent in these problems.
+Recently, that has brought me to research areas within
 
 - Large-Scale / Infinite Dimensional Bayesian Inverse Problems
 - PDE-Constrained Optimization
