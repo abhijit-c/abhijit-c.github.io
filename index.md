@@ -10,7 +10,7 @@ I am a 5th year PhD student at North Carolina State University, studying under
 I consider myself a computational mathematician and my research interests lie in
 wielding math to design algorithms for real-world problems. Currently, I
 practice that in developing scalable algorithms to quantify, analyze, and
-control the uncertainty unherent in mathematical models. During my Ph.D., I
+control the uncertainty inherent in mathematical models. During my Ph.D., I
 focused on the uncertainty quantification (UQ) of large-scale inverse problems
 for physical phenomena governed by partial differential equations (PDEs). At the
 moment, I'm looking into ways to improve neural surrogates for the task of
