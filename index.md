@@ -21,6 +21,8 @@ the distributed or GPU setting.
 
 <ul>
 <li><strong>[Mar. 2025]</strong> I will presenting at a mini-symposium at SIAM CSE 2025.</li>
+<li><strong>[Feb. 2025]</strong> I defended by thesis! I will graduate with my
+doctorate in May of this year. </li>
 <li><strong>[Sept. 2024]</strong> Our preprint <a href="https://arxiv.org/abs/2409.09137">Robust OED for nonlinear inverse problems</a> is on arXiv.</li>
 <li><strong>[Oct. 2024]</strong> I will be presenting a poster at SIAM MDS 2024.</li>
 <li><strong>[June 2024]</strong> Our paper for <a href="https://gitlab.com/ahmedattia/pyoed/">PyOED</a> is accepted to ACM TOMS.</li>
