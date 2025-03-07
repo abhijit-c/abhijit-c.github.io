@@ -26,12 +26,6 @@ At the moment, I'm looking to direct my research interests in the directions of
     - Exploring architecutres more informed to model and physical structure
     - Applications towards solving previously intractable problems in UQ
 
-working on large-scal
-At the moment, I'm looking into ways to improve neural surrogates for the task
-of
-uncertainty quantification, and generally looking to write software for UQ in
-the distributed or GPU setting.
-
 ## News
 
 <ul>
