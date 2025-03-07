@@ -7,8 +7,8 @@ layout: homepage
 I am a 5th year PhD student at North Carolina State University, studying under
 [Dr. Alen Alexanderian](https://aalexan3.math.ncsu.edu/).
 
-I consider myself a computational mathematician and my research interests lie in
-wielding math to design algorithms for real-world problems. 
+I am a computational mathematician and my research interests lie in wielding
+math to design algorithms for real-world problems. 
 Currently, I practice that in developing scalable algorithms to quantify,
 analyze, and control the uncertainty inherent in mathematical models. 
 During my Ph.D., I focused on the uncertainty quantification (UQ) of large-scale
