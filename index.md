@@ -8,12 +8,27 @@ I am a 5th year PhD student at North Carolina State University, studying under
 [Dr. Alen Alexanderian](https://aalexan3.math.ncsu.edu/).
 
 I consider myself a computational mathematician and my research interests lie in
-wielding math to design algorithms for real-world problems. Currently, I
-practice that in developing scalable algorithms to quantify, analyze, and
-control the uncertainty inherent in mathematical models. During my Ph.D., I
-focused on the uncertainty quantification (UQ) of large-scale inverse problems
-for physical phenomena governed by partial differential equations (PDEs). At the
-moment, I'm looking into ways to improve neural surrogates for the task of
+wielding math to design algorithms for real-world problems. 
+Currently, I practice that in developing scalable algorithms to quantify,
+analyze, and control the uncertainty inherent in mathematical models. 
+During my Ph.D., I focused on the uncertainty quantification (UQ) of large-scale
+inverse problems for physical phenomena governed by partial differential
+equations (PDEs). 
+At the moment, I'm looking to direct my research interests in the directions of
+
+- High performance computing.
+    - Building computational tools and algorithms for large-scale scientific
+      problems
+    - Scaling to the highly distributed setting / GPU friendly algorithms
+    - Writing and maintaing open research software
+- Neural surrogates for UQ
+    - Deriving reliable approximation guarantees
+    - Exploring architecutres more informed to model and physical structure
+    - Applications towards solving previously intractable problems in UQ
+
+working on large-scal
+At the moment, I'm looking into ways to improve neural surrogates for the task
+of
 uncertainty quantification, and generally looking to write software for UQ in
 the distributed or GPU setting.
 
