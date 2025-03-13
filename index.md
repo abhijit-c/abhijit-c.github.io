@@ -25,6 +25,10 @@ At the moment, I'm looking to direct my research interests in the directions of
     - Deriving reliable approximation guarantees
     - Exploring architecutres more informed to model and physical structure
     - Applications towards solving previously intractable problems in UQ
+- Structure exploiting algorithms
+    - Randomized algorithms that scale in the 'information dimension'
+    - Tensors instead of matricization; they provide a very natural foundation
+      to exploit structure in across dimensions.
 
 ## News
 
