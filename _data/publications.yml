@@ -1,6 +1,15 @@
 
 main:
 
+  - title: Scalable Uncertainty Quantification for Infinite-Dimensional Bayesian Inverse Problem
+    authors: Abhijit Chowdhary
+    conference_short: Thesis
+    conference: PhD Thesis, 2025.
+    pdf: https://repository.lib.ncsu.edu/items/b73cff14-0b33-45fb-9c0e-bb19a888bf14
+    bibtex: https://abhijit-c.github.io/assets/files/bib/Chowdhary_2025.txt
+    image: ./assets/img/publications/Chowdhary_2025.png
+    notes: PhD Thesis
+
   - title: Robust optimal design of large-scale Bayesian nonlinear inverse problems
     authors: Abhijit Chowdhary, Ahmed Attia, Alen Alexanderian
     conference_short: arXiv

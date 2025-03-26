@@ -1,0 +1,9 @@
+ @phdthesis{Chowdhary_2025, 
+   title={Scalable Uncertainty Quantification for Infinite-Dimensional Bayesian Inverse Problems.}, 
+   url={https://www.lib.ncsu.edu/resolver/1840.20/45106}, 
+   author={Chowdhary, Abhijit}, 
+   year={2025}, 
+   month=feb, 
+   language={en},
+   type={PhD thesis}
+ }
