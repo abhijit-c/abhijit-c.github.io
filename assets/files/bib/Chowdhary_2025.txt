@@ -5,5 +5,5 @@
    year={2025}, 
    month=feb, 
    language={en},
-   type={PhD thesis}
+   type={{PhD} thesis}
  }
