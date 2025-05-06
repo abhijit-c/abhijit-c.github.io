@@ -88,7 +88,7 @@ bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 # -----------------------------------------------------------------------------
 
 blog_name: Bytes of Math # blog_name will be displayed in your blog page
-blog_description: Just some writeups of things I found interesting
+blog_description: Just some writeups of things I found interesting.
 permalink: /blog/:year/:title/
 lsi: false # produce an index for related posts
 
