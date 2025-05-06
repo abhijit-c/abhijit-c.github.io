@@ -5,9 +5,11 @@ date: 2025-05-06 17:37:00
 description: You've landed on my blog! Sorry...
 tags: math
 categories: personal
+giscus_comments: true
 ---
 
-# Welcome to My Blog!
+# You've landed on my blog!
 
-Welcome to my blog! Feel free to explore my posts and leave comments. If you
-have any questions or suggestions, please don't hesitate to reach out.
+Welcome! Feel free to explore and leave comments. If you have any questions or
+suggestions, please don't hesitate to reach out. If it's urgent, I'm best
+reached via email.
