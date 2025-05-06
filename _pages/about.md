@@ -27,16 +27,21 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-I am a computational mathematician and my research interests lie in wielding math to
-design algorithms for real-world problems. 
-Currently, I practice that in developing scalable algorithms to quantify, analyze, and
-control the uncertainty inherent in mathematical models. 
-Previously, I focused on the uncertainty quantification (UQ) of large-scale inverse
-problems for physical phenomena governed by partial differential equations (PDEs). 
-At the moment, I'm pursuing new directions in computational science, generally along the
-lines of problem structure-exploiting neural architecutres and algorithms.
+***Note:*** If you're seeing this, my apologies, the website is under
+constrution. It should be finished by the end of the day!
 
-Outside of math, I enjoy Dungeons and Dragons / Pathfinder with friends across the
-continent, playing fighting games, and generally am very into computers. You might see
-me around if you go into any of the coffee shops in Boston, or any convention /
-competition running a Tekken bracket!
+I am a computational mathematician and my research interests lie in wielding
+math to design algorithms for real-world problems.
+Currently, I practice that in developing scalable algorithms to quantify,
+analyze, and control the uncertainty inherent in mathematical models.
+Previously, I focused on the uncertainty quantification (UQ) of large-scale
+inverse problems for physical phenomena governed by partial differential
+equations (PDEs).
+At the moment, I'm pursuing new directions in computational science, generally
+along the lines of problem structure-exploiting neural architecutres and
+algorithms.
+
+Outside of math, I enjoy Dungeons and Dragons / Pathfinder with friends across
+the continent, playing fighting games, and generally am very into computers.
+You might see me around Boston if you're in any of the local coffee shops,
+or any convention / competition running a Tekken bracket!
