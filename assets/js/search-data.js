@@ -37,13 +37,6 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/teaching/";
           },
-        },{id: "nav-bookshelf",
-          title: "bookshelf",
-          description: "",
-          section: "Navigation",
-          handler: () => {
-            window.location.href = "/books/";
-          },
         },{id: "post-hello-world",
         
           title: "Hello, World!",
@@ -60,16 +53,35 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/the_godfather/";
-            },},{id: "news-a-simple-inline-announcement",
-          title: 'A simple inline announcement.',
+            },},{id: "news-i-will-be-presenting-at-a-mini-symposium-at-siam-cse-2023",
+          title: 'I will be presenting at a mini-symposium at SIAM CSE 2023!',
           description: "",
-          section: "News",},{id: "news-a-long-announcement-with-details",
-          title: 'A long announcement with details',
+          section: "News",},{id: "news-i-have-been-awarded-a-givens-internship-at-argonne-national-lab-for-the-summer",
+          title: 'I have been awarded a Givens internship at Argonne National Lab for the...',
           description: "",
-          section: "News",handler: () => {
-              window.location.href = "/news/announcement_2/";
-            },},{id: "news-a-simple-inline-announcement-with-markdown-emoji-sparkles-smile",
-          title: 'A simple inline announcement with Markdown emoji! :sparkles: :smile:',
+          section: "News",},{id: "news-i-will-be-presenting-at-a-mini-symposium-at-siam-uq-2024",
+          title: 'I will be presenting at a mini-symposium at SIAM UQ 2024.',
+          description: "",
+          section: "News",},{id: "news-our-paper-for-the-sensitivity-analysis-of-infinite-dimensional-inverse-problems-is-accepted-to-ijuq",
+          title: 'Our paper for the sensitivity analysis of infinite-dimensional inverse problems is accepted to...',
+          description: "",
+          section: "News",},{id: "news-i-have-been-awarded-a-givens-internship-at-argonne-national-lab-for-the-summer",
+          title: 'I have been awarded a Givens internship at Argonne National Lab for the...',
+          description: "",
+          section: "News",},{id: "news-our-paper-for-pyoed-was-accepted-to-acm-toms",
+          title: 'Our paper for PyOED was accepted to ACM TOMS.',
+          description: "",
+          section: "News",},{id: "news-our-preprint-robust-oed-for-nonlinear-inverse-problems-is-on-arxiv",
+          title: 'Our preprint Robust OED for nonlinear inverse problems is on arXiv.',
+          description: "",
+          section: "News",},{id: "news-i-will-be-presenting-a-poster-at-siam-mds-2024",
+          title: 'I will be presenting a poster at SIAM MDS 2024.',
+          description: "",
+          section: "News",},{id: "news-i-defended-my-thesis-i-will-graduate-with-my-doctorate-in-may",
+          title: 'I defended my thesis! I will graduate with my doctorate in May.',
+          description: "",
+          section: "News",},{id: "news-i-will-presenting-at-a-mini-symposium-at-siam-cse-2025",
+          title: 'I will presenting at a mini-symposium at SIAM CSE 2025.',
           description: "",
           section: "News",},{id: "projects-project-1",
           title: 'project 1',
@@ -136,13 +148,6 @@ ninja.data = [{
         section: 'Socials',
         handler: () => {
           window.open("https://github.com/abhijit-c", "_blank");
-        },
-      },{
-        id: 'social-orcid',
-        title: 'ORCID',
-        section: 'Socials',
-        handler: () => {
-          window.open("https://orcid.org/0000-0002-5092-3503", "_blank");
         },
       },{
         id: 'social-scholar',
