@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: <a href='https://math.tufts.edu/'>Postdoctoral Researcher at Tufts University</a>.
+subtitle: <a href='https://math.tufts.edu/'>Postdoctoral Researcher at Tufts University.</a>
 
 profile:
   align: right
@@ -26,10 +26,6 @@ latest_posts:
   scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
   limit: 3 # leave blank to include all the blog posts
 ---
-
-***Note:*** If you're seeing this, my apologies, the website is under
-constrution. It should be finished by the end of the day!
-
 I am a computational mathematician and my research interests lie in wielding
 math to design algorithms for real-world problems.
 Currently, I practice that in developing scalable algorithms to quantify,
@@ -43,5 +39,5 @@ algorithms.
 
 Outside of math, I enjoy Dungeons and Dragons / Pathfinder with friends across
 the continent, playing fighting games, and generally am very into computers.
-You might see me around Boston if you're in any of the local coffee shops,
-or any convention / competition running a Tekken bracket!
+You might see me around Boston if you're in any of the local coffee shops, or
+any convention running a Tekken bracket!
