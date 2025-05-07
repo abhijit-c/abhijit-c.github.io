@@ -83,7 +83,7 @@ ninja.data = [{
           section: "News",},{id: "news-i-will-presenting-at-a-mini-symposium-at-siam-cse-2025",
           title: 'I will presenting at a mini-symposium at SIAM CSE 2025.',
           description: "",
-          section: "News",},{id: "news-i-ve-accepted-a-postdoctoral-position-at-tufts-university-i-ll-be-working-with-dr-elizabeth-newmann-in-scientific-machine-learning-optimization-deep-learning-uncertainty-quantification-bayesian-inverse-problems-reduced-order-modeling-high-performance-computing-or-other-related-fields",
+          section: "News",},{id: "news-i-ve-accepted-a-postdoctoral-position-at-tufts-university-i-ll-be-working-with-dr-elizabeth-newmann",
           title: 'I’ve accepted a postdoctoral position at Tufts University! I’ll be working with Dr....',
           description: "",
           section: "News",},{id: "projects-project-1",
