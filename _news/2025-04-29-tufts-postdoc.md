@@ -6,7 +6,4 @@ related_posts: false
 ---
 
 I've accepted a postdoctoral position at Tufts University! I'll be working with
-[Dr. Elizabeth Newmann](https://elizabethnewman.owlstown.net/) in scientific
-machine learning, optimization, deep learning, uncertainty quantification,
-(Bayesian) inverse problems, reduced order modeling, high-performance computing,
-or other related fields.
+[Dr. Elizabeth Newmann](https://elizabethnewman.owlstown.net/).
