@@ -39,5 +39,5 @@ algorithms.
 
 Outside of math, I enjoy Dungeons and Dragons / Pathfinder with friends across
 the continent, playing fighting games, and generally am very into computers.
-You might see me around Boston if you're in any of the local coffee shops, or
-any convention running a Tekken bracket!
+You might see me around Somerville, MA if you're in any of the local coffee
+shops, or any convention running a Tekken bracket!
