@@ -37,7 +37,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/news/";
           },
-        },{id: "post-hello-world",
+        },{id: "post-i-39-m-transitioning-from-conda-to-pixi",
+        
+          title: "I&#39;m Transitioning from Conda to Pixi",
+        
+        description: "The python packaging system is insane.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/pixi/";
+          
+        },
+      },{id: "post-hello-world",
         
           title: "Hello, World!",
         
