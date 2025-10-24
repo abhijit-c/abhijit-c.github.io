@@ -12,6 +12,7 @@ profile:
     <p>Joyce Cummings Center</p>
     <p>177 College Avenue</p>
     <p>Medford, MA 02155</p>
+    <p>United States of America</p>
 
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
