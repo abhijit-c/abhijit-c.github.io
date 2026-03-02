@@ -9,6 +9,7 @@ profile:
   image: prof_pic.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
+    <p>abhijit.chowdhary@tufts.edu</p>
     <p>Joyce Cummings Center</p>
     <p>177 College Avenue</p>
     <p>Medford, MA 02155</p>
