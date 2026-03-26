@@ -37,7 +37,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/news/";
           },
-        },{id: "post-i-39-m-transitioning-from-conda-to-pixi",
+        },{id: "post-overparametrization-is-frustrating-to-me",
+        
+          title: "Overparametrization is Frustrating to Me",
+        
+        description: "The price of regularization",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/cbms/";
+          
+        },
+      },{id: "post-i-39-m-transitioning-from-conda-to-pixi",
         
           title: "I&#39;m Transitioning from Conda to Pixi",
         
@@ -105,6 +116,9 @@ ninja.data = [{
           description: "",
           section: "News",},{id: "news-i-ll-be-running-a-minisymposia-at-siam-uq26-lots-of-great-speakers-are-in-attendance-looking-forward-to-seeing-people-there",
           title: 'I’ll be running a minisymposia at SIAM UQ26. Lots of great speakers are...',
+          description: "",
+          section: "News",},{id: "news-our-preprint-boost-like-a-var-pro-trust-region-gradient-boosting-via-variable-projection-is-on-arxiv",
+          title: 'Our preprint Boost Like a (Var)Pro: Trust-Region Gradient Boosting via Variable Projection is...',
           description: "",
           section: "News",},{id: "projects-project-1",
           title: 'project 1',
