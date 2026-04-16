@@ -5,6 +5,7 @@ date: 2026-04-15 12:00:00
 description: "Sketching the forward problem and converting via Woodbury is not the same as sketching the dual—here's a proof and the intuition behind it."
 tags: numerical linear algebra, randomized algorithms, least squares, sketching
 categories: math
+published: false
 giscus_comments: true
 toc:
   sidebar: left
@@ -142,3 +143,41 @@ Unless $SS^T = I_k$, this compressed regularizer is *anisotropic*: some directio
 Put differently: the Woodbury identity is an exact algebraic fact about the *full* problem. 
 Sketching is not an algebraic operation, it changes the optimization problem itself. 
 The sketched primal and the sketched dual are two genuinely different approximate problems, and their solutions need not agree.
+
+---
+
+## Which is better?
+
+This is context-dependent, and the answer turns on what sketch you're using and which regime you're in.
+
+### The primal sketch is the cleaner approximation
+
+From a numerical standpoint, $\tilde{x}_P$ has a decisive structural advantage: it solves a genuine regularized least squares problem in its own right,
+
+$$\tilde{x}_P = \arg\min_x \tfrac{1}{2}\|SAx - Sb\|_2^2 + \tfrac{\lambda}{2}\|x\|_2^2.$$
+
+The regularizer is never touched by $S$, so the $\lambda I_k$ in the Woodbury-rewritten inverse is genuinely isotropic — every direction in the compressed space is penalized equally, exactly as in the original problem.
+Error analysis is correspondingly clean: approximation quality depends on how faithfully $S^TS$ preserves the spectrum of $A$ restricted to its row space, and for standard sketching families (Gaussian, subsampled randomized Hadamard, sparse sign) this is a textbook guarantee that holds with high probability once $k$ is large enough relative to $\text{rank}(A)$ and $1/\lambda$.
+
+### The dual sketch is the Nyström approximation
+
+The dual sketch is not just an alternative formula — it corresponds to a well-known and heavily studied approximation in machine learning. 
+If $S$ is a *column-selection* sketch (i.e., $S$ picks $k$ rows out of the $m$-row identity), then $SAA^TS^T$ is a $k\times k$ principal submatrix of the Gram matrix $K = AA^T$, and $\tilde{x}_D$ is exactly the **Nyström approximation to kernel ridge regression** (KRR).
+In that literature the $\lambda SS^T$ term is a feature: it reflects how the regularization interacts with the geometry of the selected subspace.
+When $S$ is chosen to capture most of the spectral mass of $K$ (e.g., by selecting the columns corresponding to the $k$ largest diagonal entries or via leverage-score sampling), the Nyström approximation enjoys sharp bounds that decay with the tail of the spectrum of $K$. That's a stronger, problem-adapted guarantee than what generic sketching gives you.
+
+### Summary
+
+| Regime | Prefer |
+|---|---|
+| $m \gg n$ (tall, overdetermined) | **Primal** — cheap, clean, textbook guarantees |
+| $m \approx n$ or $m \ll n$ (wide/kernel regime) | **Dual** — Nyström-KRR literature applies |
+| Generic unstructured sketch ($S$ Gaussian, SRHT, …) | **Primal** — isotropic $\lambda I_k$ is well-behaved |
+| Column-selection or leverage-score sketch | **Dual** — designed for spectral approximation of $K$ |
+| $SS^T = I_k$ (orthogonal rows) | **Either** — the two solutions coincide |
+
+The practical upshot: if you want a general-purpose, principled approximation and do not have strong prior knowledge about the spectrum of $AA^T$, use the primal sketch.
+Its approximation error is easy to control and the regularizer remains well-behaved in the compressed space.
+
+If you are explicitly working in the kernel or wide-matrix regime and can afford to design $S$ to capture the leading spectral structure of $K = AA^T$, use the dual sketch.
+The anisotropy of $\lambda SS^T$ is then not a defect but an adaptation to the geometry of the problem, and the Nyström KRR literature gives you sharp, spectral-tail-dependent error bounds rather than generic oblivious-sketch guarantees.
