@@ -37,18 +37,7 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/news/";
           },
-        },{id: "post-overparametrization-is-frustrating-to-me",
-        
-          title: "Overparametrization is Frustrating to Me",
-        
-        description: "The price of regularization",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/blog/2025/cbms/";
-          
-        },
-      },{id: "post-i-39-m-transitioning-from-conda-to-pixi",
+        },{id: "post-i-39-m-transitioning-from-conda-to-pixi",
         
           title: "I&#39;m Transitioning from Conda to Pixi",
         
