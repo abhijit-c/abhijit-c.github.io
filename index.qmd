@@ -1,14 +1,11 @@
 ---
 title: "Abhijit Chowdhary"
-subtitle: "Postdoctoral Researcher at [Tufts University](https://math.tufts.edu/)"
+subtitle: "Postdoctoral Researcher at [Tufts University](https://math.tufts.edu/)<br><input type='text' value='abhijit.chowdhary@tufts.edu' readonly onclick='this.select();' onfocus='this.select();' style='font: inherit; color: inherit; width: 23ch; max-width: 100%; text-align: center; border: 0; background: transparent; padding: 0; margin: 0;' aria-label='Email address' />"
 image: assets/img/prof_pic.jpg
 about:
   template: trestles
   image-shape: rounded
   links:
-    - icon: envelope
-      text: Email
-      href: mailto:abhijit.chowdhary@tufts.edu
     - text: Google Scholar
       icon: mortarboard
       href: https://scholar.google.com/citations?user=8Wg1zW4AAAAJ
