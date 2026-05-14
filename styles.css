@@ -1,6 +1,8 @@
-/* Profile image sizing in the about template */
-.quarto-about-trestles .quarto-about-image {
-  max-width: 220px;
+/* Quarto emits the profile image as `.about-image` with an inline width.
+   Override it on small screens so the about layout never exceeds the viewport. */
+.quarto-about-trestles .about-image {
+  width: min(220px, 100%) !important;
+  height: auto;
 }
 
 /* Expand trestles on full page-layout, cap at a comfortable reading width */
@@ -8,6 +10,12 @@
   max-width: 1100px;
   margin: 2rem auto;
   padding: 0 2rem;
+}
+
+@media (max-width: 575.98px) {
+  .quarto-about-trestles {
+    padding: 0 1rem;
+  }
 }
 
 @media (min-width: 992px) {
