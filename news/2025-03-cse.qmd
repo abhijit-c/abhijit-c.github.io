@@ -1,0 +1,7 @@
+---
+title: "Talk at SIAM CSE 2025"
+date: 2025-03-03
+description: "I will be presenting at a mini-symposium at SIAM CSE 2025."
+---
+
+I will be presenting at a mini-symposium at SIAM CSE 2025.

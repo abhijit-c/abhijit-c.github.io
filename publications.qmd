@@ -1,0 +1,148 @@
+---
+title: "Publications"
+---
+
+```{python}
+#| echo: false
+#| output: asis
+
+import bibtexparser
+from bibtexparser.bparser import BibTexParser
+import html as htmllib
+import re
+
+SKIP_FIELDS = {'bibtex_show', 'selected', 'preview', 'arxiv',
+               'language', 'ENTRYTYPE', 'ID'}
+ARXIV_FIELDS = {'eprint', 'archiveprefix', 'primaryclass'}
+
+def clean_title(t):
+    return re.sub(r'[{}]', '', t)
+
+def format_authors(s):
+    authors = [a.strip() for a in re.split(r'\s+and\s+', s, flags=re.IGNORECASE)]
+    out = []
+    for a in authors:
+        if ',' in a:
+            last, first = a.split(',', 1)
+            initials = '. '.join(p[0].upper() for p in first.split() if p) + '.'
+            out.append(f'{initials} {last.strip()}')
+        else:
+            parts = a.split()
+            if len(parts) >= 2:
+                out.append('. '.join(p[0] for p in parts[:-1]) + f'. {parts[-1]}')
+            else:
+                out.append(a)
+    return ', '.join(out)
+
+def get_href(e):
+    doi = e.get('doi', '').strip()
+    arxiv = e.get('arxiv', '').strip() or e.get('eprint', '').strip()
+    url = e.get('url', '').strip() or e.get('website', '').strip()
+    if doi:   return f'https://doi.org/{doi}'
+    if arxiv: return f'https://arxiv.org/abs/{arxiv}'
+    return url
+
+def venue_html(e):
+    etype = e.get('ENTRYTYPE', '').lower()
+    if etype == 'phdthesis':
+        school = e.get('school', '').strip()
+        return f'<em>PhD Thesis</em>, {htmllib.escape(school)}'
+    is_preprint = etype == 'misc' or ('eprint' in e and 'journal' not in e)
+    if is_preprint:
+        return '<em>Preprint</em>'
+    j = htmllib.escape(e.get('journal', '').strip())
+    vol, num, pages = e.get('volume',''), e.get('number',''), e.get('pages','')
+    s = f'<em>{j}</em>'
+    if vol:
+        s += f', {vol}({num})' if num else f', {vol}'
+    if pages:
+        s += f', {pages}'
+    return s
+
+def links_html(e):
+    parts = []
+    doi = e.get('doi', '').strip()
+    if doi:
+        parts.append(f'<a href="https://doi.org/{doi}">DOI</a>')
+    arxiv = e.get('arxiv', '').strip() or e.get('eprint', '').strip()
+    if arxiv:
+        parts.append(f'<a href="https://arxiv.org/abs/{arxiv}">arXiv:{arxiv}</a>')
+    url = e.get('url', '').strip() or e.get('website', '').strip()
+    if url and not doi and not arxiv:
+        parts.append(f'<a href="{url}">Link</a>')
+    return ' &middot; '.join(parts)
+
+def make_bibtex(e):
+    etype, key = e['ENTRYTYPE'], e['ID']
+    is_preprint = etype == 'misc' or ('eprint' in e and 'journal' not in e)
+    skip = set(SKIP_FIELDS)
+    if not is_preprint:
+        skip |= ARXIV_FIELDS
+    # convert 'website' → 'url' if no url present
+    extra_url = None
+    if 'website' in e and 'url' not in e:
+        extra_url = e['website'].strip()
+    skip.add('website')
+
+    order = ['title', 'author', 'journal', 'school', 'booktitle',
+             'volume', 'number', 'pages', 'year', 'month',
+             'doi', 'eprint', 'archiveprefix', 'primaryclass', 'url']
+    seen = set()
+    lines = [f'@{etype}{{{key},']
+    for field in order:
+        fl = field.lower()
+        if fl in skip or fl in seen: continue
+        val = re.sub(r'\s+', ' ', e.get(field, '').strip())
+        if val:
+            lines.append(f'  {field:<14} = {{{val}}},')
+            seen.add(fl)
+    if extra_url and 'url' not in seen:
+        lines.append(f'  {"url":<14} = {{{extra_url}}},')
+    for field, val in e.items():
+        fl = field.lower()
+        if fl in skip or fl in seen or fl in ('entrytype', 'id'): continue
+        val = re.sub(r'\s+', ' ', val.strip())
+        if val:
+            lines.append(f'  {field:<14} = {{{val}}},')
+    lines.append('}')
+    return '\n'.join(lines)
+
+def sort_key(e):
+    months = dict(jan=1,feb=2,mar=3,apr=4,may=5,jun=6,
+                  jul=7,aug=8,sep=9,oct=10,nov=11,dec=12)
+    m = e.get('month', 'dec').strip().lower()[:3]
+    return (-int(e.get('year', 0)), -months.get(m, 12))
+
+parser = BibTexParser(common_strings=True)
+parser.ignore_nonstandard_types = False
+with open('papers.bib') as f:
+    bib = bibtexparser.load(f, parser)
+
+current_year = None
+for e in sorted(bib.entries, key=sort_key):
+    year = e.get('year', '?')
+    if year != current_year:
+        current_year = year
+        print(f'<h2>{year}</h2>\n')
+
+    title   = htmllib.escape(clean_title(e.get('title', 'Untitled')))
+    href    = get_href(e)
+    title_h = f'<a href="{href}">{title}</a>' if href else title
+    authors = htmllib.escape(format_authors(e.get('author', '')))
+    venue   = venue_html(e)
+    links   = links_html(e)
+    bib_txt = htmllib.escape(make_bibtex(e))
+    sep     = ' &middot; ' if links else ''
+
+    print(f'''\
+<div class="pub">
+<p><strong>{title_h}</strong><br>
+{authors}<br>
+{venue}{sep}{links}</p>
+<details>
+<summary>BibTeX</summary>
+<pre><code>{bib_txt}</code></pre>
+</details>
+</div>
+''')
+```

@@ -1,0 +1,7 @@
+---
+title: "Talk at SIAM UQ 2024"
+date: 2024-02-25
+description: "I will be presenting at a mini-symposium at SIAM UQ 2024."
+---
+
+I will be presenting at a mini-symposium at SIAM UQ 2024.

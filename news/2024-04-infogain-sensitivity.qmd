@@ -1,0 +1,7 @@
+---
+title: "Info Gain Sensitivity Paper Accepted to IJUQ"
+date: 2024-04-16
+description: "Our paper for the [sensitivity analysis of infinite-dimensional inverse problems](https://www.dl.begellhouse.com/journals/52034eb04b657aea,3de4227a72ef3945,37449bb77256ca54.html) is accepted to IJUQ."
+---
+
+Our paper for the [sensitivity analysis of infinite-dimensional inverse problems](https://www.dl.begellhouse.com/journals/52034eb04b657aea,3de4227a72ef3945,37449bb77256ca54.html) is accepted to IJUQ.

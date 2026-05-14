@@ -1,0 +1,23 @@
+name: Publish to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v5
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: Publish
+        run: uv run quarto publish gh-pages --no-browser
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

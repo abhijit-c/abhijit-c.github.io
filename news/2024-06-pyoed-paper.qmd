@@ -1,0 +1,7 @@
+---
+title: "PyOED Paper Accepted to ACM TOMS"
+date: 2024-06-28
+description: "Our paper for [PyOED](https://gitlab.com/ahmedattia/pyoed/) was accepted to ACM TOMS."
+---
+
+Our paper for [PyOED](https://gitlab.com/ahmedattia/pyoed/) was accepted to ACM TOMS.

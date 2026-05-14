@@ -1,0 +1,7 @@
+---
+title: "Boost Like a (Var)Pro on arXiv"
+date: 2026-03-25
+description: "Our preprint [Boost Like a (Var)Pro: Trust-Region Gradient Boosting via Variable Projection](https://arxiv.org/abs/2603.23658) is on arXiv."
+---
+
+Our preprint [Boost Like a (Var)Pro: Trust-Region Gradient Boosting via Variable Projection](https://arxiv.org/abs/2603.23658) is on arXiv.

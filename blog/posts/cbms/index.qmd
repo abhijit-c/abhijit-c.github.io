@@ -1,0 +1,9 @@
+---
+title: "Overparametrization is Frustrating to Me"
+date: 2025-12-09
+description: "The price of regularization."
+categories: [personal, math]
+draft: true
+---
+
+Unhinged rant about overparametrization.

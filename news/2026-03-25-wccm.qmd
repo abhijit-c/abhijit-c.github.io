@@ -1,0 +1,7 @@
+---
+title: "Attending WCCM 2026"
+date: 2026-03-25
+description: "I'll be attending [WCCM 2026 in Munich](https://wccm-eccomas2026.org/) this July."
+---
+
+I'll be attending [WCCM 2026 in Munich](https://wccm-eccomas2026.org/) this July.

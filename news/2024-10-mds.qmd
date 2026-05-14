@@ -1,0 +1,7 @@
+---
+title: "Poster at SIAM MDS 2024"
+date: 2024-10-21
+description: "I will be presenting a poster at SIAM MDS 2024."
+---
+
+I will be presenting a poster at SIAM MDS 2024.

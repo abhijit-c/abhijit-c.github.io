@@ -1,0 +1,57 @@
+---
+title: "Abhijit Chowdhary"
+subtitle: "Postdoctoral Researcher at [Tufts University](https://math.tufts.edu/)"
+image: assets/img/prof_pic.jpg
+about:
+  template: trestles
+  image-shape: rounded
+  links:
+    - icon: envelope
+      text: Email
+      href: mailto:abhijit.chowdhary@tufts.edu
+    - text: Google Scholar
+      icon: mortarboard
+      href: https://scholar.google.com/citations?user=8Wg1zW4AAAAJ
+    - icon: github
+      text: GitHub
+      href: https://github.com/abhijit-c
+listing:
+  - id: recent-news
+    contents: news
+    sort: "date desc"
+    max-items: 5
+    type: table
+    fields: [date, description]
+    date-format: "MMM YYYY"
+    sort-ui: false
+    filter-ui: false
+page-layout: full
+---
+
+I am a computational mathematician and my research interests lie in wielding
+math to design and analyze computational algorithms.
+Currently, I'm working on algorithms in uncertainty quantification, machine learning, and optimization.
+I've also been known to write a theorem or two.
+
+Outside of math, I enjoy Dungeons \& Dragons / Pathfinder with friends across
+the continent, playing fighting games, and am very into computers.
+
+---
+
+## Recent News
+
+::: {#recent-news}
+:::
+
+---
+
+## Selected Papers
+
+**[Boost Like a (Var)Pro: Trust-Region Gradient Boosting via Variable Projection](https://arxiv.org/abs/2603.23658)**
+Chowdhary, Newman, Verma · *arXiv 2603.23658* · 2026
+
+**[Robust Optimal Experimental Design of Infinite-Dimensional Bayesian Nonlinear Inverse Problems](https://doi.org/10.1137/24M1693921)**
+Chowdhary, Attia, Alexanderian · *SIAM Journal on Scientific Computing* · 2026
+
+**[Sensitivity Analysis of the Information Gain in Infinite-Dimensional Bayesian Linear Inverse Problems](https://doi.org/10.1615/Int.J.UncertaintyQuantification.2024051416)**
+Chowdhary, Tong, Stadler, Alexanderian · *International Journal for Uncertainty Quantification* · 2024

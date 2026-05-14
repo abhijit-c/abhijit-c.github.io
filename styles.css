@@ -1,0 +1,64 @@
+/* Profile image sizing in the about template */
+.quarto-about-trestles .quarto-about-image {
+  max-width: 220px;
+}
+
+/* Expand trestles on full page-layout, cap at a comfortable reading width */
+.quarto-about-trestles {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+}
+
+@media (min-width: 992px) {
+  .quarto-about-trestles .about-entity {
+    flex: 0 0 260px;
+  }
+}
+
+/* Tighten up listing table for news */
+.listing-description {
+  max-width: 600px;
+}
+
+/* Remove underline from listing titles in table view */
+table.quarto-listing-table td a {
+  text-decoration: none;
+}
+
+/* Publication entries */
+.pub {
+  border-left: 3px solid #2c6fad;
+  padding: 0.4rem 1rem 0.4rem 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.pub p {
+  margin: 0;
+  line-height: 1.55;
+}
+
+.pub details {
+  margin-top: 0.5rem;
+}
+
+.pub summary {
+  cursor: pointer;
+  font-size: 0.82rem;
+  color: #2c6fad;
+  user-select: none;
+}
+
+.pub details pre {
+  margin-top: 0.4rem;
+  font-size: 0.78rem;
+  padding: 0.6rem 0.8rem;
+}
+
+.bibtex-copy-btn {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.4rem;
+  font-size: 0.72rem;
+  padding: 0.15rem 0.45rem;
+}

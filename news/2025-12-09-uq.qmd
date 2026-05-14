@@ -1,0 +1,7 @@
+---
+title: "Minisymposia at SIAM UQ26"
+date: 2025-12-09
+description: "I'll be running a [minisymposia](https://meetings.siam.org/sess/dsp_programsess.cfm?SESSIONCODE=86002) at SIAM UQ26. Lots of great speakers are in attendance, looking forward to seeing people there!"
+---
+
+I'll be running a [minisymposia](https://meetings.siam.org/sess/dsp_programsess.cfm?SESSIONCODE=86002) at SIAM UQ26. Lots of great speakers are in attendance, looking forward to seeing people there!

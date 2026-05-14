@@ -1,0 +1,7 @@
+---
+title: "Robust OED Published in SIAM SISC"
+date: 2026-04-20
+description: "Our paper [Robust OED for nonlinear inverse problems](https://doi.org/10.1137/24M1693921) has been published in SIAM SISC!"
+---
+
+Our paper [Robust OED for nonlinear inverse problems](https://doi.org/10.1137/24M1693921) has been published in SIAM SISC!

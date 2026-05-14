@@ -1,0 +1,7 @@
+---
+title: "VERSEIM REU at Tufts"
+date: 2026-03-25
+description: "I'll be part of the organization of the [VERSEIM REU at Tufts](https://sites.tufts.edu/verseimreu/) this summer."
+---
+
+I'll be part of the organization of the [VERSEIM REU at Tufts](https://sites.tufts.edu/verseimreu/) this summer.

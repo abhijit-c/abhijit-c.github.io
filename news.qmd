@@ -1,0 +1,11 @@
+---
+title: "News"
+listing:
+  contents: news
+  sort: "date desc"
+  type: table
+  fields: [date, description]
+  date-format: "MMM YYYY"
+  sort-ui: false
+  filter-ui: false
+---

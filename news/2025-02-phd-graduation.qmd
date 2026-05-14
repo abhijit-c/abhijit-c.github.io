@@ -1,0 +1,7 @@
+---
+title: "PhD Defense"
+date: 2025-02-01
+description: "I defended my thesis! I will graduate with my doctorate in May."
+---
+
+I defended my thesis! I will graduate with my doctorate in May.

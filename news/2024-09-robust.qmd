@@ -1,0 +1,7 @@
+---
+title: "Robust OED Preprint on arXiv"
+date: 2024-09-13
+description: "Our preprint [Robust OED for nonlinear inverse problems](https://arxiv.org/abs/2409.09137) is on arXiv."
+---
+
+Our preprint [Robust OED for nonlinear inverse problems](https://arxiv.org/abs/2409.09137) is on arXiv.
