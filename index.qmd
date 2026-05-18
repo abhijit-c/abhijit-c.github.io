@@ -16,7 +16,7 @@ listing:
   - id: recent-news
     contents: news
     sort: "date desc"
-    max-items: 5
+    max-items: 4
     type: table
     fields: [date, description]
     date-format: "MMM YYYY"
@@ -39,16 +39,5 @@ the continent, playing fighting games, and am very into computers.
 
 ::: {#recent-news}
 :::
-
 ---
 
-## Selected Papers
-
-**[Boost Like a (Var)Pro: Trust-Region Gradient Boosting via Variable Projection](https://arxiv.org/abs/2603.23658)**
-Chowdhary, Newman, Verma · *arXiv 2603.23658* · 2026
-
-**[Robust Optimal Experimental Design of Infinite-Dimensional Bayesian Nonlinear Inverse Problems](https://doi.org/10.1137/24M1693921)**
-Chowdhary, Attia, Alexanderian · *SIAM Journal on Scientific Computing* · 2026
-
-**[Sensitivity Analysis of the Information Gain in Infinite-Dimensional Bayesian Linear Inverse Problems](https://doi.org/10.1615/Int.J.UncertaintyQuantification.2024051416)**
-Chowdhary, Tong, Stadler, Alexanderian · *International Journal for Uncertainty Quantification* · 2024
