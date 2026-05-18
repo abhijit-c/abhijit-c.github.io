@@ -4,14 +4,13 @@ project:
 website:
   title: "Abhijit Chowdhary"
   site-url: https://abhijit-c.github.io
+  favicon: assets/img/favicon.svg
   navbar:
     left:
       - href: index.qmd
         text: About
       - href: news.qmd
         text: News
-      - href: blog/index.qmd
-        text: Blog
       - href: publications.qmd
         text: Publications
       #- href: teaching.qmd
@@ -19,8 +18,10 @@ website:
       - text: CV
         href: assets/pdf/CV.pdf
         target: _blank
+      - href: blog/index.qmd
+        text: Blog
   page-footer:
-    left: "© Abhijit Chowdhary"
+    left: "Abhijit Chowdhary"
     right: "Built with [Quarto](https://quarto.org)"
 
 execute:
