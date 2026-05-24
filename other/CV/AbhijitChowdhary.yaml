@@ -1,0 +1,244 @@
+cv:
+  name: Abhijit Chowdhary
+  location: Cambridge, MA
+  email: abhijit.chowdhary@tufts.edu
+  #phone: tel:+1-240-715-8308
+  website: https://abhijit-c.github.io/
+  social_networks:
+    #- network: GitHub
+    #  username: abhijit-c
+    - network: Google Scholar
+      username: 8Wg1zW4AAAAJ
+  sections:
+    About Me:
+      - I consider myself a computational mathematician and my research
+        interests lie in wielding math to design algorithms for real-world
+        problems. I practice that in developing scalable algorithms to
+        quantify, analyze, and control the uncertainty inherent in
+        mathematical models. During my Ph.D., I focused on the uncertainty
+        quantification (UQ) of large-scale inverse problems for physical
+        phenomena governed by partial differential equations (PDEs). 
+        At the moment, I'm pursuing new directions in computational math,
+        via problem structure-exploiting neural architectures, uncertainty
+        quantification, randomized algorithms, among more.
+    education:
+      - institution: North Carolina State University 
+        area: Applied Mathematics
+        degree: PhD
+        location: Raleigh, NC
+        start_date: 2020-08
+        end_date: 2025-05
+        highlights:
+          - Recipient of the Siewert Fellowship
+      - institution: New York University 
+        area: Mathematics, Computer Science
+        degree: BA
+        location: New York, NY
+        start_date: 2016-05
+        end_date: 2020-05
+        highlights:
+          - Minor in Classics
+    experience:
+      - company: ICERM, Brown University
+        position: Postdoctoral Visiting Scholar
+        location: Providence, RI, USA
+        start_date: 2026-01
+        end_date: 2026-04
+      - company: Tufts University
+        position: Postdoctoral Researcher
+        location: Somerville, MA, USA
+        start_date: 2025-06
+        end_date: present
+        highlights:
+          - Working with [Elizabeth Newman](https://elizabethnewman.owlstown.net/) in structure-exploiting SciML and uncertainty quantification.
+      - company: Argonne National Laboratory
+        position: Givens Intern
+        location: Lemont, IL, USA
+        start_date: 2024-05
+        end_date: 2024-08
+      - company: Argonne National Laboratory
+        position: Givens Intern
+        location: Lemont, IL, USA
+        start_date: 2023-05
+        end_date: 2023-08
+        highlights:
+          - Became a core maintainer of the PyOED project and published a peer
+            reviewed paper in TOMS.
+          - Published novel research in Robust Optimal Experimental Design, in review at SIAM CSE.
+          - 'Under the mentorship under [Ahmed Attia](https://web.cels.anl.gov/~aattia/).'
+      - company: North Carolina State University
+        position: Research Assistant
+        location: Raleigh, NC
+        start_date: 2021-06
+        end_date: present
+        highlights:
+          - Published novel research in scalable UQ for infinite-dimensional
+            Bayesian inverse problems.
+          - 'Research Assistant for [Alen Alexanderian](https://aalexan3.math.ncsu.edu/) via NSF Grant DMS-2111044.'
+      - company: North Carolina State University
+        position: Teaching Assistant
+        location: Raleigh, NC
+        #start_date: 2021-06
+        #end_date: present
+        highlights:
+          - Led recitations for Calculus I, II, and the honors variants for 5 semesters.
+      - company: Ohio State University
+        position: Undergraduate Research Assistant
+        location: Athens, OH
+        start_date: 2019-05
+        end_date: 2019-08
+        highlights:
+          - Published novel research in the theory of pattern formation, for the 2D Swift-Hohenberg Equation.
+    publications:
+      - title: 'Boost Like a (Var)Pro: Trust-Region Gradient Boosting via Variable Projection'
+        authors:
+          - '***Abhijit Chowdhary***'
+          - Elizabeth Newman
+          - Deepanshu Verma
+        doi: https://doi.org/10.48550/arXiv.2603.23658
+        journal: arXiv preprint
+        date: 2026-03
+      - title: Scalable Uncertainty Quantification for Infinite-Dimensional Bayesian Inverse Problems
+        authors:
+          - '***Abhijit Chowdhary***'
+        url: https://www.lib.ncsu.edu/resolver/1840.20/45106
+        journal: PhD Thesis, NC State University
+        date: 2025-02
+      - title: Robust optimal design of large-scale Bayesian nonlinear inverse problems
+        authors:
+          - '***Abhijit Chowdhary***'
+          - Ahmed Attia
+          - Alen Alexanderian
+        doi: https://doi.org/10.48550/arXiv.2409.09137
+        journal: SIAM Journal on Scientific Computing
+        date: 2024-09-13
+      - title: 'PyOED: An Extensible Suite for Data Assimilation and Model-Constrained Optimal Design of Experiments'
+        authors:
+          - '***Abhijit Chowdhary***'
+          - Shady E. Ahmed
+          - Ahmed Attia
+        doi: https://dl.acm.org/doi/10.1145/3653071
+        journal: ACM Transactions on Mathematical Software
+        date: 2024-06-28
+      - title: Sensitivity Analysis of the Information Gain in Infinite-Dimensional Bayesian Linear Inverse Problems
+        authors:
+          - '***Abhijit Chowdhary***'
+          - Shanyin Tong
+          - Georg Stadler
+          - Alen Alexanderian
+        doi: https://doi.org/10.1615/Int.J.UncertaintyQuantification.2024051416
+        journal: IJUQ
+        date: 2024-05-09
+      - title: Weak Diffusive Stability of Roll Solutions at the Zigzag Boundary
+        authors:
+          - '***Abhijit Chowdhary***'
+          - Mason Haberle
+          - William Ofori-atta
+          - Qilian Wu
+        doi: https://doi.org/10.1137/24M1639683
+        journal: SIAM Journal of Mathematical Analysis
+        date: 2023-10-18
+    software:
+      - name: '[PyOED](https://web.cels.anl.gov/~aattia/pyoed/)'
+        start_date: 2023-05
+        end_date: present
+        highlights:
+          - Core maintainer of PyOED, an open source research software for
+            model-constrained optimal design.
+          - Designed to extend and integrate existing codes to rapidly test new
+            developments.
+          - Used in multiple research groups worldwide.
+        #summary: Open-source model-
+    talks:
+      - name: 'VPBoost: Variable Projection for Gradient Boosting and VarProNets'
+        start_date: 2025-12
+        end_date: present
+        highlights:
+          - CMO Integrating Data- and Physics-Driven Methods for Decision Making under Uncertainty, Oaxaca, MX (June 2026)
+          - SIAM UQ 2026, Minneapolis, MN (Mar 2026).
+          - ICERM, Providence, RI (Feb 2026).
+          - CBMS Conference, University of Houston, Houston, TX (Dec 2025).
+      - name: Robust Optimal Experimental Design for Large-Scale Bayesian Inverse Problems
+        start_date: 2023-05
+        end_date: 2025-03
+        highlights:
+          - SIAM CSE 2025, Fort Worth, TX (Mar 2025).
+          - Applied Math Graduate Student Seminar, Raleigh, NC (Nov 2024).
+          - SIAM MDS 2024, Atlanta, GA (Oct 2024).
+          - SASSy Seminar, Argonne National Laboratory (May 2023).
+      - name: PyOED for Bayesian Optimal Experimental Design
+        start_date: 2024-02
+        end_date: 2024-08
+        highlights:
+          - SASSy Seminar, Argonne National Laboratory (Aug 2024).
+          - SIAM UQ 2024, Trieste, Italy (Feb 2024).
+      - name: Sensitivity Analysis and Scalable Optimal Design for Bayesian Inference
+        start_date: 2022-04
+        end_date: 2023-08
+        highlights:
+          - Applied Math Graduate Student Seminar, Raleigh, NC (Aug 2023).
+          - SIAM CSE 2023, Amsterdam, Netherlands (Mar 2023).
+          - Applied Math Graduate Student Seminar, Raleigh, NC (Apr and Sept 2022).
+    service:
+      - name: Group Leader, VERSEIM-REU
+        start_date: 2026-06
+        end_date: 2026-08
+        highlights:
+          - Leading a research group of undergraduates alongside [Elizabeth Newman](https://elizabethnewman.owlstown.net/).
+      - name: Co-Organizer, Postdoctoral and Graduate Student Seminar, ICERM
+        start_date: 2026-01
+        end_date: 2026-04
+      - name: Lead Organizer, Applied Math Graduate Student Seminar (AMGSS), NCSU
+        start_date: 2022-01
+        end_date: 2025-05
+      - name: Peer-Review for the following journals.
+        highlights:
+          - Journal of Open Source Software (JOSS)
+          - SIAM Journal on Matrix Analysis and Applications (SIMAX)
+          - SIAM Journal on Uncertainty Quantification (JUQ)
+    skills:
+      - label: Programming
+        details: Proficient in Python, Julia, C, C++, MATLAB, and Shell Scripting
+      - label: Technologies
+        details: Generally familiar with the GPU programming interfaces, the
+          machine learning stacks, Finite element software, high-performance
+          linear algebra, and Linux.
+      - label: Mathematics
+        details: Specialized in scientific computing, uncertainty
+          quantification, and large-scale optimization.
+          Theoretical foundations in the PDE, probability, and functional analysis.
+      - label: Languages
+        details: 'English (native), Latin, Hindi'
+design:
+  theme: engineeringclassic
+  typography:
+    font_family: EB Garamond
+  page:
+    size: us-letter
+    top_margin: 2cm
+    bottom_margin: 2cm
+    left_margin: 2cm
+    right_margin: 2cm
+  colors:
+    name: '#417DC1'
+    connections: '#5C4827'
+    section_titles: '#417DC1'
+    links: '#417DC1'
+  links:
+    underline: false
+  header:
+    photo_width: 3.5cm
+    alignment: left
+  section_titles:
+    type: with_partial_line
+    line_thickness: 0.5pt
+  entries:
+    date_and_location_width: 4.15cm
+    short_second_row: false
+locale:
+  language: english
+  month: month
+  months: months
+  year: year
+  years: years
+  present: Present
