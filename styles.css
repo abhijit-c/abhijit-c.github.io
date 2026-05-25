@@ -1,3 +1,50 @@
+/*
+@import url("https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&display=swap");
+
+:root {
+  --bs-font-sans-serif: "STIX Two Text", "Latin Modern Roman", "CMU Serif", serif;
+  --bs-body-font-family: "STIX Two Text", "Latin Modern Roman", "CMU Serif", serif;
+  --bs-headings-font-family: "STIX Two Text", "Latin Modern Roman", "CMU Serif", serif;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: "STIX Two Text", "Latin Modern Roman", "CMU Serif", serif;
+}
+*/
+@import url("https://cdn.jsdelivr.net/gh/aaaakshat/cm-web-fonts@latest/fonts.css");
+
+:root {
+  --bs-font-sans-serif: "Computer Modern Serif", "Latin Modern Roman", "CMU Serif", serif;
+  --bs-body-font-family: "Computer Modern Serif", "Latin Modern Roman", "CMU Serif", serif;
+  --bs-headings-font-family: "Computer Modern Serif", "Latin Modern Roman", "CMU Serif", serif;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: "Computer Modern Serif", "Latin Modern Roman", "CMU Serif", serif;
+}
+
+.copyable-email {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  color: inherit;
+  field-sizing: content;
+  font: inherit;
+  margin: 0;
+  max-width: 100%;
+  padding: 0;
+  text-align: center;
+  width: 15.5em;
+}
+
 /* Quarto emits the profile image as `.about-image` with an inline width.
    Override it on small screens so the about layout never exceeds the viewport. */
 .quarto-about-trestles .about-image {
