@@ -9,8 +9,8 @@ website:
     left:
       - href: index.qmd
         text: About
-      - href: news.qmd
-        text: News
+      - href: research.qmd
+        text: Research
       - href: publications.qmd
         text: Publications
       #- href: teaching.qmd
@@ -20,6 +20,8 @@ website:
         target: _blank
       - href: blog/index.qmd
         text: Blog
+      - href: news.qmd
+        text: News
   page-footer:
     left: "Abhijit Chowdhary"
     right: "Built with [Quarto](https://quarto.org)"
