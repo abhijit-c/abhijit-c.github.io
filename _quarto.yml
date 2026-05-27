@@ -33,7 +33,9 @@ format:
   html:
     theme:
       light: litera
-      #dark: cyborg
+      dark: 
+        - cyborg
+        - cyborg-fixes.scss
     respect-user-color-scheme: true
     css: styles.css
     toc: false
