@@ -15,6 +15,7 @@ textarea {
   font-family: "STIX Two Text", "Latin Modern Roman", "CMU Serif", serif;
 }
 */
+/*
 @import url("https://cdn.jsdelivr.net/gh/aaaakshat/cm-web-fonts@latest/fonts.css");
 
 :root {
@@ -30,6 +31,7 @@ select,
 textarea {
   font-family: "Computer Modern Serif", "Latin Modern Roman", "CMU Serif", serif;
 }
+*/
 
 .copyable-email {
   appearance: none;

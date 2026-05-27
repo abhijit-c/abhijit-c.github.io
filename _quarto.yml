@@ -32,8 +32,8 @@ execute:
 format:
   html:
     theme:
-      light: flatly
-      dark: cyborg
+      light: litera
+      #dark: cyborg
     respect-user-color-scheme: true
     css: styles.css
     toc: false
