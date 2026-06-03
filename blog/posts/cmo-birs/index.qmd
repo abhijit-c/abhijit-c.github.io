@@ -15,23 +15,20 @@ Especially so, as this is one of my favorite style of professional gathering: a 
 
 In my field, the big conferences are usually over a thousand people.
 The large CS conferences can be many times that.
-These large conferences can be quite nice for keeping to date with the trends in your research field.
-Moreover, you can nearly be assured that, if there's someone whose brain you want to pick, they'll be there.
+These can be quite nice for keeping to date with the trends in your research field.
+And, you can nearly be assured that, if there's someone whose brain you want to pick, they'll be there.
 The plenaries are usually great talks by the leaders in your space and, if you want to disappear, you can.
 
 Small workshops, though, are a far more human affair.
 You see the same (small) group people at the talks, at meals, on the walk back to the hotel, and over whatever coffee situation has been collectively negotiated by the group[^2].
 It's much easier to ask casual questions after lunch, to admit that you know almost nothing about somebody else's subfield, or to follow up on a half-formed idea from the previous day.
-By the end, "the person who gave the talk on Tuesday" is an actual person, with a name, a mathematical taste, and a set of problems that I can imagine caring about.
+By the end, "the person who gave the talk on Tuesday" is an actual person, with a name, a mathematical taste, and a set of problems that can understand. 
 
 [^2]: Somehow, regretably, instant coffee this time.
 
 I've probably gotten to know more people in this conference that I ever did in the larger ones.
 That might be a skill issue.
-But, my observation, is that most people fall back to people they already know in those larger events.
-Here, someone explains a method over dinner, someone else mentions an obstruction, and suddenly the thing you thought was outside your area has a small handle you can grab.
-Suddenly, you have collaborators and good memories of the run of Mezcal you all did afterward.
-
+But, in my observations, most people fall back to people they already know in those larger event.
 As an aside, these also tend to be much, much, cheaper. 
 Both for the organizers and the participants. 
 This isn't a minor detail in a world where travel funding is uneven and conference registration fees can be absurd.
