@@ -18,8 +18,8 @@ website:
       - text: CV
         href: assets/pdf/CV.pdf
         target: _blank
-      - href: blog/index.qmd
-        text: Blog
+      - href: journal/index.qmd
+        text: Journal
       - href: news.qmd
         text: News
   page-footer:
