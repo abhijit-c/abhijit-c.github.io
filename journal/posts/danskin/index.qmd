@@ -1,0 +1,357 @@
+---
+title: "A Compact Danskin Theorem Without Convexity"
+description: "A careful statement and proof of a compact-argmax version of Danskin's theorem that does not assume convexity of the value function."
+date: 2026-06-05
+categories: [math, optimization, proofs]
+format:
+  html:
+    toc: true
+    number-sections: true
+    html-math-method: mathjax
+execute:
+  echo: false
+draft: true
+reference-location: margin
+---
+
+I've been working recently in bi-level optimization, and Danskin's theorem comes up quite a bit here.
+Loosely, it allows us to reason about gradients through the inner-problem.
+However, there are 1 million variations of Dankin's theorem, and sometimes it's hard to find a citable resource.
+Here, I've got a compact version of it that I've found useful.
+Naturally, you can't cite this blog post (I think), but you have my permission to simply borrow the argument as needed.
+
+## Overview
+
+Let a parameter $x$ range over an open set $U \subset \mathbb R^d$, and let a decision variable $a$ range over a compact space $K$. Given an objective
+\[
+  F: U \times K \to \mathbb R,
+\]
+define the value function
+\[
+  V(x) := \max_{a \in K} F(x,a).
+\]
+
+A useful form of **Danskin's theorem** says that, under compactness and a uniform first-order regularity condition in $x$, the one-sided directional derivative of $V$ is obtained by differentiating $F$ only at the optimizers of the problem at the base point.
+
+The point of the version below is that **no convexity of $F(\cdot,a)$ or of $V$ is assumed**. Compactness supplies existence of optimizers and subsequential limits of nearly active optimizers; continuity of the $x$-gradient supplies the uniform first-order expansion needed to pass derivatives through the maximum.
+
+## Notation
+
+For $\bar x \in U$, define the active set, or argmax correspondence,
+\[
+  M(\bar x)
+  := \operatorname*{argmax}_{a \in K} F(\bar x,a)
+  = \{a \in K : F(\bar x,a)=V(\bar x)\}.
+\]
+
+The one-sided Hadamard directional derivative of $V$ at $\bar x$ in direction $h \in \mathbb R^d$ is
+\[
+  V'_H(\bar x;h)
+  := \lim_{\substack{t \downarrow 0 \\ h' \to h}}
+  \frac{V(\bar x+t h')-V(\bar x)}{t},
+\]
+provided this limit exists. This is stronger than the ordinary one-sided directional derivative, where $h'=h$ is fixed.
+
+## Theorem
+
+::: {.callout-note title="Compact Danskin theorem, no convexity assumed"}
+Let $U \subset \mathbb R^d$ be open, let $K$ be a nonempty compact metric space, and let
+\[
+  F: U \times K \to \mathbb R
+\]
+satisfy the following assumptions:
+
+1. $F$ is continuous on $U \times K$.
+2. For every $a \in K$, the map $x \mapsto F(x,a)$ is differentiable on $U$.
+3. The partial gradient $\nabla_x F: U \times K \to \mathbb R^d$ exists and is jointly continuous.
+
+Define
+\[
+  V(x) := \max_{a \in K} F(x,a),
+  \qquad
+  M(x) := \operatorname*{argmax}_{a \in K} F(x,a).
+\]
+
+Then, for every $\bar x \in U$:
+
+1. $M(\bar x)$ is nonempty and compact.
+2. $V$ is locally Lipschitz near $\bar x$.
+3. For every direction $h \in \mathbb R^d$, $V$ is Hadamard directionally differentiable at $\bar x$ in direction $h$, and
+\[
+  V'_H(\bar x;h)
+  = \max_{a \in M(\bar x)}
+  \langle \nabla_x F(\bar x,a), h \rangle.
+\]
+In particular, the ordinary one-sided directional derivative exists and has the same value:
+\[
+  V'(\bar x;h)
+  := \lim_{t \downarrow 0}
+  \frac{V(\bar x+t h)-V(\bar x)}{t}
+  = \max_{a \in M(\bar x)}
+  \langle \nabla_x F(\bar x,a), h \rangle.
+\]
+:::
+
+## Proof
+
+Fix $\bar x \in U$.
+
+### Step 1: Existence and compactness of the active set
+
+Because $K$ is compact and $a \mapsto F(\bar x,a)$ is continuous, Weierstrass' theorem gives at least one maximizer. Thus $M(\bar x)$ is nonempty.
+
+Moreover,
+\[
+  M(\bar x)
+  = \{a \in K : F(\bar x,a)=V(\bar x)\}
+\]
+is a closed subset of $K$, since $a \mapsto F(\bar x,a)$ is continuous. Therefore $M(\bar x)$ is compact.
+
+### Step 2: A uniform first-order expansion
+
+The key technical point is that differentiability in $x$ is uniform over the compact decision set $K$.
+
+Choose $r>0$ such that the closed ball
+\[
+  B := \{x \in \mathbb R^d : \|x-\bar x\| \le r\}
+\]
+is contained in $U$. Since $B \times K$ is compact and $\nabla_x F$ is continuous, $\nabla_x F$ is uniformly continuous on $B \times K$.
+
+Let $R>0$. For all sufficiently small $t>0$, all $u \in \mathbb R^d$ with $\|u\|\le R$, and all $a \in K$, the segment $\bar x+s t u$, $0\le s\le 1$, lies in $B$. The fundamental theorem of calculus gives
+\[
+  F(\bar x+t u,a)-F(\bar x,a)
+  = \int_0^t
+      \langle \nabla_x F(\bar x+s u,a),u\rangle\,ds.
+\]
+Equivalently, after the change of variables $s=t\theta$,
+\[
+  \frac{F(\bar x+t u,a)-F(\bar x,a)}{t}
+  = \int_0^1
+      \langle \nabla_x F(\bar x+\theta t u,a),u\rangle\,d\theta.
+\]
+Hence
+\[
+\begin{aligned}
+&\left|
+  \frac{F(\bar x+t u,a)-F(\bar x,a)}{t}
+  - \langle \nabla_x F(\bar x,a),u\rangle
+\right| \\
+&\qquad \le
+  \|u\|\sup_{0\le \theta\le 1}
+  \|\nabla_x F(\bar x+\theta t u,a)-\nabla_x F(\bar x,a)\|.
+\end{aligned}
+\]
+By uniform continuity of $\nabla_x F$ on $B\times K$, the right-hand side goes to $0$ as $t\downarrow 0$, uniformly over $a\in K$ and $\|u\|\le R$. Thus
+\[
+  F(\bar x+t u,a)
+  = F(\bar x,a)
+    + t\langle \nabla_x F(\bar x,a),u\rangle
+    + o(t),
+\]
+where the $o(t)$ term is uniform for $a\in K$ and $u$ in bounded sets.
+
+### Step 3: Local Lipschitz continuity of the value function
+
+Using the same ball $B$, compactness of $B\times K$ and continuity of $\nabla_xF$ imply that
+\[
+  L := \sup_{(x,a)\in B\times K}\|\nabla_xF(x,a)\| < \infty.
+\]
+Therefore each map $x\mapsto F(x,a)$ is $L$-Lipschitz on $B$, uniformly in $a$.
+
+For $x_1,x_2\in B$, choose $a_1\in M(x_1)$. Then
+\[
+  V(x_1)-V(x_2)
+  = F(x_1,a_1)-V(x_2)
+  \le F(x_1,a_1)-F(x_2,a_1)
+  \le L\|x_1-x_2\|.
+\]
+Interchanging $x_1$ and $x_2$ gives
+\[
+  |V(x_1)-V(x_2)|\le L\|x_1-x_2\|.
+\]
+Thus $V$ is locally Lipschitz near $\bar x$.
+
+### Step 4: Lower bound for the directional quotient
+
+Fix a direction $h\in\mathbb R^d$. Let
+\[
+  D(h) := \max_{a\in M(\bar x)}
+  \langle \nabla_xF(\bar x,a),h\rangle.
+\]
+This maximum exists because $M(\bar x)$ is compact and $a\mapsto \langle \nabla_xF(\bar x,a),h\rangle$ is continuous.
+
+To prove the Hadamard formula, take any sequences $t_n\downarrow 0$ and $h_n\to h$. For all large $n$, $\bar x+t_nh_n\in U$.
+
+Choose $\hat a\in M(\bar x)$ such that
+\[
+  D(h)=\langle \nabla_xF(\bar x,\hat a),h\rangle.
+\]
+Since $V(\bar x+t_nh_n)\ge F(\bar x+t_nh_n,\hat a)$ and $V(\bar x)=F(\bar x,
+\hat a)$, we get
+\[
+  \frac{V(\bar x+t_nh_n)-V(\bar x)}{t_n}
+  \ge
+  \frac{F(\bar x+t_nh_n,
+\hat a)-F(\bar x,
+\hat a)}{t_n}.
+\]
+By the uniform first-order expansion from Step 2,
+\[
+  \frac{F(\bar x+t_nh_n,
+\hat a)-F(\bar x,
+\hat a)}{t_n}
+  \to
+  \langle \nabla_xF(\bar x,
+\hat a),h\rangle
+  = D(h).
+\]
+Therefore
+\[
+  \liminf_{n\to\infty}
+  \frac{V(\bar x+t_nh_n)-V(\bar x)}{t_n}
+  \ge D(h).
+\]
+
+### Step 5: Upper bound for the directional quotient
+
+For each $n$, choose
+\[
+  a_n \in M(\bar x+t_nh_n).
+\]
+Since $K$ is compact, every subsequence of $(a_n)$ has a further convergent subsequence. To prove the upper bound, it is enough to consider a subsequence along which the directional quotients approach their limsup. Passing to a further subsequence if necessary, assume
+\[
+  a_n \to a^* \in K.
+\]
+
+First we show that $a^*\in M(\bar x)$. Since $a_n\in M(\bar x+t_nh_n)$,
+\[
+  F(\bar x+t_nh_n,a_n)=V(\bar x+t_nh_n).
+\]
+By local Lipschitz continuity, $V(\bar x+t_nh_n)\to V(\bar x)$. By continuity of $F$,
+\[
+  F(\bar x+t_nh_n,a_n)
+  \to F(\bar x,a^*).
+\]
+Thus $F(\bar x,a^*)=V(\bar x)$, so $a^*\in M(\bar x)$.
+
+Now use optimality at $\bar x$:
+\[
+  V(\bar x)\ge F(\bar x,a_n).
+\]
+Therefore
+\[
+\begin{aligned}
+  \frac{V(\bar x+t_nh_n)-V(\bar x)}{t_n}
+  &=
+  \frac{F(\bar x+t_nh_n,a_n)-V(\bar x)}{t_n} \\
+  &\le
+  \frac{F(\bar x+t_nh_n,a_n)-F(\bar x,a_n)}{t_n}.
+\end{aligned}
+\]
+By the integral representation from Step 2,
+\[
+  \frac{F(\bar x+t_nh_n,a_n)-F(\bar x,a_n)}{t_n}
+  = \int_0^1
+      \langle \nabla_xF(\bar x+\theta t_nh_n,a_n),h_n\rangle\,d\theta.
+\]
+Since $\bar x+\theta t_nh_n\to\bar x$ uniformly in $\theta$, $a_n\to a^*$, $h_n\to h$, and $\nabla_xF$ is continuous, the integral converges to
+\[
+  \langle \nabla_xF(\bar x,a^*),h\rangle.
+\]
+Because $a^*\in M(\bar x)$,
+\[
+  \langle \nabla_xF(\bar x,a^*),h\rangle
+  \le
+  \max_{a\in M(\bar x)}
+  \langle \nabla_xF(\bar x,a),h\rangle
+  =D(h).
+\]
+Consequently,
+\[
+  \limsup_{n\to\infty}
+  \frac{V(\bar x+t_nh_n)-V(\bar x)}{t_n}
+  \le D(h).
+\]
+Together with the lower bound, this proves that for every $t_n\downarrow0$ and $h_n\to h$,
+\[
+  \frac{V(\bar x+t_nh_n)-V(\bar x)}{t_n}
+  \to D(h).
+\]
+This is exactly Hadamard directional differentiability, and therefore
+\[
+  V'_H(\bar x;h)
+  = \max_{a\in M(\bar x)}
+    \langle \nabla_xF(\bar x,a),h\rangle.
+\]
+The ordinary one-sided directional derivative follows by taking $h_n=h$ for all $n$.
+
+## Corollary: Unique optimizer implies ordinary differentiability
+
+::: {.callout-tip title="A useful special case"}
+If $M(\bar x)=\{\bar a\}$ is a singleton, then $V$ is Fréchet differentiable at $\bar x$, and
+\[
+  \nabla V(\bar x)=\nabla_xF(\bar x,
+\bar a).
+\]
+More generally, the same conclusion holds if all active optimizers have the same $x$-gradient:
+\[
+  \nabla_xF(\bar x,a)=p
+  \qquad\text{for every }a\in M(\bar x).
+\]
+Then $\nabla V(\bar x)=p$.
+:::
+
+Here is the idea. In the theorem, the directional derivative is
+\[
+  V'_H(\bar x;h)=\max_{a\in M(\bar x)}\langle \nabla_xF(\bar x,a),h\rangle.
+\]
+If all active gradients equal $p$, this becomes
+\[
+  V'_H(\bar x;h)=\langle p,h\rangle
+  \qquad\text{for every }h.
+\]
+The same compactness argument used in the proof gives the stronger expansion
+\[
+  V(\bar x+z)=V(\bar x)+\langle p,z\rangle+o(\|z\|)
+  \qquad\text{as }z\to0,
+\]
+which is Fréchet differentiability.
+
+## Minimization version
+
+If instead
+\[
+  W(x):=\min_{a\in K}F(x,a),
+  \qquad
+  N(x):=\operatorname*{argmin}_{a\in K}F(x,a),
+\]
+then the same assumptions imply
+\[
+  W'_H(\bar x;h)
+  = \min_{a\in N(\bar x)}
+    \langle \nabla_xF(\bar x,a),h\rangle.
+\]
+This follows immediately by applying the maximization theorem to $-F$, since
+\[
+  W(x)=-\max_{a\in K}[-F(x,a)].
+\]
+
+## Why convexity is not being used
+
+The proof never uses convexity of $F(\cdot,a)$ or convexity of $V$. It uses only:
+
+- compactness of $K$, to ensure existence of optimizers and convergent optimizer subsequences;
+- continuity of $F$, to pass limits through optimizer subsequences;
+- joint continuity of $\nabla_xF$, to obtain a first-order expansion uniform over $a\in K$.
+
+For example, if $K=\{0\}$ and $F(x,0)=-x^2$, then $V(x)=-x^2$, which is not convex. The theorem still applies and gives
+\[
+  V'(\bar x;h)=-2\bar x h.
+\]
+Thus convexity is neither assumed nor implied by this compact differentiable version of Danskin's theorem.
+
+## References
+
+- J. M. Danskin, *The Theory of Max-Min and Its Application to Weapons Allocation Problems*, Springer, 1967.
+- D. P. Bertsekas, *Nonlinear Programming*, 2nd ed., Athena Scientific, 1999.
+- R. T. Rockafellar and R. J.-B. Wets, *Variational Analysis*, Springer, 1998.
