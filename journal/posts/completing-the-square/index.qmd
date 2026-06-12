@@ -1,0 +1,96 @@
+---
+title: "Completing the Square in Several Variables"
+date: 2026-06-12
+#description: "The multivariable completing-the-square identity for a symmetric invertible quadratic, with the symmetric positive definite case as a corollary."
+categories: [math, linear algebra, optimization]
+from: markdown+tex_math_single_backslash
+#format:
+#  html:
+#    toc: true
+#    #number-sections: true
+execute:
+  echo: false
+reference-location: margin
+draft: false
+---
+
+I often find myself staring at quadratic multivariable functions.
+A common symptom for the helpless computational mathematicians working with nonlinear methods. 
+Completing the square here often helps but, alas, I haven't memorized it yet and I'm tired of digging up my old notes for it.
+
+## Basic Version
+
+::: {#thm-mvcos}
+Let $A \in \mathbb R^{n\times n}$ be symmetric and invertible, and let
+$b,z\in \mathbb R^n$ and $c\in \mathbb R$.
+Then
+\[
+  \frac{1}{2}z^T A z + b^T z + c
+  =
+  \frac{1}{2}(z + A^{-1}b)^T A (z + A^{-1}b)
+  + c - \frac{1}{2}b^T A^{-1}b.
+\]{#eq-mvcos-identity}
+:::
+
+::: {.proof}
+
+Start with the proposed squared term and expand it:
+\[
+\begin{aligned}
+  \frac{1}{2}(z + A^{-1}b)^T A (z + A^{-1}b)
+  &=
+  \frac{1}{2}
+  \left(
+    z^T A z
+    + z^T A A^{-1}b
+    + (A^{-1}b)^T A z
+    + (A^{-1}b)^T A A^{-1}b
+  \right) \\
+  &=
+  \frac{1}{2}z^T A z
+  + \frac{1}{2}z^T b
+  + \frac{1}{2}b^T z
+  + \frac{1}{2}b^T A^{-1}b.
+\end{aligned}
+\]
+Here we used $A^T=A$ and $(A^{-1})^T=A^{-1}$, which follow from symmetry and
+invertibility of $A$.
+Since $z^Tb=b^Tz$ is a scalar,
+\[
+  \frac{1}{2}(z + A^{-1}b)^T A (z + A^{-1}b)
+  =
+  \frac{1}{2}z^T A z + b^T z
+  + \frac{1}{2}b^T A^{-1}b.
+\]
+Rearranging gives
+\[
+  \frac{1}{2}z^T A z + b^T z + c
+  =
+  \frac{1}{2}(z + A^{-1}b)^T A (z + A^{-1}b)
+  + c - \frac{1}{2}b^T A^{-1}b,
+\] 
+which proves the identity.
+
+:::
+
+## Symmetric Positive Definite Corollary
+
+If $A$ is symmetric positive definite, then
+\(
+  \|x\|_A^2 := x^T A x
+\)
+is a norm.
+Then, (@eq-mvcos-identity) can be written as
+\[
+  \frac{1}{2}z^T A z + b^T z + c
+  =
+  \frac{1}{2}\|z + A^{-1}b\|_A^2
+  + c - \frac{1}{2}b^T A^{-1}b.
+\]
+In this case, the stationary point $z_* = -A^{-1}b$ is also the global minimizer, hence it's often useful to view the identity centered around it:
+\[
+  \frac{1}{2}z^T A z + b^T z + c
+  =
+  \frac{1}{2}\|z-z_*\|_A^2
+  + c - \frac{1}{2}b^T A^{-1}b.
+\]

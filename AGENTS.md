@@ -11,6 +11,7 @@ This repository is a Quarto website managed with `uv`.
   - `uv run quarto preview`
   - `uv run quarto check`
 - If dependencies are missing, run `uv sync` before running Quarto.
+- Do *not* run these commands unless explicitly asked to, or if you're debugging.
 
 ## Project Notes
 
