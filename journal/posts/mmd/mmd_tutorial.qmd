@@ -185,6 +185,8 @@ That is why MMD can be used as a distribution-level discrepancy, not just a comp
 I've skipped a lot of details, mainly regarding assumptions, existance, and other technicalities.
 I refer the interested reading back to [@JMLR:v13:gretton12a] for these.
 
+As an additional note, computationally, the following representation of the squared MMD is often attractive.
+
 ::: {#prp-mmd-computable-formula}
 The squared MMD has the expectation form
 $$
@@ -254,17 +256,9 @@ $$
 Substituting these three identities into the squared norm expansion proves the formula. $\square$
 :::
 
-Read this as:
-
-1. Samples from $P$ should be similar to other samples from $P$.
-2. Samples from $Q$ should be similar to other samples from $Q$.
-3. Samples from $P$ should also be similar to samples from $Q$.
-
-If the within-distribution similarities are high but the cross-distribution similarity is low, then the two distributions are different and MMD is large.
-
 ## A Tiny Numerical Example
 
-We will compare two tiny one-dimensional sample sets:
+Let's compare two tiny one-dimensional sample sets:
 $$
 X = \{0, 1, 2\},
 \qquad
@@ -275,8 +269,10 @@ The two sets share two points, but $Y$ has a point at 3 where $X$ has a point at
 We will use an RBF kernel with $\sigma = 1$.
 
 ```{python}
+#| code-fold: show
 import numpy as np
 import matplotlib.pyplot as plt
+from sklearn.metrics.pairwise import euclidean_distances, rbf_kernel
 
 np.set_printoptions(precision=3, suppress=True)
 
@@ -285,15 +281,14 @@ Y = np.array([[0.0], [1.0], [3.0]])
 sigma = 1.0
 
 
-def rbf_kernel(a, b, sigma):
-    sqdist = (a[:, None, :] - b[None, :, :]) ** 2
-    sqdist = sqdist.sum(axis=-1)
-    return np.exp(-sqdist / (2 * sigma**2))
+def rbf_kernel_matrix(a, b, sigma):
+    gamma = 1 / (2 * sigma**2)
+    return rbf_kernel(a, b, gamma=gamma)
 
 
-Kxx = rbf_kernel(X, X, sigma)
-Kyy = rbf_kernel(Y, Y, sigma)
-Kxy = rbf_kernel(X, Y, sigma)
+Kxx = rbf_kernel_matrix(X, X, sigma)
+Kyy = rbf_kernel_matrix(Y, Y, sigma)
+Kxy = rbf_kernel_matrix(X, Y, sigma)
 
 print("Kxx: similarities within X")
 print(Kxx)
@@ -321,10 +316,11 @@ It is called the biased estimator because it includes the diagonal self-similari
 It is still useful and is always nonnegative up to floating point roundoff.
 
 ```{python}
+#| code-fold: show
 def mmd2_biased(x, y, sigma):
-    kxx = rbf_kernel(x, x, sigma)
-    kyy = rbf_kernel(y, y, sigma)
-    kxy = rbf_kernel(x, y, sigma)
+    kxx = rbf_kernel_matrix(x, x, sigma)
+    kyy = rbf_kernel_matrix(y, y, sigma)
+    kxy = rbf_kernel_matrix(x, y, sigma)
     return kxx.mean() + kyy.mean() - 2 * kxy.mean()
 
 
@@ -336,7 +332,7 @@ print(f"biased MMD   = {np.sqrt(mmd2):.6f}")
 For this example the value is small but not zero.
 That matches the data: the samples mostly agree, but one point moved from 2 to 3.
 
-## What Changes the Value?
+### The Impact of Bandwidth
 
 MMD depends on both the samples and the kernel.
 The RBF bandwidth $\sigma$ determines the scale at which we compare the distributions.
@@ -345,13 +341,18 @@ If $\sigma$ is very small, then only nearly identical points count as similar.
 If $\sigma$ is very large, then almost every point looks similar to every other point and the discrepancy can get washed out.
 
 ```{python}
+#| code-fold: show
 sigmas = np.array([0.25, 0.5, 1.0, 2.0, 4.0])
 values = np.array([mmd2_biased(X, Y, s) for s in sigmas])
 
 for s, v in zip(sigmas, values):
     print(f"sigma={s:>4}: biased MMD^2={v:.6f}")
+```
 
-fig, ax = plt.subplots(figsize=(5, 3))
+```{python}
+#| code-fold: true
+#| fig-align: center
+fig, ax = plt.subplots(figsize=(8,4),layout="constrained")
 ax.plot(sigmas, values, marker="o")
 ax.set_xscale("log")
 ax.set_xlabel(r"RBF bandwidth $\sigma$")
@@ -371,13 +372,14 @@ The first cloud is centered near $(0, 0)$ and the second is shifted to the right
 MMD should be small when we compare the cloud with itself and larger when we compare the original cloud with the shifted one.
 
 ```{python}
+#| code-fold: show
 rng = np.random.default_rng(0)
 
 A = rng.normal(loc=0.0, scale=0.7, size=(60, 2))
 B = rng.normal(loc=np.array([0.8, 0.0]), scale=0.7, size=(60, 2))
 
 pooled = np.vstack([A, B])
-pairwise_distances = np.sqrt(((pooled[:, None, :] - pooled[None, :, :]) ** 2).sum(axis=-1))
+pairwise_distances = euclidean_distances(pooled)
 median_sigma = np.median(pairwise_distances[pairwise_distances > 0])
 
 aa = mmd2_biased(A, A, median_sigma)
@@ -389,8 +391,9 @@ print(f"MMD^2(A, B)      = {ab:.6f}")
 ```
 
 ```{python}
-#|fig-align: center
-fig, ax = plt.subplots(figsize=(4.5, 4))
+#| code-fold: true
+#| fig-align: center
+fig, ax = plt.subplots(figsize=(4.5,4),layout="constrained")
 ax.scatter(A[:, 0], A[:, 1], s=24, alpha=0.75, label="A")
 ax.scatter(B[:, 0], B[:, 1], s=24, alpha=0.75, label="B")
 ax.set_aspect("equal", adjustable="box")
@@ -420,15 +423,16 @@ This removes the diagonal self-similarities.
 It is unbiased as an estimate of the population $\operatorname{MMD}^2$, but for finite samples it can be slightly negative because it is no longer a squared norm exactly.
 
 ```{python}
+#| code-fold: show
 def off_diagonal_mean(k):
     n = k.shape[0]
     return (k.sum() - np.trace(k)) / (n * (n - 1))
 
 
 def mmd2_unbiased(x, y, sigma):
-    kxx = rbf_kernel(x, x, sigma)
-    kyy = rbf_kernel(y, y, sigma)
-    kxy = rbf_kernel(x, y, sigma)
+    kxx = rbf_kernel_matrix(x, x, sigma)
+    kyy = rbf_kernel_matrix(y, y, sigma)
+    kxy = rbf_kernel_matrix(x, y, sigma)
     return off_diagonal_mean(kxx) + off_diagonal_mean(kyy) - 2 * kxy.mean()
 
 
