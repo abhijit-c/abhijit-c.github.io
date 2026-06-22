@@ -4,10 +4,23 @@ date: 2026-06-12
 #description: "The multivariable completing-the-square identity for a symmetric invertible quadratic, with the symmetric positive definite case as a corollary."
 categories: [math, linear algebra, optimization]
 from: markdown+tex_math_single_backslash
-#format:
-#  html:
-#    toc: true
-#    #number-sections: true
+format:
+  html:
+    filters:
+      - callouty-theorem
+callouty-theorem:
+  thm:
+    override-title: false
+    callout:
+      type: note
+      appearance: minimal
+  proof:
+    override-title: true
+    callout:
+      type: note
+      appearance: default
+      collapse: true
+      icon: false
 execute:
   echo: false
 reference-location: margin

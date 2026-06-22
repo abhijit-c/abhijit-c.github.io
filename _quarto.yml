@@ -29,29 +29,8 @@ website:
 execute:
   freeze: auto
 
-callouty-theorem:
-  thm:
-    override-title: false
-    callout:
-      type: note
-      appearance: minimal
-  prp:
-    override-title: false
-    callout:
-      type: note
-      appearance: minimal
-  proof:
-    override-title: true
-    callout:
-      type: note
-      appearance: default
-      collapse: true
-      icon: false
-
 format:
   html:
-    filters:
-      - callouty-theorem
     theme:
       light: litera
       dark:
