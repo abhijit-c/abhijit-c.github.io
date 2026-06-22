@@ -3,6 +3,7 @@ title: "Maximum Mean Discrepancy: Comparing Distributions with Kernels"
 bibliography: references.bib
 format:
   html:
+    toc: true
     filters:
       - callouty-theorem
 callouty-theorem:
@@ -66,20 +67,20 @@ $$
 \right).
 $$
 
-Here $\mathcal{H}$ is a reproducing kernel Hilbert space (RKHS), i.e. a function space defined by a kernel $k(x, y)$.
+Here $\mathcal{H}$ is a reproducing kernel Hilbert space (RKHS), i.e. a function space defined by a positive definite kernel $k(x, y)$ which measures similarity between two points.
 
-## Kernel Mean Embeddings
+::: {.remark name="The Gaussian/RBF Kernel"}
 
-A positive definite kernel $k(x, y)$ measures similarity between two points.
-For example, the Gaussian/RBF kernel is
+The Gaussian/RBF kernel is
 $$
 k(x, y) = \exp\left(-\frac{\lVert x - y \rVert^2}{2\sigma^2}\right).
 $$
 
 This kernel is close to 1 when $x$ and $y$ are close, and close to 0 when they are far apart.
 The bandwidth $\sigma$ controls what "close" means.
+:::
 
-Using this kernel, we can write an alternative, attractice, definition of the MMD.
+Using this, we can write an alternative, attractice, definition of the MMD.
 Let's first define a *kernel mean embedding*,
 $$
 \mu_P(\cdot) = \mathbb{E}_{X \sim P}[k(X, \cdot)].
@@ -184,9 +185,8 @@ That is why MMD can be used as a distribution-level discrepancy, not just a comp
 I've skipped a lot of details, mainly regarding assumptions, existance, and other technicalities.
 I refer the interested reading back to [@JMLR:v13:gretton12a] for these.
 
-::: {.remark name="The Computable Formula"}
-
-The squared MMD has a simple expectation form:
+::: {#prp-mmd-computable-formula}
+The squared MMD has the expectation form
 $$
 \operatorname{MMD}^2(P, Q)
 =
@@ -196,6 +196,63 @@ $$
 -
 2\mathbb{E}_{X \sim P, Y \sim Q}[k(X, Y)].
 $$
+where $X'$ is an independent copy of $X$ and $Y'$ is an independent copy of $Y$.
+:::
+
+::: {.proof}
+
+By @prp-mmd-mean-embedding,
+$$
+\operatorname{MMD}^2(P, Q)
+=
+\lVert \mu_P - \mu_Q \rVert_\mathcal{H}^2.
+$$
+
+Expanding the squared norm gives
+$$
+\begin{aligned}
+\lVert \mu_P - \mu_Q \rVert_\mathcal{H}^2
+&=
+\langle \mu_P, \mu_P \rangle_\mathcal{H}
++
+\langle \mu_Q, \mu_Q \rangle_\mathcal{H}
+-
+2\langle \mu_P, \mu_Q \rangle_\mathcal{H}.
+\end{aligned}
+$$
+
+Using the definitions
+$$
+\mu_P = \mathbb{E}_{X \sim P}[k(X, \cdot)],
+\qquad
+\mu_Q = \mathbb{E}_{Y \sim Q}[k(Y, \cdot)],
+$$
+linearity of the inner product, and the reproducing property,
+$$
+\begin{aligned}
+\langle \mu_P, \mu_P \rangle_\mathcal{H}
+&=
+\mathbb{E}_{X, X' \sim P}
+\left[
+\langle k(X, \cdot), k(X', \cdot) \rangle_\mathcal{H}
+\right] \\
+&=
+\mathbb{E}_{X, X' \sim P}[k(X, X')],
+\end{aligned}
+$$
+and similarly
+$$
+\langle \mu_Q, \mu_Q \rangle_\mathcal{H}
+=
+\mathbb{E}_{Y, Y' \sim Q}[k(Y, Y')],
+\qquad
+\langle \mu_P, \mu_Q \rangle_\mathcal{H}
+=
+\mathbb{E}_{X \sim P, Y \sim Q}[k(X, Y)].
+$$
+
+Substituting these three identities into the squared norm expansion proves the formula. $\square$
+:::
 
 Read this as:
 
@@ -204,7 +261,6 @@ Read this as:
 3. Samples from $P$ should also be similar to samples from $Q$.
 
 If the within-distribution similarities are high but the cross-distribution similarity is low, then the two distributions are different and MMD is large.
-:::
 
 ## A Tiny Numerical Example
 
