@@ -15,7 +15,7 @@ draft: false
 ---
 
 I often find myself staring at quadratic multivariable functions.
-A common symptom for the helpless computational mathematicians working with nonlinear methods. 
+A common symptom for the helpless computational mathematicians working with nonlinear methods.
 Completing the square here often helps but, alas, I haven't memorized it yet and I'm tired of digging up my old notes for it.
 
 ## Basic Version
@@ -68,7 +68,7 @@ Rearranging gives
   =
   \frac{1}{2}(z + A^{-1}b)^T A (z + A^{-1}b)
   + c - \frac{1}{2}b^T A^{-1}b,
-\] 
+\]
 which proves the identity.
 
 :::
