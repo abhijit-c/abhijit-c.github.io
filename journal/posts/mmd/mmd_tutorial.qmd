@@ -1,5 +1,8 @@
 ---
 title: "Maximum Mean Discrepancy: Comparing Distributions with Kernels"
+date: 2026-06-22
+categories: [math, statistics, machine learning]
+from: markdown+tex_math_single_backslash
 bibliography: references.bib
 format:
   html:
@@ -28,6 +31,8 @@ callouty-theorem:
 execute:
   cache: true
   warning: false
+reference-location: margin
+draft: false
 ---
 
 I've recently had need to understand metrics assessing quality in some generative modeling research I've been involved in.
@@ -375,8 +380,8 @@ MMD should be small when we compare the cloud with itself and larger when we com
 #| code-fold: show
 rng = np.random.default_rng(0)
 
-A = rng.normal(loc=0.0, scale=0.7, size=(60, 2))
-B = rng.normal(loc=np.array([0.8, 0.0]), scale=0.7, size=(60, 2))
+A = rng.normal(loc=0.0, scale=0.7, size=(100, 2))
+B = rng.normal(loc=np.array([0.8, 0.0]), scale=0.7, size=(100, 2))
 
 pooled = np.vstack([A, B])
 pairwise_distances = euclidean_distances(pooled)
@@ -445,39 +450,202 @@ print(f"unbiased A vs B       = {mmd2_unbiased(A, B, median_sigma):.6f}")
 For optimization objectives, the biased estimator is often convenient because it behaves like a squared distance.
 For statistical testing, the unbiased estimator and permutation/bootstrap procedures are often more appropriate.
 
-## What MMD Is Measuring
+## Optimized JAX Implementation
 
-MMD measures a difference between distributions through average kernel similarity.
-With a characteristic kernel, $\operatorname{MMD}(P, Q) = 0$ means $P = Q$.
-Positive values mean there is some RKHS function whose average value differs under the two distributions.
+The sklearn implementation above is a clear baseline implementation.
+It builds three kernel matrices using `rbf_kernel` and then averages them.
+However, if you had to implement this outside of numpy, say in JAX, it's worth thinking about what an optimized implementation would look like.
 
-This makes MMD sensitive to more than the ordinary mean.
-Depending on the kernel and bandwidth, it can detect changes in location, spread, multimodality, and other shape differences.
-But the scale matters:
+There are two useful JAX implementations, with different tradeoffs.
+The most direct implementation uses nested `vmap` over a scalar squared-distance function.
+This computes the distance as written, using the literal $(x - y)^2$ computation.
 
-- A small value means the two sample sets are hard to distinguish at the chosen kernel scale.
-- A large value means within-distribution similarities are stronger than cross-distribution similarities.
-- The number itself is not universal; it changes with the kernel, bandwidth, dimension, sample size, and estimator choice.
+```{python}
+#| code-fold: show
+from time import perf_counter
 
-In generative modeling, MMD is useful because it compares samples directly.
-Given real samples $x_i \sim P_{\text{data}}$ and generated samples $y_j \sim P_{\theta}$, we can compute
+import jax
+import jax.numpy as jnp
+
+
+def squared_distance_direct(x, y):
+    return jnp.sum((x - y) ** 2)
+
+
+pairwise_squared_distances_vmap = jax.vmap(
+    jax.vmap(squared_distance_direct, in_axes=(None, 0)),
+    in_axes=(0, None),
+)
+
+
+def rbf_mean_jax_vmap(x, y, sigma):
+    squared_distances = pairwise_squared_distances_vmap(x, y)
+    return jnp.mean(jnp.exp(-squared_distances / (2 * sigma**2)))
+
+
+@jax.jit
+def mmd2_biased_jax_vmap(x, y, sigma):
+    return (
+        rbf_mean_jax_vmap(x, x, sigma)
+        + rbf_mean_jax_vmap(y, y, sigma)
+        - 2 * rbf_mean_jax_vmap(x, y, sigma)
+    )
+```
+
+The faster implementation computes squared distances through matrix multiplication:
 $$
-\widehat{\operatorname{MMD}}^2(P_{\text{data}}, P_{\theta})
+\lVert x_i - y_j \rVert^2
+=
+\lVert x_i \rVert^2
++
+\lVert y_j \rVert^2
+-
+2x_i^\top y_j.
 $$
-without needing explicit densities.
-That makes it a practical metric, and sometimes a training loss, for models where evaluating likelihood is difficult.
 
-## Summary
+This would have the corresponding implementation
 
-MMD turns distribution comparison into kernel arithmetic.
-The workflow is:
 
-1. Choose a kernel $k$, often an RBF kernel.
-2. Compute similarities within the first sample set, within the second sample set, and across the two sample sets.
-3. Combine those averages as
-   $$
-   \text{within } X + \text{within } Y - 2 \times \text{between } X,Y.
-   $$
+```{python}
+#| code-fold: show
+def rbf_mean_jax_gram(x, y, sigma):
+    x2 = jnp.sum(x * x, axis=1, keepdims=True)
+    y2 = jnp.sum(y * y, axis=1, keepdims=True).T
+    squared_distances = jnp.maximum(x2 + y2 - 2 * (x @ y.T), 0.0)
+    return jnp.mean(jnp.exp(-squared_distances / (2 * sigma**2)))
 
-If the two sample sets come from the same distribution, the three terms balance.
-If they come from different distributions, the cross-similarity tends to be too small, and MMD becomes positive.
+
+@jax.jit
+def mmd2_biased_jax_gram(x, y, sigma):
+    return (
+        rbf_mean_jax_gram(x, x, sigma)
+        + rbf_mean_jax_gram(y, y, sigma)
+        - 2 * rbf_mean_jax_gram(x, y, sigma)
+    )
+```
+This can be far faster!
+
+Here's a small benchmark against the sklearn version.
+Note, scikit-learn is actually implementing the Gram verion above.
+The benchmark checks that the implementations produce the same biased MMD estimate on a fixed synthetic two-sample problem, then compares their median wall-clock runtime (post-JAX compilation).
+
+```{python}
+#| code-fold: true
+#| code-summary: "Show timing helper"
+def timed(f):
+    jax.block_until_ready(f())
+    t = perf_counter()
+    v = jax.block_until_ready(f())
+    return v, perf_counter() - t
+
+
+def median_timed(f, repeats=7):
+    value = None
+    seconds = []
+    for _ in range(repeats):
+        value, elapsed = timed(f)
+        seconds.append(elapsed)
+    return value, float(np.median(seconds))
+```
+```{python}
+#| code-fold: true
+#| code-summary: "Show benchmark code"
+bench_rng = np.random.default_rng(1)
+bench_n = 2_000
+bench_dim = 16
+
+X_bench = bench_rng.normal(size=(bench_n, bench_dim)).astype(np.float32)
+Y_bench = bench_rng.normal(loc=0.15, size=(bench_n, bench_dim)).astype(np.float32)
+sigma_bench = np.float32(np.sqrt(bench_dim))
+
+X_bench_jax = jnp.asarray(X_bench)
+Y_bench_jax = jnp.asarray(Y_bench)
+sigma_bench_jax = jnp.asarray(sigma_bench)
+
+# Compile once before benchmarking.
+jax.block_until_ready(
+    mmd2_biased_jax_gram(X_bench_jax, Y_bench_jax, sigma_bench_jax)
+)
+jax.block_until_ready(
+    mmd2_biased_jax_vmap(X_bench_jax, Y_bench_jax, sigma_bench_jax)
+)
+
+sklearn_value, sklearn_seconds = median_timed(
+    lambda: mmd2_biased(X_bench, Y_bench, sigma_bench)
+)
+jax_gram_value, jax_gram_seconds = median_timed(
+    lambda: mmd2_biased_jax_gram(X_bench_jax, Y_bench_jax, sigma_bench_jax)
+)
+jax_vmap_value, jax_vmap_seconds = median_timed(
+    lambda: mmd2_biased_jax_vmap(X_bench_jax, Y_bench_jax, sigma_bench_jax)
+)
+
+print(f"JAX device       = {jax.devices()[0]}")
+print(f"sample shape     = {X_bench.shape}")
+print(f"sklearn MMD^2    = {sklearn_value:.8f}")
+print(f"JAX Gram MMD^2   = {float(jax_gram_value):.8f}")
+print(f"JAX vmap MMD^2   = {float(jax_vmap_value):.8f}")
+print(f"sklearn time     = {sklearn_seconds * 1_000:.2f} ms")
+print(f"JAX Gram time    = {jax_gram_seconds * 1_000:.2f} ms")
+print(f"JAX vmap time    = {jax_vmap_seconds * 1_000:.2f} ms")
+print(f"Gram speedup     = {sklearn_seconds / jax_gram_seconds:.2f}x")
+print(f"vmap speedup     = {sklearn_seconds / jax_vmap_seconds:.2f}x")
+```
+
+The Gram version is usually the fastest of these dense implementations.
+However, as discussed in this [JAX thread on pairwise distances](https://github.com/jax-ml/jax/discussions/11841), the Gram version can be numerically unstable when the true distance is small relative to the absolute coordinate values.
+For example consider two points which are distance $\sqrt{2}$ apart with a large absolute offset.
+The direct computation sees the distance, while the Gram calculation loses it.
+
+```{python}
+#| code-fold: show
+edge_offset = jnp.float32(4096.0)
+edge_x = jnp.array([[0.0, 1.0]], dtype=jnp.float32) + edge_offset
+edge_y = jnp.array([[1.0, 0.0]], dtype=jnp.float32) + edge_offset
+edge_sigma = jnp.float32(1.0)
+
+edge_gram_distance2 = (
+    jnp.sum(edge_x * edge_x, axis=1, keepdims=True)
+    + jnp.sum(edge_y * edge_y, axis=1, keepdims=True).T
+    - 2 * (edge_x @ edge_y.T)
+)
+edge_direct_distance2 = pairwise_squared_distances_vmap(edge_x, edge_y)
+
+edge_gram_kernel = jnp.exp(
+    -jnp.maximum(edge_gram_distance2, 0.0) / (2 * edge_sigma**2)
+)
+edge_direct_kernel = jnp.exp(
+    -edge_direct_distance2 / (2 * edge_sigma**2)
+)
+
+print(f"Gram squared distance   = {float(edge_gram_distance2[0, 0]):.1f}")
+print(f"direct squared distance = {float(edge_direct_distance2[0, 0]):.1f}")
+print(f"JAX Gram RBF            = {float(edge_gram_kernel[0, 0]):.8f}")
+print(f"JAX direct RBF          = {float(edge_direct_kernel[0, 0]):.8f}")
+```
+
+The same issue can change the MMD itself.
+Below, `X_edge` and `Y_edge` are not the same point cloud, but the unstable implementations make many cross-similarities look like self-similarities.
+
+```{python}
+#| code-fold: show
+X_edge =  jnp.array([[0.0, 1.0], [0.0, 2.0]], dtype=jnp.float32) + edge_offset
+Y_edge =  jnp.array([[1.0, 0.0], [1.0, 2.0]], dtype=jnp.float32) + edge_offset
+sigma_edge = jnp.float32(1.0)
+
+edge_gram_mmd = mmd2_biased_jax_gram(
+    X_edge, Y_edge, sigma_edge
+)
+edge_vmap_mmd = mmd2_biased_jax_vmap(
+    X_edge, Y_edge, sigma_edge
+)
+
+print(f"JAX Gram MMD^2 = {float(edge_gram_mmd):.8f}")
+print(f"JAX vmap MMD^2 = {float(edge_vmap_mmd):.8f}")
+```
+
+Practically speaking, that means that I would likely reach for the naive implementation until convinced that the MMD itself is a bottleneck.
+Alternatively, one could consider centering the data before the computation, as Euclidean distances are translation-invariant but the floating point cancellation in the Gram identity is not.
+
+With that being said, one can construct estimators of the MMD by considering statistically principled subsamplings of the dataset.
+This is essentially the concentration of the back half of the paper [@JMLR:v13:gretton12a].
