@@ -117,3 +117,11 @@ table.quarto-listing-table td a {
   font-size: 0.72rem;
   padding: 0.15rem 0.45rem;
 }
+
+/* Allow long MathJax equations to scroll instead of overflowing the viewport. */
+mjx-container {
+  display: inline-flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+}
