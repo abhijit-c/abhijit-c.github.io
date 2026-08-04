@@ -1,0 +1,9 @@
+---
+title: "Attending the 2026 AFOSR Computational Math Program Review"
+date: 2026-08-04
+description: "I'll be attending the [2026 AFOSR Computational Math Program Review](https://www.afrl.af.mil/About-Us/Fact-Sheets/Fact-Sheet-Display/Article/4315393/afosr-workshops-reviews/) in Arlington, Virginia, August 10–14."
+---
+
+I'll be attending the
+[2026 AFOSR Computational Math Program Review](https://www.afrl.af.mil/About-Us/Fact-Sheets/Fact-Sheet-Display/Article/4315393/afosr-workshops-reviews/)
+in Arlington, Virginia, August 10–14.
