@@ -36,6 +36,8 @@ format:
       dark:
         - cyborg
         - cyborg-fixes.scss
+    syntax-definitions:
+    - syntax/lean.xml
     respect-user-color-scheme: true
     css: styles.css
     toc: false
