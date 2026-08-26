@@ -3,7 +3,6 @@ title: "Research"
 bibliography: papers.bib
 ---
 
-My research is broadly about designing computational algorithms. 
 We live in very interesting times in which our new friends, computers, dramatically expand our capabilities in modeling and learning.
 While they get faster day by day, I am not satisfied to simply wait for hardware to scale to my problems.
 Moreover, some problems won't ever be tameable by constant factor increases.
@@ -35,4 +34,3 @@ I published a few papers in this direction; see my work with Georg and coauthors
 I have a personal interest in mathematical research software.
 It's key for our field to improve its transparency and reproducibility while also improving the speed of dissemination of information.
 In this past, I was a major maintainer for PyOED [@Chowdhary_Ahmed_Attia_2024], which was a package for rapidly prototyping and benchmarking data assimilation and model-constrained optimal design methods.
-I'm currently working on similar in scientific ML.
