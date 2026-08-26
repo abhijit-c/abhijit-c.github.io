@@ -1,0 +1,11 @@
+---
+title: "Attending SIAM MDS26 and SIAM IS26"
+date: 2026-08-04
+description: "I'll be attending [SIAM MDS26](https://www.siam.org/conferences-events/siam-conferences/mds26/) and [SIAM IS26](https://www.siam.org/conferences-events/siam-conferences/is26/) in Salt Lake City this November."
+---
+
+I'll be attending
+[SIAM MDS26](https://www.siam.org/conferences-events/siam-conferences/mds26/),
+November 16–20, and
+[SIAM IS26](https://www.siam.org/conferences-events/siam-conferences/is26/),
+November 16–19, in Salt Lake City.

@@ -18,8 +18,8 @@ website:
       - text: CV
         href: assets/pdf/CV.pdf
         target: _blank
-      - href: blog/index.qmd
-        text: Blog
+      - href: journal/index.qmd
+        text: Journal
       - href: news.qmd
         text: News
   page-footer:
@@ -33,9 +33,11 @@ format:
   html:
     theme:
       light: litera
-      dark: 
+      dark:
         - cyborg
         - cyborg-fixes.scss
+    syntax-definitions:
+    - syntax/lean.xml
     respect-user-color-scheme: true
     css: styles.css
     toc: false

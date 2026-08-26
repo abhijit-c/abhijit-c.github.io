@@ -1,0 +1,11 @@
+name = "variable-projection-conditioning"
+version = "0.1.0"
+defaultTargets = ["VariableProjectionConditioning"]
+
+[[lean_lib]]
+name = "VariableProjectionConditioning"
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+rev = "v4.32.1"

@@ -1,0 +1,111 @@
+---
+title: "How 'Exploiting Exact Conditionals Improves Conditioning' Came Together"
+date: 2026-08-15
+description: "The paper has the polished proofs, here we talk about the process."
+categories: [personal, math, research]
+from: markdown+tex_math_single_backslash
+reference-location: margin
+citation-location: margin
+draft: true
+---
+
+My most recent pre-print, "Exploiting Exact Conditionals Improves Conditioning: Provably Fast Mixing Time Bounds By Sampling from the Marginal", has finally[^1] been completed and uploaded to ArXiv!
+I really loved writing this paper and I felt like I went out of my comfort zone to do it.
+
+[^1]: ε-(´∀`;) 
+
+It began at [ICERM](https://icerm.brown.edu).
+My postdoc superviser, [Dr. Elizabeth Newman](https://elizabethnewman.owlstown.net), and I were invited for a semester long program for the Spring 2026 alongside many other great mathematicians.
+This paper began as a collaboration between us, [Dr. Julianne Chung](https://www.math.emory.edu/~jmchung/) and [Dr. Federica Milinanni](https://sites.google.com/view/federicamilinanni).
+All very excellent mathematicians, and I think the largest group I've worked with for a single paper.
+
+To give some background, Liz and I have been working on some modern applications and implications of the classical optimization technique variable projection.
+Consider the optimization problem
+\[
+  \min_{\theta \in \Theta} F(\theta).
+\]
+In reality, $\theta$ is usually partitioned into multiple sub-blocks of variables.
+If you imagine a fully connected neural network, $\theta$ breaks up into the individual layers' weights and biases.
+In such a construction, there might exist variables that are 'easier' to optimize out than others.
+In particular, suppose I isolate out a block of variables $w$, and rewrite my function in the form
+\[
+  F:\mathcal W\times\Theta\to\mathbb R,
+  \qquad
+  w\in\mathcal W\subseteq\mathbb R^{d_w},
+  \quad
+  \theta\in\Theta\subseteq\mathbb R^{d_\theta}.
+\]
+Then, I can consider the joint problem
+\[
+  \min_{w,\theta} F(w,\theta).
+\]
+Variable projection separates this into the inner problem
+\[
+  \mathcal W_\star(\theta)
+  :=\operatorname*{arg\,min}_{w\in\mathcal W}F(w,\theta),
+  \qquad
+  w_\star(\theta)\in\mathcal W_\star(\theta),
+\]
+and the outer problem
+\[
+  \min_{\theta\in\Theta}\phi(\theta),
+  \qquad
+  \phi(\theta)
+  :=\min_{w\in\mathcal W}F(w,\theta)
+  =F(w_\star(\theta),\theta).
+\]
+That is, now we're optimizing solely over $\theta$ and, at each evaluation, we solve an inner problem for $w_\star$.
+But why?
+Well, it turns out that the explicit elimination of this block confers a conditioning advantage to the underlying optimization problem.
+
+---
+
+::: {#thm-variable-projection-conditioning}
+## Conditioning under variable projection
+
+Suppose that $F$ is twice continuously differentiable and that
+$\bar w=w_\star(\bar\theta)$ is an interior solution of the inner problem.
+Write the full Hessian at $(\bar w,\bar\theta)$ as
+\[
+  H=\nabla^2F
+  =
+  \begin{bmatrix}
+    A & B\\
+    B^\mathsf T & D
+  \end{bmatrix},
+  \qquad
+  A=\nabla^2_{ww}F,
+  \quad B=\nabla^2_{w\theta}F,
+  \quad D=\nabla^2_{\theta\theta}F.
+\]
+If $H\succ0$, then the stationarity equation $\nabla_wF=0$ determines a
+continuously differentiable local branch $w_\star(\theta)$ of strict inner
+minimizers through $(\bar w,\bar\theta)$. For the corresponding local reduced
+objective $\phi(\theta)=F(w_\star(\theta),\theta)$, the reduced Hessian is the
+Schur complement
+\[
+  \nabla^2\phi(\bar\theta)
+  =D-B^\mathsf T A^{-1}B=:S,
+\]
+and
+\[
+  \lambda_{\min}(H)\leq\lambda_{\min}(S),
+  \qquad
+  \lambda_{\max}(S)\leq\lambda_{\max}(H).
+\]
+Consequently,
+\[
+  \kappa_2\!\left(\nabla^2\phi(\bar\theta)\right)
+  =\kappa_2(S)
+  \leq\kappa_2(H)
+  =\kappa_2\!\left(\nabla^2F(w_\star(\bar\theta),\bar\theta)\right).
+\]
+:::
+
+---
+
+If the optimization problem for $w_\star$ is easy, then the expense of needing to crush it can be negligable in favor of the per-iteration improvement during optimization.
+Both Liz and I have written a series of papers investigating this.
+
+But today we're not considering optimization.
+We wanted to look at 1

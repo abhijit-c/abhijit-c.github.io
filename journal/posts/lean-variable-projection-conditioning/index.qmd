@@ -1,0 +1,446 @@
+---
+title: "Variable Projection Cannot Worsen Hessian Conditioning—in Lean 4"
+description: "An annotated Lean 4 guide to the Schur-complement proof that eliminating a variable cannot worsen the spectral condition number."
+date: 2026-07-23
+categories: [math, optimization, linear algebra, Lean, formalization]
+from: markdown+tex_math_single_backslash
+format:
+  html:
+    toc: true
+    number-sections: true
+    html-math-method: mathjax
+execute:
+  echo: false
+resources:
+  - VariableProjectionConditioning.lean
+draft: true
+reference-location: margin
+---
+
+Variable projection replaces an optimization problem in two groups of
+variables,
+\[
+  \min_{x,y} J(x,y),
+\]
+with a reduced problem in \(y\) alone:
+\[
+  \min_y \phi(y),
+  \qquad
+  \phi(y) := J(x_*(y),y),
+  \qquad
+  x_*(y) := \operatorname*{arg\,min}_x J(x,y).
+\]
+
+Near a nondegenerate solution, the Hessian of \(\phi\) is a Schur complement
+of the Hessian of \(J\). The useful conditioning result is
+\[
+  \kappa_2\!\left(\nabla^2\phi\right)
+  \le
+  \kappa_2\!\left(\nabla^2 J\right).
+\]
+The inequality is short on paper, but formalizing it exposes the exact reason
+it works: **the reduced quadratic form is the minimum of the full quadratic
+form over the eliminated direction**.
+
+This post develops that proof and then translates it into Lean 4. The complete
+companion file is
+[`VariableProjectionConditioning.lean`](VariableProjectionConditioning.lean).
+The code blocks below are ordinary highlighted blocks; Quarto does not execute
+Lean.
+
+## Assumptions and Scope
+
+Fix a point \((x_*(y),y)\) at which
+\[
+  \nabla_x J(x_*(y),y)=0.
+\]
+Write the full Hessian in blocks:
+\[
+  H =
+  \nabla^2 J =
+  \begin{bmatrix}
+    A & B \\
+    B^\mathsf{T} & D
+  \end{bmatrix},
+  \qquad
+  A = J_{xx},\quad B=J_{xy},\quad D=J_{yy}.
+\]
+Assume that \(H\) is symmetric positive definite. Its principal block \(A\)
+is then positive definite and invertible.
+
+These hypotheses matter. For an indefinite Hessian, the usual ratio
+\(\lambda_{\max}/\lambda_{\min}\) is not the relevant condition number, and
+the conclusion as stated need not make sense. The argument here is a local,
+Euclidean, positive-definite Hessian result.
+
+The Lean proof begins with the quadratic Hessian model. It does not formalize
+the implicit-function theorem step that differentiates \(x_*(y)\); instead,
+the next section derives that bridge on paper.
+
+## From Variable Projection to a Schur Complement
+
+Differentiate the stationarity equation
+\[
+  J_x(x_*(y),y)=0
+\]
+in a direction \(v\) in the \(y\)-space:
+\[
+  A\,D x_*(y)[v] + Bv = 0.
+\]
+Hence
+\[
+  D x_*(y)[v] = -A^{-1}Bv.
+\]
+The first derivative of the reduced objective is particularly simple because
+the \(J_x\) term vanishes:
+\[
+  \nabla\phi(y)=J_y(x_*(y),y).
+\]
+Differentiating once more gives
+\[
+  \nabla^2\phi
+  =
+  D-B^\mathsf{T}A^{-1}B
+  =: S.
+\]
+Thus the reduced Hessian is the Schur complement \(S\).
+
+## The Completing-the-Square Identity
+
+For perturbations \(u\) and \(v\), define the full Hessian quadratic
+\[
+  q(u,v)
+  :=
+  \begin{bmatrix}u\\v\end{bmatrix}^{\mathsf T}
+  H
+  \begin{bmatrix}u\\v\end{bmatrix}.
+\]
+Completing the square gives
+\[
+  q(u,v)
+  =
+  (u+A^{-1}Bv)^\mathsf{T}A(u+A^{-1}Bv)
+  +v^\mathsf{T}Sv. \tag{1}
+\]
+Because \(A\succ0\), the first term is nonnegative and is zero exactly at
+\[
+  u_*(v)=-A^{-1}Bv.
+\]
+Therefore
+\[
+  v^\mathsf{T}Sv
+  =
+  q(u_*(v),v)
+  =
+  \min_u q(u,v). \tag{2}
+\]
+
+This is the whole mechanism. The Schur complement is not just an algebraic
+formula: its quadratic form is the value of the full quadratic after exact
+elimination.
+
+Mathlib already contains (1) as
+[`Matrix.schur_complement_eq₁₁`](https://leanprover-community.github.io/mathlib4_docs/Mathlib/LinearAlgebra/Matrix/Hermitian.html#Matrix.schur_complement_eq₁₁).
+The companion file wraps that theorem with names matching the optimization
+argument:
+
+```lean
+noncomputable def fullBlockQuadratic
+    (A : Matrix m m ℝ) (B : Matrix m n ℝ) (D : Matrix n n ℝ)
+    (x : m → ℝ) (y : n → ℝ) : ℝ :=
+  (star (Sum.elim x y) ᵥ*
+      Matrix.fromBlocks A B B.conjTranspose D) ⬝ᵥ
+    Sum.elim x y
+
+noncomputable def schurQuadratic
+    (A : Matrix m m ℝ) (B : Matrix m n ℝ) (D : Matrix n n ℝ)
+    [Invertible A] (y : n → ℝ) : ℝ :=
+  (star y ᵥ* (D - B.conjTranspose * A⁻¹ * B)) ⬝ᵥ y
+
+noncomputable def xStar
+    (A : Matrix m m ℝ) (B : Matrix m n ℝ) [Invertible A]
+    (y : n → ℝ) : m → ℝ :=
+  -((A⁻¹ * B).mulVec y)
+```
+
+The theorem itself is almost a direct call to mathlib:
+
+```lean
+theorem schur_complement_identity
+    (A : Matrix m m ℝ) (B : Matrix m n ℝ) (D : Matrix n n ℝ)
+    [Invertible A] (hA : A.IsHermitian)
+    (x : m → ℝ) (y : n → ℝ) :
+    fullBlockQuadratic A B D x y =
+      (star (x + (A⁻¹ * B).mulVec y) ᵥ* A) ⬝ᵥ
+          (x + (A⁻¹ * B).mulVec y) +
+        schurQuadratic A B D y := by
+  exact Matrix.schur_complement_eq₁₁ B D x y hA
+```
+
+Substituting \(u_*(v)\) makes the square vanish:
+
+```lean
+theorem fullBlockQuadratic_at_xStar
+    (A : Matrix m m ℝ) (B : Matrix m n ℝ) (D : Matrix n n ℝ)
+    [Invertible A] (hA : A.IsHermitian) (y : n → ℝ) :
+    fullBlockQuadratic A B D (xStar A B y) y =
+      schurQuadratic A B D y := by
+  rw [schur_complement_identity A B D hA]
+  simp [xStar]
+```
+
+Finally, nonnegativity of the \(A\)-quadratic proves exact minimization:
+
+```lean
+theorem xStar_minimizes
+    (A : Matrix m m ℝ) (B : Matrix m n ℝ) (D : Matrix n n ℝ)
+    [Invertible A] (hA : A.IsHermitian)
+    (hAPos : ∀ u : m → ℝ, 0 ≤ (star u ᵥ* A) ⬝ᵥ u) :
+    ∀ y x,
+      fullBlockQuadratic A B D (xStar A B y) y ≤
+        fullBlockQuadratic A B D x y := by
+  intro y x
+  rw [fullBlockQuadratic_at_xStar A B D hA y]
+  rw [schur_complement_identity A B D hA x y]
+  exact le_add_of_nonneg_left (hAPos _)
+```
+
+## The Two Eigenvalue Inequalities
+
+Let
+\[
+  \mu=\lambda_{\min}(H),
+  \qquad
+  L=\lambda_{\max}(H).
+\]
+The Rayleigh quotient bounds for the full Hessian say
+\[
+  \mu(\|u\|^2+\|v\|^2)
+  \le q(u,v)
+  \le
+  L(\|u\|^2+\|v\|^2). \tag{3}
+\]
+
+### The smallest eigenvalue moves up
+
+Evaluate the lower bound in (3) at the minimizing lift
+\(u=u_*(v)\). Using (2),
+\[
+\begin{aligned}
+  v^\mathsf{T}Sv
+  &=q(u_*(v),v)\\
+  &\ge
+    \mu\left(\|u_*(v)\|^2+\|v\|^2\right)\\
+  &\ge \mu\|v\|^2.
+\end{aligned}
+\]
+Taking the minimum Rayleigh quotient over nonzero \(v\) yields
+\[
+  \lambda_{\min}(S)\ge\lambda_{\min}(H). \tag{4}
+\]
+
+Lean does not need eigenvalue machinery for this step. It proves the stronger
+statement that *any* lower curvature bound for the full quadratic remains a
+lower curvature bound after elimination:
+
+```lean
+theorem reduced_lower_bound
+    (fullQ : X → Y → ℝ) (xStar : Y → X)
+    (sqX : X → ℝ) (sqY : Y → ℝ) {μ : ℝ}
+    (hμ : 0 ≤ μ) (hsqX : ∀ x, 0 ≤ sqX x)
+    (hLower : JointLowerBound fullQ sqX sqY μ) :
+    LowerBound (reducedQuadratic fullQ xStar) sqY μ := by
+  intro y
+  calc
+    μ * sqY y ≤ μ * (sqX (xStar y) + sqY y) := by
+      nlinarith [hsqX (xStar y)]
+    _ ≤ fullQ (xStar y) y := hLower (xStar y) y
+    _ = reducedQuadratic fullQ xStar y := rfl
+```
+
+Here `sqX` and `sqY` stand for squared norms. Passing them explicitly keeps
+the theorem independent of a particular finite-dimensional norm
+implementation.
+
+### The largest eigenvalue moves down
+
+For the upper bound, compare the minimizing lift with the simple admissible
+choice \(u=0\):
+\[
+\begin{aligned}
+  v^\mathsf{T}Sv
+  &=\min_u q(u,v)\\
+  &\le q(0,v)\\
+  &\le L\|v\|^2.
+\end{aligned}
+\]
+Taking the maximum Rayleigh quotient gives
+\[
+  \lambda_{\max}(S)\le\lambda_{\max}(H). \tag{5}
+\]
+
+The Lean version makes the comparison point `xZero` explicit:
+
+```lean
+theorem reduced_upper_bound
+    (fullQ : X → Y → ℝ) (xStar : Y → X) (xZero : X)
+    (sqX : X → ℝ) (sqY : Y → ℝ) {L : ℝ}
+    (hsqXZero : sqX xZero = 0)
+    (hUpper : JointUpperBound fullQ sqX sqY L)
+    (hMin : ∀ y x, fullQ (xStar y) y ≤ fullQ x y) :
+    UpperBound (reducedQuadratic fullQ xStar) sqY L := by
+  intro y
+  calc
+    reducedQuadratic fullQ xStar y
+        = fullQ (xStar y) y := rfl
+    _ ≤ fullQ xZero y := hMin y xZero
+    _ ≤ L * (sqX xZero + sqY y) := hUpper xZero y
+    _ = L * sqY y := by rw [hsqXZero, zero_add]
+```
+
+Notice the asymmetry:
+
+- the lower bound evaluates the full quadratic at the lifted minimizer;
+- the upper bound uses minimality to compare that lift with \((0,v)\).
+
+That distinction is easy to blur in a one-line paper proof.
+
+## From Curvature Bounds to Condition Numbers
+
+For a positive-definite quadratic, the sharp lower and upper curvature
+constants are its extreme eigenvalues. The file records “sharp” using two
+predicates:
+
+```lean
+def IsBestLowerBound (q : Y → ℝ) (sqY : Y → ℝ) (μ : ℝ) : Prop :=
+  LowerBound q sqY μ ∧ ∀ c, LowerBound q sqY c → c ≤ μ
+
+def IsBestUpperBound (q : Y → ℝ) (sqY : Y → ℝ) (L : ℝ) : Prop :=
+  UpperBound q sqY L ∧ ∀ c, UpperBound q sqY c → L ≤ c
+
+noncomputable def conditionNumber (μ L : ℝ) : ℝ :=
+  L / μ
+```
+
+Equations (4) and (5) imply
+\[
+  0<\mu_H\le\mu_S,
+  \qquad
+  0\le L_S\le L_H.
+\]
+Cross-multiplication then proves
+\[
+  \frac{L_S}{\mu_S}\le\frac{L_H}{\mu_H}.
+\]
+
+```lean
+theorem conditionNumber_mono
+    {μFull μReduced LReduced LFull : ℝ}
+    (hμFull : 0 < μFull)
+    (hμ : μFull ≤ μReduced)
+    (hLReduced : 0 ≤ LReduced)
+    (hL : LReduced ≤ LFull) :
+    conditionNumber μReduced LReduced ≤ conditionNumber μFull LFull := by
+  have hμReduced : 0 < μReduced := lt_of_lt_of_le hμFull hμ
+  have h₁ : LReduced * μFull ≤ LReduced * μReduced :=
+    mul_le_mul_of_nonneg_left hμ hLReduced
+  have h₂ : LReduced * μReduced ≤ LFull * μReduced :=
+    mul_le_mul_of_nonneg_right hL hμReduced.le
+  unfold conditionNumber
+  exact (div_le_div_iff₀ hμReduced hμFull).2 (h₁.trans h₂)
+```
+
+The final theorem composes the inherited lower bound, inherited upper bound,
+sharpness, and ratio monotonicity:
+
+```lean
+theorem variable_projection_conditioning
+    (fullQ : X → Y → ℝ) (xStar : Y → X) (xZero : X)
+    (sqX : X → ℝ) (sqY : Y → ℝ)
+    {μFull LFull μReduced LReduced : ℝ}
+    (hμFull : 0 < μFull)
+    (hLReduced : 0 ≤ LReduced)
+    (hsqX : ∀ x, 0 ≤ sqX x)
+    (hsqXZero : sqX xZero = 0)
+    (hLower : JointLowerBound fullQ sqX sqY μFull)
+    (hUpper : JointUpperBound fullQ sqX sqY LFull)
+    (hMin : ∀ y x, fullQ (xStar y) y ≤ fullQ x y)
+    (hBestLower :
+      IsBestLowerBound (reducedQuadratic fullQ xStar) sqY μReduced)
+    (hBestUpper :
+      IsBestUpperBound (reducedQuadratic fullQ xStar) sqY LReduced) :
+    conditionNumber μReduced LReduced ≤ conditionNumber μFull LFull := by
+  have hReducedLower :=
+    reduced_lower_bound fullQ xStar sqX sqY hμFull.le hsqX hLower
+  have hReducedUpper :=
+    reduced_upper_bound fullQ xStar xZero sqX sqY hsqXZero hUpper hMin
+  have hμ : μFull ≤ μReduced :=
+    hBestLower.2 μFull hReducedLower
+  have hL : LReduced ≤ LFull :=
+    hBestUpper.2 LFull hReducedUpper
+  exact conditionNumber_mono hμFull hμ hLReduced hL
+```
+
+Combining this theorem with `xStar_minimizes` gives the Schur-complement
+conditioning result. The companion file ends with a matrix-specialized theorem
+that performs exactly that composition:
+
+```lean
+theorem schur_complement_conditioning
+    (A : Matrix m m ℝ) (B : Matrix m n ℝ) (D : Matrix n n ℝ)
+    [Invertible A] (hA : A.IsHermitian)
+    (hAPos : ∀ u : m → ℝ, 0 ≤ (star u ᵥ* A) ⬝ᵥ u)
+    (sqX : (m → ℝ) → ℝ) (sqY : (n → ℝ) → ℝ)
+    {μFull LFull μReduced LReduced : ℝ}
+    (hμFull : 0 < μFull)
+    (hLReduced : 0 ≤ LReduced)
+    (hsqX : ∀ x, 0 ≤ sqX x)
+    (hsqXZero : sqX 0 = 0)
+    (hLower :
+      JointLowerBound (fullBlockQuadratic A B D) sqX sqY μFull)
+    (hUpper :
+      JointUpperBound (fullBlockQuadratic A B D) sqX sqY LFull)
+    (hBestLower :
+      IsBestLowerBound (schurQuadratic A B D) sqY μReduced)
+    (hBestUpper :
+      IsBestUpperBound (schurQuadratic A B D) sqY LReduced) :
+    conditionNumber μReduced LReduced ≤ conditionNumber μFull LFull := by
+  have hReducedEq :
+      reducedQuadratic (fullBlockQuadratic A B D) (xStar A B) =
+        schurQuadratic A B D := by
+    funext y
+    exact fullBlockQuadratic_at_xStar A B D hA y
+  rw [← hReducedEq] at hBestLower hBestUpper
+  exact variable_projection_conditioning
+    (fullBlockQuadratic A B D) (xStar A B) (0 : m → ℝ)
+    sqX sqY hμFull hLReduced hsqX hsqXZero hLower hUpper
+    (xStar_minimizes A B D hA hAPos) hBestLower hBestUpper
+```
+
+## What Lean Clarified
+
+The formal proof suggests a useful way to remember the theorem.
+
+First, the result is fundamentally variational, not spectral. Eigenvalues
+enter only at the end, when sharp quadratic bounds are identified with
+Rayleigh-quotient extrema.
+
+Second, exact elimination is essential. If \(x_*(y)\) is computed only
+approximately, the reduced quadratic need not be the exact minimum of the
+full quadratic. A perturbed result would need an explicit error term.
+
+Third, positive definiteness does two jobs: it makes the spectral condition
+number meaningful, and it makes the completed square nonnegative. Those are
+logically distinct uses of the same assumption.
+
+The concise mathematical summary is
+\[
+  v^\mathsf{T}Sv
+  =
+  \min_u
+  \begin{bmatrix}u\\v\end{bmatrix}^{\mathsf T}
+  H
+  \begin{bmatrix}u\\v\end{bmatrix}.
+\]
+From this identity, both endpoint inequalities—and therefore the condition
+number comparison—follow immediately.
