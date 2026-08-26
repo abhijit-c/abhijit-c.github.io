@@ -2,6 +2,8 @@
 title: "Publications"
 ---
 
+Alternatively, see my [Google scholar page.](https://scholar.google.com/citations?user=8Wg1zW4AAAAJ)
+
 ```{python}
 #| echo: false
 #| output: asis
