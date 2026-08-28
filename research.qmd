@@ -34,3 +34,30 @@ I published a few papers in this direction; see my work with Georg and coauthors
 I have a personal interest in mathematical research software.
 It's key for our field to improve its transparency and reproducibility while also improving the speed of dissemination of information.
 In this past, I was a major maintainer for PyOED [@Chowdhary_Ahmed_Attia_2024], which was a package for rapidly prototyping and benchmarking data assimilation and model-constrained optimal design methods.
+
+## Collaborators
+
+One of my favorite parts of doing research is the many, incredible, scientists I've had the pleasure of working alongside.
+I've decided to keep a list of them, since each have made large impacts in how I think about mathematics.
+
+### Advisors
+
+- [Alen Alexanderian](https://aalexan3.math.ncsu.edu/) — North Carolina State University
+- [Ahmed Attia](https://web.cels.anl.gov/~aattia/) — Argonne National Laboratory
+- [Elizabeth Newman](https://elizabethnewman.owlstown.net/) — Tufts University
+
+### Senior collaborators
+
+- [Eric Chi](https://www.ericchi.com/) — University of Minnesota
+- [Julianne Chung](https://www.math.emory.edu/~jmchung/) — Emory University
+- [Arvind Saibaba](https://asaibab.math.ncsu.edu/) — North Carolina State University
+- [Georg Stadler](https://cims.nyu.edu/~stadler/) — New York University
+- [Shanyin Tong](https://www.sas.upenn.edu/~tong3/) — University of Pennsylvania
+- [Deepanshu Verma](https://dpnshvrm.github.io/) — Clemson University
+- [Qiliang Wu](https://sites.google.com/view/qwu) — Ohio University
+
+### Postdoctoral collaborators
+
+- [Alberto Bucci](https://sites.google.com/view/albertobucci/about-me) — University of Edinburgh
+- [Federica Milinanni](https://sites.google.com/view/federicamilinanni) — Northwestern University
+- [Fan Tian](https://sites.google.com/view/fan-tian/home) — University of North Carolina at Chapel Hill
