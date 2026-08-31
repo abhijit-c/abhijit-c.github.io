@@ -1,0 +1,7 @@
+---
+title: "Exploiting Exact Conditionals Improves Conditioning on arXiv"
+date: 2026-08-30
+description: "Our preprint [Exploiting Exact Conditionals Improves Conditioning: Provably Fast Mixing Time Bounds By Sampling from the Marginal](https://arxiv.org/abs/2608.27884) is on arXiv."
+---
+
+Our preprint [Exploiting Exact Conditionals Improves Conditioning: Provably Fast Mixing Time Bounds By Sampling from the Marginal](https://arxiv.org/abs/2608.27884) is on arXiv.
