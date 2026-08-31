@@ -90,6 +90,15 @@ cv:
         highlights:
           - Published novel research in the theory of pattern formation, for the 2D Swift-Hohenberg Equation.
     publications:
+      - title: 'Exploiting Exact Conditionals Improves Conditioning: Provably Fast Mixing Time Bounds By Sampling from the Marginal'
+        authors:
+          - '***Abhijit Chowdhary***'
+          - Federica Milinanni
+          - Julianne Chung
+          - Elizabeth Newman
+        doi: https://doi.org/10.48550/arXiv.2608.27884
+        journal: arXiv preprint
+        date: 2026-08
       - title: 'Boost Like a (Var)Pro: Trust-Region Gradient Boosting via Variable Projection'
         authors:
           - '***Abhijit Chowdhary***'
@@ -154,6 +163,7 @@ cv:
         start_date: 2025-12
         end_date: present
         highlights:
+          - WCCM–ECCOMAS 2026, Munich, Germany (Jul 2026).
           - CMO Integrating Data- and Physics-Driven Methods for Decision Making under Uncertainty, Oaxaca, MX (June 2026)
           - SIAM UQ 2026, Minneapolis, MN (Mar 2026).
           - ICERM, Providence, RI (Feb 2026).
