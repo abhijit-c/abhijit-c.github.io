@@ -38,7 +38,7 @@ cv:
         end_date: 2020-05
         highlights:
           - Minor in Classics
-    experience:
+    Research Appointments:
       - company: ICERM, Brown University
         position: Postdoctoral Visiting Scholar
         location: Providence, RI, USA
@@ -51,6 +51,7 @@ cv:
         end_date: present
         highlights:
           - Working with [Elizabeth Newman](https://elizabethnewman.owlstown.net/) in structure-exploiting SciML and uncertainty quantification.
+          - Funded by Elizabeth Newman's 2025 AFOSR Young Investigator Program (YIP) Award (FA9550-26-1-B049).
       - company: Argonne National Laboratory
         position: Givens Intern
         location: Lemont, IL, USA
@@ -75,13 +76,6 @@ cv:
           - Published novel research in scalable UQ for infinite-dimensional
             Bayesian inverse problems.
           - 'Research Assistant for [Alen Alexanderian](https://aalexan3.math.ncsu.edu/) via NSF Grant DMS-2111044.'
-      - company: North Carolina State University
-        position: Teaching Assistant
-        location: Raleigh, NC
-        #start_date: 2021-06
-        #end_date: present
-        highlights:
-          - Led recitations for Calculus I, II, and the honors variants for 5 semesters.
       - company: Ohio State University
         position: Undergraduate Research Assistant
         location: Athens, OH
@@ -89,6 +83,20 @@ cv:
         end_date: 2019-08
         highlights:
           - Published novel research in the theory of pattern formation, for the 2D Swift-Hohenberg Equation.
+    Teaching:
+      - company: Tufts University
+        position: Teaching
+        location: Somerville, MA, USA
+        highlights:
+          - Led recitations for Linear Algebra in Fall 2025.
+          - Teaching [Mathematics of Data Science](https://abhijit-c.github.io/tufts-math123-fall2026) in Fall 2026.
+      - company: North Carolina State University
+        position: Teaching Assistant
+        location: Raleigh, NC
+        #start_date: 2021-06
+        #end_date: present
+        highlights:
+          - Led recitations for Calculus I, II, and the honors variants for 5 semesters.
     publications:
       - title: 'Exploiting Exact Conditionals Improves Conditioning: Provably Fast Mixing Time Bounds By Sampling from the Marginal'
         authors:
@@ -159,10 +167,15 @@ cv:
           - Used in multiple research groups worldwide.
         #summary: Open-source model-
     talks:
+      - name: 'Randomized Strategies for Variable Projection in Hierarchical Inverse Problems'
+        date: 2026-11
+        highlights:
+          - SIAM IS 2026, Salt Lake City, UT (Nov 2026).
       - name: 'VPBoost: Variable Projection for Gradient Boosting and VarProNets'
         start_date: 2025-12
         end_date: present
         highlights:
+          - SIAM MDS 2026, Salt Lake City, UT (Nov 2026).
           - WCCM–ECCOMAS 2026, Munich, Germany (Jul 2026).
           - CMO Integrating Data- and Physics-Driven Methods for Decision Making under Uncertainty, Oaxaca, MX (June 2026)
           - SIAM UQ 2026, Minneapolis, MN (Mar 2026).
