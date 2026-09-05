@@ -1,0 +1,7 @@
+---
+title: "Teaching Math 123 at Tufts"
+date: 2026-09-05
+description: "I'm teaching [Math 123: Mathematics of Data Science](https://abhijit-c.github.io/tufts-math123-fall2026/) at Tufts University this fall."
+---
+
+I'm teaching [Math 123: Mathematics of Data Science](https://abhijit-c.github.io/tufts-math123-fall2026/) at Tufts University in Fall 2026.
