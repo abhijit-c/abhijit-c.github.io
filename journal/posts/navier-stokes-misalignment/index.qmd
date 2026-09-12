@@ -1,0 +1,209 @@
+---
+title: "Wait, What's My Job Description?"
+description: "On Tao's misalignment letter and on the role of a professional mathematician?"
+date: 2026-09-12
+categories: [personal, math, ai, opinion]
+draft: false
+reference-location: margin
+---
+
+Finally, a credible solution to the Navier-Stokes millenium problem has been produced[^clay]!
+Simultaneously, there's a scuffle going on regarding credit and simultaneous work, which I don't want to wade into here (though, is important).
+What I want to focus on is a document that appeared in the aftermath: Tao's ["A severe misalignment of AI in mathematics"](https://terrytao.wordpress.com/2026/09/11/a-severe-misalignment-of-ai-in-mathematics/), and the declaration it hosts, signed by twenty-five Fields Medalists.[^list]
+I have some thoughts on the matter that, if for no other purpose than clarifying them to myself, I'd like to write out.
+
+[^clay]: [Of course, pending the Clay institute's verification](https://www.claymath.org/news/navier-stokes-announcement/).
+[^list]: That is, a large concentration of apex mathematicians. And, I must emphasized, signed by many more.
+
+# That Which Makes for a Mathematical Contribution
+
+[Dr. Tao's a good writer, and the piece is short. I highly recommend reading it through.](https://terrytao.wordpress.com/2026/09/11/a-severe-misalignment-of-ai-in-mathematics/)
+But, if I were to point at one piece, it'd be the sentence:
+
+> solving problems is only a tool and proxy for achieving the primary goal of conceptual understanding and insight.
+
+Let me couch this for a moment: by isolating this sentence, the word *"only"* is working too hard.
+Obviously, solving problems is really fucking important to mathematics, mathematicians, and the world in general.
+I'm a computational ($\subseteq$ applied) mathematician.
+My work involves building tools to fill gaps in the mathematical armory, inspired by deficincies highlighted by real-world problems, and using said tools to beat said problems to death.
+The problem is central.
+
+However, that's only part of my duties. 
+In a typical 6-9 month mathematical project, actually solving the problem (whether it be theorem or code) is often taken care of more than half-way through.
+[Take, for example, my most recent preprint](https://arxiv.org/abs/2608.27884).
+I smelled what ended up being the correct proof pathway[^exploiting] basically in week one of the project.
+My outstanding, highly capable, collaborator managed prove it carefully within the next two months.
+It took us another *three* months to complete the technical writeup of the paper.
+
+[^exploiting]: Corollary 4.8 + Theorem 4.11 were the primarly theoretical engines.
+
+## Why Two Months to a Proof
+
+Most of those two months were spent groping around uselessly in the dark.
+We began the project with a hazy algorithmic intuition.
+Getting it to a precise statement that was both true and worth proving took understanding and clarity that we lacked!
+And, believe me, I prompted the shit of LLMs of that era to mostly no avail, apologies to the tokens for the useless questions I must have asked.
+
+Once the statement was pinned down, it was knocked over relatively quickly. 
+Especially in my field, that ratio is the usual one.
+Writing down a theorem that actually corresponds to a real problem is not a clerical step taken before the mathematics begins; it *is* mathematics. 
+Choosing the hypotheses, deciding which quantities the bound should be phrased in, knowing which generality are useful vs. useless decoration.
+All of that demands enough clarity about the underlying field to recognize what a useful answer would even look like. 
+Anyone handed the finished statement gets to skip the part that took us the longest.
+
+## Three Months to Write?!
+
+I mean, I could have slop'ed a writeup together in hours. 
+Give me a few more days for a diagram and some numerical experiments.
+The three months that followed were not typesetting[^anal]. 
+The theoretical tools, the integration with the existing literature, careful, correct, and useful numerical experiments, and indeed the proof details were refined, and refined, and refined again. 
+And then refined again because all four co-authors on this are exacting.
+And then once again because I got unecessarily scared about a detail that ultimately didn't matter.
+
+The theory in the final paper, in length is perhaps half of what we actually developed; the other half was cut, either because it turned out to be extraneous or because it illustrated nothing. 
+We narrowed statements, and the techniques got leaner and more transparent as we understood which steps were doing the real work. 
+None of that labor changed the truth value of the result! 
+All it changed whether anyone else could read the result, teach from it, or steal a technique out of it.
+
+[^anal]: Admittedly, we were probably overly anal about the presentation by about a month.
+
+# The Point of it All
+
+Returning to the millenium problem, I don't actually don't mind at all the use of LLMs in solving such problems.
+And, I think that OpenAI can be very proud that their swarm is capable of producing the material it did!
+Indeed, this is a new era of mathematics.
+
+What bothers me about [OpenAI's result](https://openai.com/index/navier-stokes-solution/) and to a lesser, but similar, extent [Tristan Buckmaster's preprint](https://mastodon.social/@tristanbuckmaster/117233413705701198), is that the associated lean code and writeups make no significant progress in being digestable.
+Admittedly, this is not my field.
+But I feel fairly confident that these papers are not meaningfully beyond LLM slop.
+At least Tristan apologies for this in his statement:
+
+> The Euler writeup, in particular, can only be described as AI slop. I am sorry for this. 
+
+No similar such admission from OpenAI. 
+
+I think that we are forgetting, fundamentally, the majority of our professional obligation.
+Our obligation to our community and our obligation to society!
+That is: build the kingdom of mathematics so that people[^llm-people] can *learn and use* it!
+This recent set of progress completely fails at this task.
+
+[^llm-people]: And, indeed, potentially machines!
+
+::: {.callout-note}
+
+As a brief interlude, to those who might claim that human digestion doesn't matter, I beg you to think of the poor LLM!
+As of now, an LLM needs to comb through millions of Lean LoC and a 100 page bad paper to begin to synthesize concepts about the technique.
+We all are aware of how easily misled an LLM may be, to settle for trees instead of the forest.
+But even ignoring that, who the fuck wants to pay for this?
+If the paper and lean code was well structured, digestable, and indeed perhaps even hooks for LLMs were developed to more easily navigate the ideas, we might be looking at the difference of about a month's pay worth of LLM bills vs. cents.
+The fundingmaxxed tech industry may be able to tank this, but our notoriously precariously funded academia and science needs efficiency. 
+
+:::
+
+# What a contribution is
+
+This is the part I actually want to think about. 
+OpenAI is going to bang their marketing drum, but I think the people who are enabling this reward hacking is the mathematical community itself.
+This might be controversial, but I think that the onus is on the mathematics community to change what we value.
+
+Why can't the mathematical community, as is, take the OpenAI results and distill them into usable, understandable, tools and insight?
+Difficulty and pain are issues, but not blockers really.
+I think every mathematician has developed thick skin for poor writing.
+That is, LLM slop is not novel in its ability to turn a hastily written technical lemma into a torture device; human mathematicians are plenty capable of doing this (on accident, I hope).
+
+If, indeed, the goal is understanding rather than truth-values, then the ranking of contributions in the field is not the ranking we advertise. 
+Advertised: Solving a hard problem is the highest thing you can do, and everything else is support work. 
+Actual: The person who takes a concept modern mathematicians do not understand and turns it into, say, six pages a graduate student can read has truly *solved* the field.
+
+We don't act like we believe this. 
+Nobody gets a Fields Medal for a simplification. 
+The expository paper, the good textbook, the seminar that makes a technique portable, the referee report that finds the real gap[^referee], the notation that makes a bad idea visible. 
+All of this is the thing the declaration says is primary, and all of it is the thing the field treats as service. 
+Through the forcing function of, to solve a problem you must first understand it, we have limped along over the centuries valuing the first-solve.
+
+[^referee]: The good referee is so powerful for our community. Alas, we're usually paired with the undervalued, busy, and often uncaring referee. To say nothing of the adversarial one.
+
+Today, the bundling of understanding and solutions has come undone.
+I would be surprised if anyone really digested OpenAI's preprint in its entirety before it was published.
+The declaration's identification of this is unambiguous and I think it is correct. 
+But, I think the indictment is on the field's own incentive structure more, if not at least as much as any lab.
+
+# Prior Art
+
+This is not the first time we've seen these cracks.
+There are two famous precedents that I'm aware of.
+
+::: {.callout-note}
+Let me be clear, I am extremely far from an expert in these projects. 
+I did some research, and I think I got the details mostly correct, but I warn you sincerely and invite correction.
+:::
+
+## Four Color: Still Untangled
+
+The four color theorem is the obvious case, and the discourse around Appel–Haken in 1977 reads, from someone admittedly who wasn't there, almost identically to this week's.
+Robertson, Sanders, Seymour, and Thomas, later [decided it was "more profitable" to write their own proof than to check that one](https://thomas.math.gatech.edu/FC/fourcolor.html).
+Their 1996 proof shares the idea of the original, as far as I understand, but slimmed things down to 633 configurations, 32 discharging rules instead of 300+, integer arithmetic throughout, etc.
+In 2005, [Gonthier and Werner formalized it in Coq](https://www.ams.org/notices/200811/tx081101382p.pdf)[^gonthier].
+Fifty years on, every step has made the proof leaner or the machine more trustworthy, and there is still no proof a human can check unaided.
+I think the mathematics community would still sincerely welcome further simplifications and insights derived from such efforts on this problem.
+
+[^gonthier]: Gonthier does report that being forced to define everything rigorously produced new insight into planarity.
+
+The classification of finite simple groups is similar[^help].
+I believe it was considered complete by the early 80s, with a gap that went unfilled until [Aschbacher and Smith's](http://homepages.math.uic.edu/~smiths/papers/quasithin/quasithin.pdf) two-volume quasithin work in 2004[^canon].
+The second-generation proof meant to make it surveyable (Gorenstein, Lyons, and Solomon, published since 1994) is still unfinished after ten volumes.
+We cite it constantly.
+This is not an exotic edge case.
+My field is one where a meaningful fraction of the literature is a numerical experiment plus a plausibility argument.
+I would love it if every computational paper came with conceptual insight. 
+Most don't.
+
+[^help]: Oh god, I'm speaking on abstract algebra. I'm really out of my wheelhouse now.
+
+[^canon]: A nonzero number of accepted results are simply wrong and nobody has noticed, which is the argument for formalization.
+	There is something odd about the same week containing both "we need machine verification because human legibility is unreliable" and "we need human legibility because machine verification is insufficient."
+	Both are true, obviously.
+
+## FLT: Untangledish
+
+Wiles' FLT argument was not simple either, but the untangling began almost immediately.
+Faltings reworked the key commutative algebra and explained the whole thing in a [short *Notices* piece](https://www.ams.org/notices/199507/faltings.pdf).
+Lenstra sharpened Wiles' numerical criterion, dropping a Gorenstein hypothesis.
+[Darmon, Diamond, and Taylor](https://www.math.mcgill.ca/darmon/pub/Articles/Expository/05.DDT/paper.pdf) folded these into a book-length survey.
+Diamond and Fujiwara, independently, patched in modules instead of rings, which removed the need for the hard multiplicity-one results entirely.
+Within about fifteen years the machinery had matured enough that Khare and Wintenberger used it to prove Serre's conjecture outright.
+This is a far from the vaunted "six pages understandable to a graduate student".
+But, a semester with heavy prerequisites is still pretty excellent work.
+
+Now, part of the reason simplification happened was because the result was known to be true, which changed what it was rational to spend a career on.
+But look at how it was packaged: Lenstra's criterion is *stronger* than Wiles', and Diamond–Fujiwara mattered because it reached cases the old method couldn't.
+Simplification got paid for by being smuggled in as generalization.
+I did found a reference to a 1995 Boston University instructional conference, organized explicitly to teach the proof and written up as [Cornell–Silverman–Stevens](https://link.springer.com/book/10.1007/978-1-4612-1974-3).
+
+These pieces of clarification are important for modern efforts on FLT as well!
+Consider the setting of formalization for these proofs.
+[Buzzard's project](https://github.com/ImperialCollegeLondon/FLT) follows a modern route planned by Richard Taylor that borrows heavily from Khare–Wintenberger; [the Claude-written proof Anthropic announced last week](https://www.anthropic.com/research/formalizing-fermats-last-theorem) follows Darmon–Diamond–Taylor[^flt-lean].
+I recommend [Buzzard's reaction to Anthropic's result, it's an interesting read.](https://xenaproject.wordpress.com/2026/09/04/flt-anthropic-has-beaten-me-to-it/).
+
+[^flt-lean]: 13 million lines of Lean and ~29,500 intermediate theorems, in eleven days. If I count my token costs correctly, around \$300K in USD?
+
+## Today
+
+If a machine produces the ugly first proof, the simplification program is still there and still valuable.
+Arguably more valuable, because you now know where to dig and that the digging terminates.
+So the worry I endorse is about employment: I worry if our lack of prestige for those who simplify will result in a world where nobody is left who professionally does.
+If the first-solve becomes cheap and simplification stays expensive and low-status, the pipeline that converts "true" into "understood" is broken.
+
+> without the willing mathematicians who must take care of their development and integration into the mathematical canon, AI-conceived ideas would never become fully alive.
+
+Willingness is a function of incentives.
+If we want the integration work done, it has to be a career and not a favor.
+
+# Open questions
+
+- Is there a version of formalization tooling that makes proofs *more* legible rather than less? 
+  I keep feeling there should be, and that this is the interesting technical problem hiding underneath all the discourse.
+- Concretely: what would it take to make simplification and exposition a fundable, promotable career track? 
+- What's the real precedent for how long "ugly first proof" takes to become "textbook chapter," and is there any reason to think the clock runs differently now?
+- My wrists hurt, I just spent 3 hours writing this. 
+  Should I see a doctor about that?
