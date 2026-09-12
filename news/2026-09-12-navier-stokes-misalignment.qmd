@@ -1,0 +1,7 @@
+---
+title: "New journal post: Wait, What's My Job Description?"
+date: 2026-09-12
+description: "New journal post: [Wait, What's My Job Description?](/journal/posts/navier-stokes-misalignment/index.qmd), on LLMs in mathematics and the role of a professional mathematician."
+---
+
+I've written a new journal post, [Wait, What's My Job Description?](/journal/posts/navier-stokes-misalignment/index.qmd), on LLMs in mathematics and the role of a professional mathematician.
