@@ -1,15 +1,15 @@
 ---
 title: "Wait, What's My Job Description?"
-description: "On Tao's misalignment letter and on the role of a professional mathematician?"
+description: "On Tao's misalignment letter and on the role of a professional mathematician"
 date: 2026-09-12
 categories: [personal, math, ai, opinion]
 draft: false
 reference-location: margin
 ---
 
-Finally, a credible solution to the Navier-Stokes millenium problem has been produced[^clay]!
-Simultaneously, there's a scuffle going on regarding credit and simultaneous work, which I don't want to wade into here (though, is important).
-What I want to focus on is a document that appeared in the aftermath: Tao's ["A severe misalignment of AI in mathematics"](https://terrytao.wordpress.com/2026/09/11/a-severe-misalignment-of-ai-in-mathematics/), and the declaration it hosts, signed by twenty-five Fields Medalists.[^list]
+A credible solution to the Navier-Stokes millenium problem has been produced[^clay]!
+But no one seems that happy about it!
+I want to highligh a document that appeared in the aftermath: Tao's ["A severe misalignment of AI in mathematics"](https://terrytao.wordpress.com/2026/09/11/a-severe-misalignment-of-ai-in-mathematics/), and the declaration it hosts, signed by twenty-five Fields Medalists.[^list]
 I have some thoughts on the matter that, if for no other purpose than clarifying them to myself, I'd like to write out.
 
 [^clay]: [Of course, pending the Clay institute's verification](https://www.claymath.org/news/navier-stokes-announcement/).
@@ -46,16 +46,17 @@ And, believe me, I prompted the shit of LLMs of that era to mostly no avail, apo
 
 Once the statement was pinned down, it was knocked over relatively quickly. 
 Especially in my field, that ratio is the usual one.
-Writing down a theorem that actually corresponds to a real problem is not a clerical step taken before the mathematics begins; it *is* mathematics. 
+Writing down a theorem that actually corresponds to a real problem is not a clerical step taken before the mathematics begins. 
+Being capable of lucidly stating it *is* mathematics!
 Choosing the hypotheses, deciding which quantities the bound should be phrased in, knowing which generality are useful vs. useless decoration.
-All of that demands enough clarity about the underlying field to recognize what a useful answer would even look like. 
+All of that demands enough clarity about the underlying structure to recognize what a useful answer would even look like. 
 Anyone handed the finished statement gets to skip the part that took us the longest.
 
 ## Three Months to Write?!
 
 I mean, I could have slop'ed a writeup together in hours. 
 Give me a few more days for a diagram and some numerical experiments.
-The three months that followed were not typesetting[^anal]. 
+I did not spend three months typesetting[^anal]!
 The theoretical tools, the integration with the existing literature, careful, correct, and useful numerical experiments, and indeed the proof details were refined, and refined, and refined again. 
 And then refined again because all four co-authors on this are exacting.
 And then once again because I got unecessarily scared about a detail that ultimately didn't matter.
@@ -63,7 +64,7 @@ And then once again because I got unecessarily scared about a detail that ultima
 The theory in the final paper, in length is perhaps half of what we actually developed; the other half was cut, either because it turned out to be extraneous or because it illustrated nothing. 
 We narrowed statements, and the techniques got leaner and more transparent as we understood which steps were doing the real work. 
 None of that labor changed the truth value of the result! 
-All it changed whether anyone else could read the result, teach from it, or steal a technique out of it.
+All it changed was whether anyone else could read the result, teach from it, or steal a technique out of it.
 
 [^anal]: Admittedly, we were probably overly anal about the presentation by about a month.
 
@@ -140,7 +141,7 @@ I did some research, and I think I got the details mostly correct, but I warn yo
 
 ## Four Color: Still Untangled
 
-The four color theorem is the obvious case, and the discourse around Appel–Haken in 1977 reads, from someone admittedly who wasn't there, almost identically to this week's.
+The four color theorem is the obvious case, and the discourse around Appel-Haken in 1977 reads, from someone admittedly who wasn't there, almost identically to this week's.
 Robertson, Sanders, Seymour, and Thomas, later [decided it was "more profitable" to write their own proof than to check that one](https://thomas.math.gatech.edu/FC/fourcolor.html).
 Their 1996 proof shares the idea of the original, as far as I understand, but slimmed things down to 633 configurations, 32 discharging rules instead of 300+, integer arithmetic throughout, etc.
 In 2005, [Gonthier and Werner formalized it in Coq](https://www.ams.org/notices/200811/tx081101382p.pdf)[^gonthier].
@@ -153,10 +154,6 @@ The classification of finite simple groups is similar[^help].
 I believe it was considered complete by the early 80s, with a gap that went unfilled until [Aschbacher and Smith's](http://homepages.math.uic.edu/~smiths/papers/quasithin/quasithin.pdf) two-volume quasithin work in 2004[^canon].
 The second-generation proof meant to make it surveyable (Gorenstein, Lyons, and Solomon, published since 1994) is still unfinished after ten volumes.
 We cite it constantly.
-This is not an exotic edge case.
-My field is one where a meaningful fraction of the literature is a numerical experiment plus a plausibility argument.
-I would love it if every computational paper came with conceptual insight. 
-Most don't.
 
 [^help]: Oh god, I'm speaking on abstract algebra. I'm really out of my wheelhouse now.
 
@@ -166,31 +163,30 @@ Most don't.
 
 ## FLT: Untangledish
 
-Wiles' FLT argument was not simple either, but the untangling began almost immediately.
+Wiles' FLT argument was not that clear either, but the untangling began almost immediately.
 Faltings reworked the key commutative algebra and explained the whole thing in a [short *Notices* piece](https://www.ams.org/notices/199507/faltings.pdf).
 Lenstra sharpened Wiles' numerical criterion, dropping a Gorenstein hypothesis.
-[Darmon, Diamond, and Taylor](https://www.math.mcgill.ca/darmon/pub/Articles/Expository/05.DDT/paper.pdf) folded these into a book-length survey.
+[Darmon, Diamond, and Taylor](https://www.math.mcgill.ca/darmon/pub/Articles/Expository/05.DDT/paper.pdf) folded these into a book length survey.
 Diamond and Fujiwara, independently, patched in modules instead of rings, which removed the need for the hard multiplicity-one results entirely.
 Within about fifteen years the machinery had matured enough that Khare and Wintenberger used it to prove Serre's conjecture outright.
 This is a far from the vaunted "six pages understandable to a graduate student".
 But, a semester with heavy prerequisites is still pretty excellent work.
 
 Now, part of the reason simplification happened was because the result was known to be true, which changed what it was rational to spend a career on.
-But look at how it was packaged: Lenstra's criterion is *stronger* than Wiles', and Diamond–Fujiwara mattered because it reached cases the old method couldn't.
+But look at how it was packaged: Lenstra's criterion is *stronger* than Wiles', and Diamond-Fujiwara mattered because it reached cases the old method couldn't.
 Simplification got paid for by being smuggled in as generalization.
 I did found a reference to a 1995 Boston University instructional conference, organized explicitly to teach the proof and written up as [Cornell–Silverman–Stevens](https://link.springer.com/book/10.1007/978-1-4612-1974-3).
 
 These pieces of clarification are important for modern efforts on FLT as well!
 Consider the setting of formalization for these proofs.
-[Buzzard's project](https://github.com/ImperialCollegeLondon/FLT) follows a modern route planned by Richard Taylor that borrows heavily from Khare–Wintenberger; [the Claude-written proof Anthropic announced last week](https://www.anthropic.com/research/formalizing-fermats-last-theorem) follows Darmon–Diamond–Taylor[^flt-lean].
+[Buzzard's project](https://github.com/ImperialCollegeLondon/FLT) follows a modern route planned by Richard Taylor that borrows heavily from Khare-Wintenberger; [the Claude-written proof Anthropic announced last week](https://www.anthropic.com/research/formalizing-fermats-last-theorem) follows Darmon–Diamond–Taylor[^flt-lean].
 I recommend [Buzzard's reaction to Anthropic's result, it's an interesting read.](https://xenaproject.wordpress.com/2026/09/04/flt-anthropic-has-beaten-me-to-it/).
 
-[^flt-lean]: 13 million lines of Lean and ~29,500 intermediate theorems, in eleven days. If I count my token costs correctly, around \$300K in USD?
+[^flt-lean]: 13M lines of Lean and ~30K intermediate theorems. If I count my token costs correctly, around \$300K in USD?
 
 ## Today
 
 If a machine produces the ugly first proof, the simplification program is still there and still valuable.
-Arguably more valuable, because you now know where to dig and that the digging terminates.
 So the worry I endorse is about employment: I worry if our lack of prestige for those who simplify will result in a world where nobody is left who professionally does.
 If the first-solve becomes cheap and simplification stays expensive and low-status, the pipeline that converts "true" into "understood" is broken.
 
@@ -205,5 +201,3 @@ If we want the integration work done, it has to be a career and not a favor.
   I keep feeling there should be, and that this is the interesting technical problem hiding underneath all the discourse.
 - Concretely: what would it take to make simplification and exposition a fundable, promotable career track? 
 - What's the real precedent for how long "ugly first proof" takes to become "textbook chapter," and is there any reason to think the clock runs differently now?
-- My wrists hurt, I just spent 3 hours writing this. 
-  Should I see a doctor about that?
