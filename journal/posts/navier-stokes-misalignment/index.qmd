@@ -164,9 +164,8 @@ We cite it constantly.
 
 [^help]: Oh god, I'm speaking on abstract algebra. I'm really out of my wheelhouse now.
 
-[^canon]: A nonzero number of accepted results are simply wrong and nobody has noticed, which is the argument for formalization.
-	There is something odd about the same week containing both "we need machine verification because human legibility is unreliable" and "we need human legibility because machine verification is insufficient."
-	Both are true, obviously.
+[^canon]: As a sidebar, this is partially my target as something solveable with formalization.
+	One day, perhaps every paper will be accompanied with a formalization.
 
 ### FLT: Untangledish
 
@@ -182,11 +181,11 @@ But, a semester with heavy prerequisites is still pretty excellent work.
 Now, part of the reason simplification happened was because the result was known to be true, which changed what it was rational to spend a career on.
 But look at how it was packaged: Lenstra's criterion is *stronger* than Wiles', and Diamond-Fujiwara mattered because it reached cases the old method couldn't.
 Simplification got paid for by being smuggled in as generalization.
-I did find a reference to a 1995 Boston University instructional conference, organized explicitly to teach the proof and written up as [Cornell–Silverman–Stevens](https://link.springer.com/book/10.1007/978-1-4612-1974-3).
+I did find a reference to a 1995 Boston University instructional conference, organized explicitly to teach the proof and written up as [Cornell-Silverman-Stevens](https://link.springer.com/book/10.1007/978-1-4612-1974-3).
 
 These pieces of clarification are important for modern efforts on FLT as well!
 Consider the setting of formalization for these proofs.
-[Buzzard's project](https://github.com/ImperialCollegeLondon/FLT) follows a modern route planned by Richard Taylor that borrows heavily from Khare-Wintenberger; [the Claude-written proof Anthropic announced last week](https://www.anthropic.com/research/formalizing-fermats-last-theorem) follows Darmon–Diamond–Taylor[^flt-lean].
+[Buzzard's project](https://github.com/ImperialCollegeLondon/FLT) follows a modern route planned by Richard Taylor that borrows heavily from Khare-Wintenberger; [the proof Anthropic announced last week](https://www.anthropic.com/research/formalizing-fermats-last-theorem) follows Darmon–Diamond–Taylor[^flt-lean].
 I recommend [Buzzard's reaction to Anthropic's result, it's an interesting read.](https://xenaproject.wordpress.com/2026/09/04/flt-anthropic-has-beaten-me-to-it/).
 
 [^flt-lean]: 13M lines of Lean and ~30K intermediate theorems. If I count my token costs correctly, around \$300K in USD?
