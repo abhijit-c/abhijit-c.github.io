@@ -209,6 +209,6 @@ If we want the integration work done, it has to be a career and not a favor.
 - How can we refine publishing and its surrounding culture to incentivize depth over paper spam?
 
 ::: {.callout-tip title="AI Disclosure"}
-Used Opus 5 to dig through literature for the FLT, four color theorem, and classification of groups examples.
+Used Opus 5 to dig through literature for the FLT, four color theorem, and classification of groups examples along with general typo checking.
 Writing and mistakes are all mine.
 :::
