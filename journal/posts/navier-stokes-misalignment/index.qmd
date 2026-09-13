@@ -8,8 +8,8 @@ reference-location: margin
 ---
 
 A credible solution to the Navier-Stokes millenium problem has been produced[^clay]!
-But no one seems that happy about it!
-I want to highligh a document that appeared in the aftermath: Tao's ["A severe misalignment of AI in mathematics"](https://terrytao.wordpress.com/2026/09/11/a-severe-misalignment-of-ai-in-mathematics/), and the declaration it hosts, signed by twenty-five Fields Medalists.[^list]
+But no one seems that happy about it.
+I wane to highlight a document that appeared in the aftermath: Tao's ["A severe misalignment of AI in mathematics"](https://terrytao.wordpress.com/2026/09/11/a-severe-misalignment-of-ai-in-mathematics/), and the declaration it hosts, signed by twenty-five Fields Medalists.[^list]
 I have some thoughts on the matter that, if for no other purpose than clarifying them to myself, I'd like to write out.
 
 [^clay]: [Of course, pending the Clay institute's verification](https://www.claymath.org/news/navier-stokes-announcement/).
@@ -198,6 +198,6 @@ If we want the integration work done, it has to be a career and not a favor.
 # Open questions
 
 - Is there a version of formalization tooling that makes proofs *more* legible rather than less? 
-  I keep feeling there should be, and that this is the interesting technical problem hiding underneath all the discourse.
-- Concretely: what would it take to make simplification and exposition a fundable, promotable career track? 
+- What would it take to make simplification and exposition a fundable, promotable career track? 
 - What's the real precedent for how long "ugly first proof" takes to become "textbook chapter," and is there any reason to think the clock runs differently now?
+- How can we refine publishing and its surrounding culture to incentivize depth over paper spam?
