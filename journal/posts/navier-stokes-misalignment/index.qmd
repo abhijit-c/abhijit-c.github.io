@@ -208,3 +208,8 @@ If we want the integration work done, it has to be a career and not a favor.
 - What would it take to make simplification and exposition a fundable, promotable career track? 
 - What's the real precedent for how long "ugly first proof" takes to become "textbook chapter," and is there any reason to think the clock runs differently now?
 - How can we refine publishing and its surrounding culture to incentivize depth over paper spam?
+
+::: {.callout-tip title="AI Disclosure"}
+Used Opus 5 to dig through literature for the FLT, four color theorem, and classification of groups examples.
+Writing and mistakes are all mine.
+:::
