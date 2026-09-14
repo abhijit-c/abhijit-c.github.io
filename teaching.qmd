@@ -1,6 +1,20 @@
 ---
 title: "Teaching"
-draft: true
 ---
 
-Teaching materials coming soon.
+## Instructor of Record
+
+- [Math 123: Mathematics of Data Science](https://abhijit-c.github.io/tufts-math123-fall2026/), Tufts University Fall 2026.
+
+## Recitation Leader
+
+- Recitation leader for Linear Algebra, Tufts University Fall 2025
+- Recitations for Honors Calculus I \& II, North Carolina State University Fall 2024 - Spring 2025
+
+## Mentoring
+
+- Organizing team for the [VERSEIM summer REU](https://sites.tufts.edu/verseimreu/), Tufts University Summer 2026.
+
+---
+
+![[Credit: Saturday Morning Breakfast Cereal](https://www.smbc-comics.com/comic/epsilon)](eps-delta-smbc.png){fig-alt="A villain threatens a calculus teacher between giant delta and epsilon symbols, saying, 'And now, good doctor, we will see how you fit between this delta and this epsilon!' The caption reads, 'Soon, soon the calculus teacher would become arbitrarily small.'" width=550 fig-align="center"}
