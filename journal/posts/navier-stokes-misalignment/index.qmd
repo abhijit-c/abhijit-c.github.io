@@ -61,12 +61,16 @@ The theoretical tools, the integration with the existing literature, careful, co
 And then refined again because all four co-authors on this are exacting.
 And then once again because I got unnecessarily scared about a detail that ultimately didn't matter.
 
+[^anal]: Admittedly, we were probably overly anal about the presentation by about a month.
+
 The theory in the final paper, in length is perhaps half of what we actually developed; the other half was cut, either because it turned out to be extraneous or because it illustrated nothing. 
 We narrowed statements, and the techniques got leaner and more transparent as we understood which steps were doing the real work. 
-None of that labor changed the truth value of the result! 
+None of that labor[^labor] changed the truth value of the result! 
 All it changed was whether anyone else could read the result, teach from it, or steal a technique out of it.
 
-[^anal]: Admittedly, we were probably overly anal about the presentation by about a month.
+[^labor]: To be clear, it would be aces if we could do this whole process, much faster.
+	I'm hopeful and excited for this!
+	However, I cannot compromise on the final quality bar.
 
 ## The Point of it All
 
