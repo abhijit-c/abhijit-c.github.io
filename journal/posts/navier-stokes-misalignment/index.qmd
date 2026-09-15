@@ -81,6 +81,7 @@ Indeed, this is a new era of mathematics.
 What bothers me about [OpenAI's result](https://openai.com/index/navier-stokes-solution/) and to a lesser, but similar, extent [Tristan Buckmaster's preprint](https://mastodon.social/@tristanbuckmaster/117233413705701198), is that the associated lean code and writeups make no significant progress in being digestible.
 Admittedly, this is not my field.
 But I feel fairly confident that these papers are not meaningfully beyond LLM slop.
+One may consult the opening remarks of [Javier Gomez-Serrano's digestion of the papers for an expert opinion](https://youtu.be/TcEefrWrddA?si=B-Kif9hyFLiJgmhw).
 At least Tristan apologizes for this in his statement:
 
 > The Euler writeup, in particular, can only be described as AI slop. I am sorry for this. 
