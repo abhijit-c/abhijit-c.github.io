@@ -1,6 +1,6 @@
 ---
-title: "Variable Projection Cannot Worsen Hessian Conditioning—in Lean 4"
-description: "An annotated Lean 4 guide to the Schur-complement proof that eliminating a variable cannot worsen the spectral condition number."
+title: "Exploring Lean 4 for Mathematical Research"
+description: "An annotated Lean 4 guide to a common theorem in my research."
 date: 2026-07-23
 categories: [math, optimization, linear algebra, Lean, formalization]
 from: markdown+tex_math_single_backslash
@@ -17,6 +17,15 @@ draft: true
 reference-location: margin
 ---
 
+There's been a lot of interest recently in automated theorem provers for mathematics.
+Indeed, as a nerd, I find the idea very compelling!
+However, I feel like it's a pretty common sentiment that a 'proof in words' is far easier to produce, while also being far more readible.
+Personally, I think that computational theorem enviornments will not gain traction while that remains true.
+
+But I don't know that for certain, I've never really tried to use it on anything resembling a theorem in my research.
+So, here, I wanted to try and push a little bit and create a `lean` proof for a basic theorem I've found myself using frequently in my latest line of research.
+
+## Variable Projection 
 Variable projection replaces an optimization problem in two groups of
 variables,
 \[
@@ -416,31 +425,3 @@ theorem schur_complement_conditioning
     sqX sqY hμFull hLReduced hsqX hsqXZero hLower hUpper
     (xStar_minimizes A B D hA hAPos) hBestLower hBestUpper
 ```
-
-## What Lean Clarified
-
-The formal proof suggests a useful way to remember the theorem.
-
-First, the result is fundamentally variational, not spectral. Eigenvalues
-enter only at the end, when sharp quadratic bounds are identified with
-Rayleigh-quotient extrema.
-
-Second, exact elimination is essential. If \(x_*(y)\) is computed only
-approximately, the reduced quadratic need not be the exact minimum of the
-full quadratic. A perturbed result would need an explicit error term.
-
-Third, positive definiteness does two jobs: it makes the spectral condition
-number meaningful, and it makes the completed square nonnegative. Those are
-logically distinct uses of the same assumption.
-
-The concise mathematical summary is
-\[
-  v^\mathsf{T}Sv
-  =
-  \min_u
-  \begin{bmatrix}u\\v\end{bmatrix}^{\mathsf T}
-  H
-  \begin{bmatrix}u\\v\end{bmatrix}.
-\]
-From this identity, both endpoint inequalities—and therefore the condition
-number comparison—follow immediately.
