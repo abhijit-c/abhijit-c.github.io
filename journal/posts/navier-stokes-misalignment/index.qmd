@@ -139,6 +139,11 @@ Note, the declaration is broader than what I'm talking about here.
 In particular, they also assert that mining millennium problems robs the mathematical community of the intermediate theory that would have been developed through the attempts and failures.
 I think this is true, but overall symptomatic of what I'm identifying as the community's rewarded values.
 
+There's also the point that, if LLMs and swarms thereof become required for mathematical research, who is going to bear the cost burden?
+By my very rough estimates, the proof and verification together would have cost roughly ~\$15-20 Million.
+Which, again, is very roughly equivalent to the NSF's *entire* yearly investment into the next generation of mathematicians (through CAREER grants).
+I'm aghast at this situation and don't have a good solution.
+
 :::
 
 ## Prior Art
