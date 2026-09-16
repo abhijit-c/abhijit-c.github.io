@@ -195,7 +195,7 @@ I did find a reference to a 1995 Boston University instructional conference, org
 
 These pieces of clarification are important for modern efforts on FLT as well!
 Consider the setting of formalization for these proofs.
-[Buzzard's project](https://github.com/ImperialCollegeLondon/FLT) follows a modern route planned by Richard Taylor that borrows heavily from Khare-Wintenberger; [the proof Anthropic announced last week](https://www.anthropic.com/research/formalizing-fermats-last-theorem) follows Darmon–Diamond–Taylor[^flt-lean].
+[Buzzard's project](https://github.com/ImperialCollegeLondon/FLT) follows a modern route planned by Richard Taylor that borrows heavily from Khare-Wintenberger; [the proof Anthropic announced last week](https://www.anthropic.com/research/formalizing-fermats-last-theorem) follows Darmon-Diamond-Taylor[^flt-lean].
 I recommend [Buzzard's reaction to Anthropic's result, it's an interesting read.](https://xenaproject.wordpress.com/2026/09/04/flt-anthropic-has-beaten-me-to-it/).
 
 [^flt-lean]: 13M lines of Lean and ~30K intermediate theorems. If I count my token costs correctly, around \$300K in USD?
