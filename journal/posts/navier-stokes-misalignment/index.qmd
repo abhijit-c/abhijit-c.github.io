@@ -203,8 +203,9 @@ I recommend [Buzzard's reaction to Anthropic's result, it's an interesting read.
 ## Today
 
 If a machine produces the ugly first proof, the simplification program is still there and still valuable.
-So the worry I endorse is about employment: I worry if our lack of prestige for those who simplify will result in a world where nobody is left who does so professionally.
-If the first-solve becomes cheap and simplification stays expensive and low-status, the pipeline that converts "true" into "understood" is broken.
+I worry if our lack of prestige for those who simplify will result in a world where nobody is left who does so professionally.
+This would be the death of academic mathematics.
+If the first-solve becomes cheap and simplification stays expensive and low-status, the pipeline that converts "true" into "understood" is shattered. 
 
 > without the willing mathematicians who must take care of their development and integration into the mathematical canon, AI-conceived ideas would never become fully alive.
 
@@ -213,8 +214,8 @@ If we want the integration work done, it has to be a career and not a favor.
 
 ## Open questions
 
-- Is there a version of formalization tooling that makes proofs *more* legible rather than less? 
-- What would it take to make simplification and exposition a fundable, promotable career track? 
+- Is there a version of formalization tooling that makes proofs *more* legible rather than less?
+- What would it take to make simplification and exposition a fundable, promotable career track?
 - What's the real precedent for how long "ugly first proof" takes to become "textbook chapter," and is there any reason to think the clock runs differently now?
 - How can we refine publishing and its surrounding culture to incentivize depth over paper spam?
 
