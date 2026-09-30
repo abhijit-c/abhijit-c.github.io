@@ -257,6 +257,15 @@
   letter_url: https://apply.interfolio.com/193591
   deadline: 2026-11-15
   notes: One letter should largely address teaching.
+  status: withdrawn
+
+- institution: University of Utah
+  position: Tenure-Track in Applied Mathematics
+  role: tt
+  systems: [mathjobs]
+  url: https://www.mathjobs.org/jobs/list/28814
+  deadline: 2026-11-01
+  notes: Four or more letters; one must address teaching. Review begins Nov 1.
 
 - institution: Georgia Institute of Technology
   position: Open Rank Tenured/Tenure-Track Faculty
