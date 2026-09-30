@@ -1,0 +1,134 @@
+---
+title: "Information for Letter Writers (and Myself)"
+search: false
+execute:
+  freeze: false
+include-in-header:
+  text: |
+    <meta name="robots" content="noindex, nofollow">
+---
+
+Thank you for writing on my behalf! 
+I appreciate that you likely have a ton of these to send out, so I collected some of the basics here.
+Below is every position I'm applying to this cycle and how each one collects letters.
+
+- **MathJobs**: You'll get a email, and you upload once on [MathJobs](https://www.mathjobs.org).
+- **Interfolio**: Once again, you'll get a email and upload a single time.
+- **Portal**: the institution runs its own system (sorry) and emails you an upload link once I submit.
+- **Email**: Incredibly, you have to straight up email these ones.
+- **If shortlisted**: I only give your contact details; the institution will reach out if it wants a letter.
+- **None**: no letters requested.
+
+So, in total, it should be 1 (mathjobs) + 1 (interfolio) + $N_{\rm portal}$ + 2 (email) uploads by you. 
+Plus, potentially, any that shortlist me longer down the line.
+For all of these outside of those expecting the direct emailed references, you'll get the information straight to your inbox at minimum 2 weeks prior.
+
+```{python}
+#| echo: false
+#| output: asis
+
+import datetime as dt
+from pathlib import Path
+
+import yaml
+
+ROLES = {"tt": "Tenure-track", "postdoc": "Postdoc"}
+SYSTEMS = {
+    "email": "Email",
+    "bespoke": "Portal",
+    "mathjobs": "MathJobs",
+    "interfolio": "Interfolio",
+    "ajo": "AcademicJobsOnline",
+    "later": "If shortlisted",
+}
+
+apps = yaml.safe_load(Path("applications.yml").read_text()) or []
+apps = [a for a in apps if a.get("status") != "withdrawn"]
+
+for a in apps:
+    assert a["role"] in ROLES, f"{a['institution']}: unknown role {a['role']!r}"
+    for s in a["systems"]:
+        assert s in SYSTEMS, f"{a['institution']}: unknown system {s!r}"
+
+def deadline_key(a):
+    d = a.get("deadline")
+    return (d is None, d or dt.date.max, a["institution"])
+
+def deadline_cell(a):
+    d = a.get("deadline")
+    if d is None:
+        return "Rolling"
+    return f'<span class="letter-deadline" data-deadline="{d.isoformat()}">{d:%b %-d, %Y}</span>'
+
+def systems_cell(a):
+    parts = []
+    for s in a["systems"]:
+        if s != "mathjobs" and a.get("letter_url"):
+            parts.append(f"[{SYSTEMS[s]}]({a['letter_url']})")
+        else:
+            parts.append(SYSTEMS[s])
+    return " + ".join(parts) or "None"
+
+COLUMNS = {
+    "institution": ("Institution", lambda a: f"[{a['institution']}]({a['url']})"),
+    "position": ("Position", lambda a: a["position"]),
+    "role": ("Role", lambda a: ROLES[a["role"]]),
+    "systems": ("Letters via", systems_cell),
+    "deadline": ("Deadline", deadline_cell),
+    "notes": ("Notes", lambda a: a.get("notes", "").replace("\n", " ")),
+}
+
+def table(rows, cols):
+    rows = sorted(rows, key=deadline_key)
+    out = ["| " + " | ".join(COLUMNS[c][0] for c in cols) + " |",
+           "|" + "---|" * len(cols)]
+    for a in rows:
+        out.append("| " + " | ".join(COLUMNS[c][1](a) for c in cols) + " |")
+    return "\n".join(out) + "\n"
+
+n_tt = sum(a["role"] == "tt" for a in apps)
+n_pd = sum(a["role"] == "postdoc" for a in apps)
+print(f"**{len(apps)} applications**: {n_tt} tenure-track, {n_pd} postdoc.\n")
+
+print("::: {.panel-tabset}\n")
+
+print("## By deadline\n")
+print(table(apps, ["deadline", "institution", "position", "role", "systems", "notes"]))
+
+print("## By letter system\n")
+for key, name in SYSTEMS.items():
+    rows = [a for a in apps if key in a["systems"]]
+    if rows:
+        print(f"### {name} ({len(rows)})\n")
+        print(table(rows, ["deadline", "institution", "position", "role", "systems", "notes"]))
+rows = [a for a in apps if not a["systems"]]
+if rows:
+    print(f"### None ({len(rows)})\n")
+    print(table(rows, ["deadline", "institution", "position", "role", "notes"]))
+
+print("## By role\n")
+for key, name in ROLES.items():
+    rows = [a for a in apps if a["role"] == key]
+    if rows:
+        print(f"### {name} ({len(rows)})\n")
+        print(table(rows, ["deadline", "institution", "position", "systems", "notes"]))
+
+print(":::\n")
+```
+
+```{=html}
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var today = new Date().toISOString().slice(0, 10);
+  document.querySelectorAll('.letter-deadline').forEach(function (el) {
+    if (el.dataset.deadline < today) {
+      var row = el.closest('tr');
+      if (row) row.classList.add('letter-past');
+    }
+  });
+});
+</script>
+<style>
+tr.letter-past td { opacity: 0.45; }
+</style>
+```

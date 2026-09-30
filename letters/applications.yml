@@ -1,0 +1,446 @@
+# Applications list for letter writers, rendered by letters/index.qmd.
+#
+# One entry per application. Fields:
+#   institution  (required) e.g. "Purdue University"
+#   position     (required) position title as advertised
+#   role         (required) one of: postdoc, tt
+#   systems      (required) list of where letters go, any of:
+#                  mathjobs    letters uploaded on MathJobs
+#                  interfolio  letters uploaded on Interfolio (set letter_url)
+#                  ajo         letters uploaded on AcademicJobsOnline
+#                  bespoke     the institution's own portal emails the writer
+#                  email       letters emailed directly (set letter_url: mailto:...)
+#                  later       only contact info collected; letters requested if shortlisted
+#                an empty list [] means no letters are requested
+#   url          (required) link to the job ad
+#   deadline     (optional) YYYY-MM-DD; the date letters should be in by
+#                (full-consideration / review-start date when the ad gives one)
+#   letter_url   (optional) direct letter-upload link (interfolio / ajo / portal / mailto)
+#   notes        (optional) anything a letter writer should know (markdown ok)
+#   status       (optional) set to "withdrawn" to hide an entry without deleting it
+
+# ---------------------------------------------------------------- Postdocs
+
+- institution: National Science Foundation
+  position: Mathematical Sciences Postdoctoral Research Fellowship (MSPRF)
+  role: postdoc
+  systems: [bespoke]
+  url: https://www.nsf.gov/funding/opportunities/msprf-mathematical-sciences-postdoctoral-research-fellowships
+  letter_url: https://www.research.gov
+  deadline: 2026-10-21
+  notes: Requests come from Research.gov with an invitation code. Letters are due with the proposal, 5 pm Eastern on Oct 21.
+
+- institution: New York University (Courant)
+  position: Courant Instructor
+  role: postdoc
+  systems: [interfolio]
+  url: https://www.mathjobs.org/jobs/list/29082
+  letter_url: https://apply.interfolio.com/193426
+  deadline: 2026-11-15
+
+- institution: Flatiron Institute (Center for Computational Mathematics)
+  position: Flatiron Research Fellow
+  role: postdoc
+  systems: [interfolio]
+  url: https://www.mathjobs.org/jobs/list/29080
+  letter_url: https://apply.interfolio.com/193799
+  deadline: 2026-11-15
+
+- institution: University of California (President's Postdoctoral Fellowship)
+  position: UC President's Postdoctoral Fellowship
+  role: postdoc
+  systems: [bespoke]
+  url: https://www.mathjobs.org/jobs/list/29075
+  letter_url: https://ppfpapply.ucop.edu
+  deadline: 2026-11-01
+  notes: Requests come from the UC PPFP portal.
+  status: withdrawn
+
+- institution: Georgia Institute of Technology
+  position: Hale Visiting Assistant Professor
+  role: postdoc
+  systems: [mathjobs]
+  url: https://www.mathjobs.org/jobs/list/29074
+  deadline: 2026-11-01
+  notes: Four letters; one should address teaching.
+
+- institution: Stanford University (Mathematics)
+  position: Szegő Assistant Professor
+  role: postdoc
+  systems: [mathjobs]
+  url: https://www.mathjobs.org/jobs/list/29067
+  deadline: 2026-11-19
+  notes: One letter should address teaching.
+  status: withdrawn
+
+- institution: University of Texas at Austin (Mathematics)
+  position: R. H. Bing Instructor
+  role: postdoc
+  systems: [interfolio]
+  url: https://www.mathjobs.org/jobs/list/29059
+  letter_url: https://apply.interfolio.com/194468
+  deadline: 2026-11-30
+  notes: One letter should address teaching.
+  status: withdrawn
+
+- institution: Stanford University (Statistics)
+  position: Stein Fellow
+  role: postdoc
+  systems: [ajo]
+  url: https://www.mathjobs.org/jobs/list/29041
+  letter_url: https://academicprogramsonline.org/ajo/jobs/32845
+  deadline: 2026-11-15
+  notes: Requests are sent by AcademicJobsOnline when I submit.
+  status: withdrawn
+
+- institution: University of Chicago (Data Science Institute)
+  position: DSI Postdoctoral Scholar
+  role: postdoc
+  systems: [bespoke]
+  url: https://www.mathjobs.org/jobs/list/29035
+  deadline: 2026-11-16
+  notes: Requests come from UChicago's InfoReady portal. Review begins Nov 16.
+
+- institution: University of Tokyo (Kavli IPMU)
+  position: Kavli IPMU Postdoctoral Fellowship
+  role: postdoc
+  systems: [ajo]
+  url: https://www.mathjobs.org/jobs/list/29030
+  letter_url: https://academicjobsonline.org/ajo/UTokyo/KavliIPMU/PD2026
+  deadline: 2026-11-15
+  notes: Deadline is 23:59 Japan time (morning of Nov 15 in the US).
+  status: withdrawn
+
+- institution: University of Waterloo (Applied Mathematics)
+  position: Waterloo-Fields Postdoctoral Fellowship
+  role: postdoc
+  systems: [mathjobs]
+  url: https://www.mathjobs.org/jobs/list/28996
+  deadline: 2026-11-20
+
+- institution: Rice University (CMOR)
+  position: Pfeiffer Postdoctoral Instructor
+  role: postdoc
+  systems: [interfolio]
+  url: https://www.mathjobs.org/jobs/list/28957
+  letter_url: https://apply.interfolio.com/193440
+  deadline: 2027-01-31
+
+- institution: Lawrence Berkeley National Laboratory
+  position: Alvarez & Hopper Postdoctoral Fellowships
+  role: postdoc
+  systems: [later]
+  url: https://www.mathjobs.org/jobs/list/28946
+  deadline: 2026-10-30
+  notes: I only list your contact info; the lab will reach out if it needs a letter.
+
+- institution: Purdue University
+  position: Golomb Visiting Assistant Professor
+  role: postdoc
+  systems: [mathjobs]
+  url: https://www.mathjobs.org/jobs/list/28869
+  deadline: 2026-11-30
+
+- institution: Massachusetts Institute of Technology
+  position: C.L.E. Moore Instructor
+  role: postdoc
+  systems: [mathjobs]
+  url: https://www.mathjobs.org/jobs/list/28848
+  deadline: 2026-12-01
+  notes: One letter should ideally address teaching.
+
+- institution: Brown University (Applied Mathematics)
+  position: LFZ/Prager Assistant Professor
+  role: postdoc
+  systems: [mathjobs]
+  url: https://www.mathjobs.org/jobs/list/28730
+  deadline: 2026-11-02
+  notes: One letter should address teaching.
+
+- institution: University of Washington (Applied Mathematics)
+  position: Pearson Fellow
+  role: postdoc
+  systems: [interfolio]
+  url: https://www.mathjobs.org/jobs/list/28818
+  letter_url: https://apply.interfolio.com/191255
+  deadline: 2026-12-15
+  notes: One letter should address teaching.
+
+- institution: University of Texas at Austin (Oden Institute)
+  position: Oden Institute Postdoctoral Fellowship
+  role: postdoc
+  systems: []
+  url: https://www.mathjobs.org/jobs/list/28796
+  deadline: 2026-12-01
+
+- institution: Princeton University
+  position: Junior Faculty (Postdoctorate)
+  role: postdoc
+  systems: [mathjobs]
+  url: https://www.mathjobs.org/jobs/list/28695
+  deadline: 2026-11-15
+  status: withdrawn
+
+- institution: Princeton University (PACM)
+  position: Postdoctoral Research Associate
+  role: postdoc
+  systems: [mathjobs]
+  url: https://www.mathjobs.org/jobs/list/28508
+  notes: Reviewed on a rolling basis (final deadline May 31, 2027), so earlier is better.
+
+# ---------------------------------------------------------- Tenure-track
+
+- institution: Michigan State University
+  position: Assistant Professor (Statistics & Probability)
+  role: tt
+  systems: [mathjobs, bespoke]
+  url: https://www.mathjobs.org/jobs/list/29078
+  deadline: 2026-11-30
+  status: withdrawn
+
+- institution: Colorado State University
+  position: Assistant Professor (Computational Mathematics)
+  role: tt
+  systems: [bespoke]
+  url: https://www.mathjobs.org/jobs/list/29071
+  deadline: 2026-11-13
+  notes: Requests come from CSU's Workday system after I submit.
+
+- institution: University of North Carolina at Chapel Hill (School of Data and Information Sciences)
+  position: Open Rank Professor (Data Science)
+  role: tt
+  systems: [bespoke]
+  url: https://www.mathjobs.org/jobs/list/29070
+  deadline: 2026-11-15
+  notes: Requests come from UNC's PeopleAdmin system. One of four letters should address teaching.
+  status: withdrawn
+
+- institution: Rutgers University (New Brunswick)
+  position: Tenure-Track Faculty
+  role: tt
+  systems: [mathjobs]
+  url: https://www.mathjobs.org/jobs/list/29050
+  deadline: 2026-11-01
+  notes: Four or more letters; one should primarily address teaching.
+
+- institution: Columbia University
+  position: Assistant Professor in Mathematics
+  role: tt
+  systems: [mathjobs]
+  url: https://www.mathjobs.org/jobs/list/29049
+  deadline: 2026-11-16
+  notes: Three research letters plus a separate teaching letter, all on MathJobs.
+  status: withdrawn
+
+- institution: Georgetown University
+  position: Tenure-Track Assistant Professor (Applied Mathematics)
+  role: tt
+  systems: [interfolio]
+  url: https://www.mathjobs.org/jobs/list/29046
+  letter_url: https://apply.interfolio.com/194455
+  deadline: 2026-11-15
+
+- institution: New York University (Courant)
+  position: Tenure-Track Assistant Professor in Mathematics
+  role: tt
+  systems: [interfolio]
+  url: https://www.mathjobs.org/jobs/list/29044
+  letter_url: https://apply.interfolio.com/193868
+  deadline: 2026-11-15
+  notes: One letter must address teaching.
+
+- institution: Wake Forest University
+  position: Assistant Professor (Applied Mathematics)
+  role: tt
+  systems: [interfolio]
+  url: https://www.mathjobs.org/jobs/list/29043
+  letter_url: https://apply.interfolio.com/193591
+  deadline: 2026-11-15
+  notes: One letter should largely address teaching.
+
+- institution: Georgia Institute of Technology
+  position: Open Rank Tenured/Tenure-Track Faculty
+  role: tt
+  systems: [mathjobs]
+  url: https://www.mathjobs.org/jobs/list/29009
+  deadline: 2026-10-15
+  notes: Four letters; one should address teaching.
+
+- institution: University of Arkansas
+  position: Assistant Professor in Computational Methods in Math
+  role: tt
+  systems: [email]
+  url: https://www.mathjobs.org/jobs/list/28993
+  letter_url: mailto:TT-CompMath-AY27@uark.edu
+  deadline: 2026-10-15
+  notes: Email letters to TT-CompMath-AY27@uark.edu. One of four should address teaching.
+
+- institution: Iowa State University
+  position: Assistant Professor of Mathematics
+  role: tt
+  systems: [mathjobs, bespoke]
+  url: https://www.mathjobs.org/jobs/list/28992
+  deadline: 2026-10-31
+  notes: Four letters required; one should address teaching.
+  status: withdrawn
+
+- institution: University of California, San Diego
+  position: Assistant Professor in Mathematical Statistics
+  role: tt
+  systems: [bespoke]
+  url: https://www.mathjobs.org/jobs/list/28987
+  letter_url: https://apol-recruit.ucsd.edu/JPF04662
+  deadline: 2026-10-22
+  notes: Requests come from UC Recruit. One letter should address teaching in some depth.
+  status: withdrawn
+
+- institution: University of Rochester
+  position: Assistant Professor in Probability
+  role: tt
+  systems: [interfolio]
+  url: https://www.mathjobs.org/jobs/list/28977
+  letter_url: https://apply.interfolio.com/193830
+  deadline: 2026-11-01
+  status: withdrawn
+
+- institution: University of Pennsylvania (Wharton Statistics and Data Science)
+  position: Assistant Professor of Statistics and Data Science
+  role: tt
+  systems: [interfolio]
+  url: https://www.mathjobs.org/jobs/list/28960
+  letter_url: https://apply.interfolio.com/193446
+  deadline: 2026-11-15
+  notes: Interfolio emails you a request automatically.
+  status: withdrawn
+
+- institution: University of Louisville
+  position: Assistant Professor of Mathematics
+  role: tt
+  systems: [mathjobs]
+  url: https://www.mathjobs.org/jobs/list/28958
+  deadline: 2026-11-01
+  notes: One letter should also comment on teaching.
+
+- institution: University of New Mexico
+  position: Assistant Professor in Data Science
+  role: tt
+  systems: [email]
+  url: https://www.mathjobs.org/jobs/list/28942
+  letter_url: mailto:ahathawa@unm.edu
+  deadline: 2026-10-19
+  notes: Email letters to ahathawa@unm.edu (or mail to the Data Science Search Committee). One of four should address teaching.
+
+- institution: Northwestern University (Engineering Sciences and Applied Mathematics)
+  position: Faculty Position in Applied Mathematics
+  role: tt
+  systems: [bespoke]
+  url: https://www.mathjobs.org/jobs/list/28939
+  deadline: 2026-11-30
+  notes: Requests are emailed automatically by Northwestern's faculty recruiting system.
+
+- institution: University of Texas at Arlington
+  position: Assistant Professor in Mathematics (Inverse Problems & Imaging)
+  role: tt
+  systems: [later]
+  url: https://www.mathjobs.org/jobs/list/28915
+  deadline: 2026-12-01
+  notes: I only list your contact info; one of four should address teaching.
+
+- institution: Virginia Tech
+  position: Assistant Professor
+  role: tt
+  systems: [later]
+  url: https://www.mathjobs.org/jobs/list/28907
+  deadline: 2026-10-23
+  notes: References are contacted only for candidates being considered for a screening interview.
+
+- institution: Tufts University
+  position: Assistant Professor for Applied Math
+  role: tt
+  systems: [mathjobs]
+  url: https://www.mathjobs.org/jobs/list/28879
+  deadline: 2026-11-01
+  notes: One of four letters should address teaching. If you can't use MathJobs, a signed PDF to wendy.medeiros@tufts.edu works.
+
+- institution: Texas Tech University
+  position: Assistant Professor in Computational Mathematics
+  role: tt
+  systems: [later]
+  url: https://www.mathjobs.org/jobs/list/28860
+  deadline: 2026-11-01
+  notes: Letters are requested only from semi-finalists.
+
+- institution: Brown University (Applied Mathematics)
+  position: Assistant Professor
+  role: tt
+  systems: [mathjobs]
+  url: https://www.mathjobs.org/jobs/list/28729
+  deadline: 2026-11-02
+  notes: One letter should address teaching.
+
+- institution: University of Florida
+  position: Assistant Professor
+  role: tt
+  systems: [mathjobs, bespoke]
+  url: https://www.mathjobs.org/jobs/list/28841
+  deadline: 2026-11-15
+  notes: UF's own system also emails you a request for the letter.
+  status: withdrawn
+
+- institution: Johns Hopkins University (Applied Mathematics and Statistics)
+  position: Tenure-Track Faculty
+  role: tt
+  systems: [interfolio]
+  url: https://www.mathjobs.org/jobs/list/29024
+  letter_url: https://apply.interfolio.com/194226
+  deadline: 2026-11-01
+  notes: Review begins Nov 1; full consideration by Dec 1.
+
+- institution: University of Michigan
+  position: LSA Collegiate Fellow / Tenure-Track Assistant Professor
+  role: tt
+  systems: [mathjobs]
+  url: https://www.mathjobs.org/jobs/list/28811
+  deadline: 2026-11-15
+  notes: Four or more letters; one should address teaching potential.
+  status: withdrawn
+
+- institution: North Carolina State University
+  position: Assistant/Associate/Full Professor
+  role: tt
+  systems: [mathjobs]
+  url: https://www.mathjobs.org/jobs/list/28810
+  deadline: 2026-11-01
+  status: withdrawn
+
+- institution: University at Buffalo (SUNY)
+  position: Assistant Professor (Applied Mathematics)
+  role: tt
+  systems: [mathjobs]
+  url: https://www.mathjobs.org/jobs/list/28763
+  deadline: 2026-10-16
+  notes: Four or more letters; one should address teaching.
+
+- institution: University of Missouri
+  position: Tenure-Track Assistant Professor
+  role: tt
+  systems: [mathjobs]
+  url: https://www.mathjobs.org/jobs/list/28706
+  deadline: 2026-11-02
+  notes: Four letters; one should discuss teaching.
+
+- institution: University of Notre Dame (ACMS)
+  position: Assistant Professor in Applied and Computational Mathematics and Statistics
+  role: tt
+  systems: [interfolio]
+  url: https://www.mathjobs.org/jobs/list/28679
+  letter_url: https://apply.interfolio.com/187311
+  deadline: 2026-11-20
+
+- institution: University of Maryland
+  position: Assistant Professor
+  role: tt
+  systems: [mathjobs]
+  url: https://www.mathjobs.org/jobs/list/28657
+  deadline: 2026-10-30
+  notes: Four letters; one should address teaching.
