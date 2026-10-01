@@ -134,6 +134,14 @@
   deadline: 2027-02-28
   notes: With Maarten de Hoop.
 
+- institution: ETH Zurich (Mathematics)
+  position: Hermann-Weyl-Instructor
+  role: postdoc
+  systems: [mathjobs]
+  url: https://www.mathjobs.org/jobs/list/29101
+  deadline: 2026-11-01
+  notes: Four letters; one may address teaching. MathJobs accepts letters until Nov 5, but the committee asks for them by Nov 1.
+
 - institution: Lawrence Berkeley National Laboratory
   position: Alvarez & Hopper Postdoctoral Fellowships
   role: postdoc
@@ -206,6 +214,14 @@
   notes: Reviewed on a rolling basis (final deadline May 31, 2027), so earlier is better.
 
 # ---------------------------------------------------------- Tenure-track
+
+- institution: University of Illinois Chicago
+  position: Assistant Professor (Mathematical Computer Science)
+  role: tt
+  systems: [mathjobs]
+  url: https://www.mathjobs.org/jobs/list/29098
+  deadline: 2026-11-09
+  notes: Three letters; one should address teaching. Full consideration by Nov 9 (final deadline Dec 1).
 
 - institution: Michigan State University
   position: Assistant Professor (Statistics & Probability)
