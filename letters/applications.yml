@@ -126,6 +126,14 @@
   letter_url: https://apply.interfolio.com/193440
   deadline: 2027-01-31
 
+- institution: Rice University (CMOR)
+  position: Postdoctoral Research Position (Machine Learning & Inverse Problems)
+  role: postdoc
+  systems: [mathjobs]
+  url: https://www.mathjobs.org/jobs/list/29095
+  deadline: 2027-02-28
+  notes: With Maarten de Hoop.
+
 - institution: Lawrence Berkeley National Laboratory
   position: Alvarez & Hopper Postdoctoral Fellowships
   role: postdoc
@@ -133,6 +141,15 @@
   url: https://www.mathjobs.org/jobs/list/28946
   deadline: 2026-10-30
   notes: I only list your contact info; the lab will reach out if it needs a letter.
+
+- institution: Sandia National Laboratories
+  position: John von Neumann Fellowship in Computational Science
+  role: postdoc
+  systems: [email]
+  url: https://www.sandia.gov/careers/careers/students-and-postdocs/fellowships/john-von-neumann-fellowship/
+  letter_url: mailto:vonneumann@sandia.gov?subject=2027%20VN%20Fellowship
+  deadline: 2026-11-18
+  notes: Email letters to vonneumann@sandia.gov with the subject line "2027 VN Fellowship".
 
 - institution: Purdue University
   position: Golomb Visiting Assistant Professor
