@@ -32,12 +32,6 @@ I've also been known to write a theorem or two.
 Outside of math, I enjoy Dungeons \& Dragons / Pathfinder with friends across
 the continent, chess, fighting games, and am very into computers.
 
-::: {.callout-tip appearance="simple"}
-Writing me a letter of recommendation? 
-Thank you! 
-[See this page](letters/index.qmd) for details!
-:::
-
 ---
 
 ## Recent News
