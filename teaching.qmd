@@ -5,6 +5,7 @@ title: "Teaching"
 ## Instructor of Record
 
 - [Math 123: Mathematics of Data Science](https://abhijit-c.github.io/tufts-math123-fall2026/), Tufts University Fall 2026.
+- Math 87: Mathematical Modeling, Tufts University Spring 2027. *(Course website forthcoming.)*
 
 ## Recitation Leader
 
