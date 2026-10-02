@@ -12,10 +12,12 @@ Although popular in its own right, I think the machine learning community has la
 That is, neural surrogates, reduced basis, etc.
 To be fair, this has proven wildly powerful.
 
-But, physics is awesome!
+But, physics is awesome[^*]!
 Especially, if it has structure to exploit, I can build extremely informed, fast, and understood solvers.
 Modern machine learning has proven undeniably powerful, but is it right to throw away understood dynamics?
 Especially when the prior seems a very natural object to inform with data (a.k.a. prior knowledge).
+
+[^*]: Ah, well, sometimes it isn't. In that case, yeah, let the GPUs rip. 
 
 This diverges from the traditional selection of priors in classic inverse problems.
 For example, your Gaussian priors or Tikhonov regularization in the deterministic case.
@@ -26,7 +28,7 @@ Some of our most scalable methods (Krylov solvers, randomized methods, etc.) pay
 But, distressingly, many of these methods function by exploiting the structure of a prior.
 Data-driven priors, are often black box and don't satisfy the traditional *convenient* mathematical assumptions necessary to make many of these scalable methods efficient.
 I (often) cannot: decompose them, reason about their regularity, or sometimes even efficiently apply them.
-By the end of the next 2-3 years, I want to understand how to build modern inverse problem solvers which handle these troublesome learned priors.
+By the end of the next 2-3 years, I want to understand 1) how to build modern inverse problem solvers to handle these troublesome learned priors and 2) if I can design friendlier learned priors without sacrificing their expressibility.
 Currently, I'm in preparation of three research projects that attack this direction, with more coming.
 I hope to update this page by the end of this year with some progress!
 
