@@ -12,10 +12,12 @@ Although popular in its own right, I think the machine learning community has la
 That is, neural surrogates, reduced basis, etc.
 To be fair, this has proven wildly powerful.
 
-But, physics is awesome!
+But, physics is awesome[^*]!
 Especially, if it has structure to exploit, I can build extremely informed, fast, and understood solvers.
 Modern machine learning has proven undeniably powerful, but is it right to throw away understood dynamics?
 Especially when, the prior seems a very natural object to inform with data (a.k.a. prior knowledge).
+
+[^*]: Ah, well, sometimes it isn't. In that case, yeah, let the GPUs rip. 
 
 This diverges from the traditional selection of priors in classic inverse problems.
 For example, your Gaussian priors or Tikhonov regularization in the deterministic case.
