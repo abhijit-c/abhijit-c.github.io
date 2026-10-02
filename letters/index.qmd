@@ -95,7 +95,7 @@ print("::: {.panel-tabset}\n")
 print("## By deadline\n")
 print(table(apps, ["deadline", "institution", "position", "role", "systems", "notes"]))
 
-print("## By letter system\n")
+print("## By letter system {.active}\n")
 for key, name in SYSTEMS.items():
     rows = [a for a in apps if key in a["systems"]]
     if rows:
