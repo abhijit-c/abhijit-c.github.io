@@ -3,15 +3,36 @@ title: "Research"
 bibliography: papers.bib
 ---
 
-We live in very interesting times in which our new friends, computers, dramatically expand our capabilities in modeling and learning.
-While they get faster day by day, I am not satisfied to simply wait for hardware to scale to my problems.
-Moreover, some problems won't ever be tameable by constant factor increases.
-Mathematics is my cudgel in this purpose. 
-Currently, I practice in scientific machine learning and uncertainty quantificaiton, but am happily open to many fields.
+Sometimes I feel like a mathematical golden retriever.
+Tell me about your favorite research area, and I'll find myself enjoying it too.
+But, in my field, computational uncertainty quantification, I've begun converging on an idea I've grown more and more excited about.
+
+In particular, I want to understand how to design algorithms for modern inverse problems with **highly informative, data-driven, priors**.
+Although popular in its own right, I think the machine learning community has largely focused instead on learning the dynamics from data.
+That is, neural surrogates, reduced basis, etc.
+To be fair, this has proven wildly powerful.
+
+But, physics is awesome!
+Especially, if it has structure to exploit, I can build extremely informed, fast, and understood solvers.
+Modern machine learning has proven undeniably powerful, but is it right to throw away understood dynamics?
+Especially when, the prior seems a very natural object to inform with data (a.k.a. prior knowledge).
+
+This diverges from the traditional selection of priors in classic inverse problems.
+For example, your Gaussian priors or Tikhonov regularization in the deterministic case.
+Unlike these, data-driven priors are extremely *informative* by design.
+They shrink something known as the *effective dimension*, or *information dimension*, of the inverse problem; the number of directions in which the data actually tells us something the prior didn't already know.
+Some of our most scalable methods (Krylov solvers, randomized methods, etc.) pay only for this dimension.
+
+But, distressingly, many of these methods function by exploiting the structure of a prior.
+Data-driven priors, are often black box and don't satisfy the traditional *convenient* mathematical assumptions necessary to make many of these scalable methods efficient.
+I (often) cannot: decompose them, reason about their regularity, or sometimes even efficiently apply them.
+By the end of the next 2-3 years, I want to understand how to build modern inverse problem solvers which handle these troublesome learned priors.
+Currently, I'm in preparation of three research projects that attack this direction, with more coming.
+I hope to update this page by the end of this year with some progress!
 
 ## Themes
 
-Here's a quick synopsis of some themes I've been exploring:
+Here's a quick synopsis of some themes I've published in (with, of course, more in the pipeline):
 
 ### Improved Algorithms for Machine Learning
 
@@ -33,7 +54,7 @@ I published a few papers in this direction; see my work with Georg and coauthors
 
 I have a personal interest in mathematical research software.
 It's key for our field to improve its transparency and reproducibility while also improving the speed of dissemination of information.
-In this past, I was a major maintainer for PyOED [@Chowdhary_Ahmed_Attia_2024], which was a package for rapidly prototyping and benchmarking data assimilation and model-constrained optimal design methods.
+In the past, I was a major maintainer for PyOED [@Chowdhary_Ahmed_Attia_2024], which was a package for rapidly prototyping and benchmarking data assimilation and model-constrained optimal design methods.
 
 ## Collaborators
 
