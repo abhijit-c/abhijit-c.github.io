@@ -71,12 +71,12 @@ cv:
         position: Research Assistant
         location: Raleigh, NC
         start_date: 2021-06
-        end_date: present
+        end_date: 2024-08
         highlights:
           - Published novel research in scalable UQ for infinite-dimensional
             Bayesian inverse problems.
           - 'Research Assistant for [Alen Alexanderian](https://aalexan3.math.ncsu.edu/) via NSF Grant DMS-2111044.'
-      - company: Ohio State University
+      - company: Ohio University
         position: Undergraduate Research Assistant
         location: Athens, OH
         start_date: 2019-05
@@ -105,7 +105,7 @@ cv:
           - Julianne Chung
           - Elizabeth Newman
         doi: https://doi.org/10.48550/arXiv.2608.27884
-        journal: arXiv preprint
+        journal: arXiv preprint, submitted to SIAM JUQ
         date: 2026-08
       - title: 'Boost Like a (Var)Pro: Trust-Region Gradient Boosting via Variable Projection'
         authors:
@@ -113,7 +113,7 @@ cv:
           - Elizabeth Newman
           - Deepanshu Verma
         doi: https://doi.org/10.48550/arXiv.2603.23658
-        journal: arXiv preprint
+        journal: arXiv preprint, submitted to JMLR
         date: 2026-03
       - title: Scalable Uncertainty Quantification for Infinite-Dimensional Bayesian Inverse Problems
         authors:
@@ -151,14 +151,14 @@ cv:
           - '***Abhijit Chowdhary***'
           - Mason Haberle
           - William Ofori-atta
-          - Qilian Wu
+          - Qiliang Wu
         doi: https://doi.org/10.1137/24M1639683
         journal: SIAM Journal of Mathematical Analysis
         date: 2023-10-18
     software:
       - name: '[PyOED](https://web.cels.anl.gov/~aattia/pyoed/)'
         start_date: 2023-05
-        end_date: present
+        end_date: 2025-05
         highlights:
           - Core maintainer of PyOED, an open source research software for
             model-constrained optimal design.
