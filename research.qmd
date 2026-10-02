@@ -15,7 +15,7 @@ To be fair, this has proven wildly powerful.
 But, physics is awesome!
 Especially, if it has structure to exploit, I can build extremely informed, fast, and understood solvers.
 Modern machine learning has proven undeniably powerful, but is it right to throw away understood dynamics?
-Especially when, the prior seems a very natural object to inform with data (a.k.a. prior knowledge).
+Especially when the prior seems a very natural object to inform with data (a.k.a. prior knowledge).
 
 This diverges from the traditional selection of priors in classic inverse problems.
 For example, your Gaussian priors or Tikhonov regularization in the deterministic case.
