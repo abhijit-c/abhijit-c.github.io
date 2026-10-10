@@ -8,16 +8,6 @@ reference-location: margin
 bibliography: references.bib
 ---
 
-<!--
-Thesis: it's time to move a layer of abstraction up, and use the new "data"
-(proofs, formalizations, attempts, failures produced at scale) to perform
-meta-mathematics.
-
-- Data: proof traces, Lean files, and everything else the machines emit.
-- Meta-mathematics is both descriptive (how proofs are structured) and
-  practical (which techniques transfer, where to aim next).
--->
-
 [The great slop-drop of 2026](https://github.com/openai/math), as I've heard it called, has unfolded quite dramatically, perhaps even traumatically.
 Largely, I've tried to avoid social media since, as the back and forth between the mathematical community and AI community has gotten pretty ugly[^pain].
 I don't want weigh on that business, other than to say to other mathematicians that people are paying attention to your words right now.
@@ -73,13 +63,14 @@ There is something fascinating in here, I know this to be true.
 
 I would never do so by opening the first image in the CIFAR-10 image dataset and inspecting the first row of pixel values in my editor!
 For decades, the data science community has developed ways to machine analyze swathes of data.
-Graph based analysis, clustering, regression, dimensionality reduction, and, indeed, generation.
+Graph based analysis, clustering, regression, dimensionality reduction, and, indeed, generation[^indeed].
 In an era with a million proofs, and more possible on demand, I sincerely believe that we've stumbled into the capability to carry out *data-driven meta-mathematics*[^grant].
 
+[^indeed]: Indeed, after these stages, I might zoom into the pieces of data it has identified.
 [^grant]: How's that for a grant fundable title. God, I've got to get back to my grant writing. 
 
 I care deeply about the proof, about the core fundamental truths it holds about the structure at hand.
-With tools like LLMs, paired with the intention to explore proofs like data, we are more capable than we have ever been of leveraging computational might to help us explore structure we never would have thought (or indeed had the ability) of visiting.
+With tools like LLMs, paired with the intention to explore proofs like data, we are more capable than we have ever been of leveraging computational might to help us find structure we never would have thought (or indeed had the ability) of visiting.
 Imagine the potential simplifications in the route to the cutting-edge, after the equivalent of minimum-path algorithms have identified the core.
 Again, imagine the surprise connections we might find when two ideas appear clustered despite their apparent distance.
 Think about the stories we might tell to humanity (and, perhaps to machine) as people who care to explore this new vast ocean.
