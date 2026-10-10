@@ -20,8 +20,6 @@ Below is every position I'm applying to this cycle and how each one collects let
 - **None**: no letters requested.
 
 So, in total, it should be 1 (mathjobs) + 1 (interfolio) + $N_{\rm portal}$ + 3 (email) uploads by you. 
-Plus, potentially, any that shortlist me longer down the line.
-For all of these outside of those expecting the direct emailed references, you'll get the information straight to your inbox at minimum 2 weeks prior.
 
 ```{python}
 #| echo: false
