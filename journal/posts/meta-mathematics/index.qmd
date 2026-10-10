@@ -80,9 +80,9 @@ Today, the world is wondering if they should care.
 Care, damn it!
 I am excited for the mathematics of 2027, the mathematics of 2030, and that of 2100 (should I be so lucky to witness).
 I look at visualizations like those of <https://landofproof.com/>, and I *see* the mathematics of the future.
-My holy cudgel, that I traded life for and continue to burn for fuel, has grown grander.
-My ambition scales with my capabilities, and with the capabilities of an LLM.
-We *are* going to be able to tell outstanding mathematical tales.
+Moreover, I think events like the reformulation of the [Caltech mathathon](https://mathathonchallenge.com/) are bounding toward this vision.
+Personally, my ambition is scaling with my capabilities and with the capabilities of an LLM.
+I really believe that we *are* going to be able to tell outstanding mathematical tales.
 It's up to us to us to illustrate the difference between those and [this](https://github.com/openai/math).
 
 ::: {.callout-tip collapse="true"}
