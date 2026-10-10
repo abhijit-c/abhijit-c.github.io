@@ -91,6 +91,7 @@ All writing and mistakes in the above article is, regrettably, my own.
 I would like to note that this notion, of data-driven meta-mathematics is not new.
 People, in particular the formalization community, I think saw this vision.
 I'm not one of those visionaries, I've chanced upon this after the fact.
+In particular, after seeing the lean formalized proof of FLT visualized as a graph <https://landofproof.com/>
 If you wish to peruse some works by experts in this direction, I asked Opus 5.5 to literature search for work in the direction of "data science for meta-mathematics".
 These are some of the papers it found (after I made a curation pass; note, hardly comprehensive).
 I will be reading these over the next short while, perhaps you might consider doing so too.
