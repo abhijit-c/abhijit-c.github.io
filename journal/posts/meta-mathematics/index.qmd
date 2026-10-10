@@ -1,0 +1,128 @@
+---
+title: "What do you do with a million proofs?"
+description: "Perspectives from a computational mathematician."
+date: 2026-10-10
+categories: [personal, math, ai, opinion]
+draft: false
+reference-location: margin
+bibliography: references.bib
+---
+
+<!--
+Thesis: it's time to move a layer of abstraction up, and use the new "data"
+(proofs, formalizations, attempts, failures produced at scale) to perform
+meta-mathematics.
+
+- Data: proof traces, Lean files, and everything else the machines emit.
+- Meta-mathematics is both descriptive (how proofs are structured) and
+  practical (which techniques transfer, where to aim next).
+-->
+
+[The great slop-drop of 2026](https://github.com/openai/math), as I've heard it called, has unfolded quite dramatically, perhaps even traumatically.
+Largely, I've tried to avoid social media since, as the back and forth between the mathematical community and AI community has gotten pretty ugly[^pain].
+I don't want weigh on that business, other than to say to other mathematicians that people are paying attention to your words right now.
+Your enthusiasm, doom, joy, and hatred will enter the perception of people who will likely interact with a mathematician this one time.
+Make sure you say what you want and need to, our field depends on it.
+
+[^pain]: I, naturally, failed to entirely avoid it. I'm in pain now. I wish some of you would think before you roar senselessly into the public net.
+
+I want to, instead, think about a world where generated proofs are cheaply avaliable, at least for certain classes of problems.
+I cannot possibly address all aspects of this situation, but I will do as academics do and address the largest possible slice I can.
+I must, first, confess: I am an applied mathematician[^aspiration].
+I expect that my perspective on mathematics has a different color than many of my pure colleagues.
+Nevertheless, this note is precisely written to those who may be losing faith (or perhaps even the fun) in mathematics, to my pure friends, and to prospective wielders of it. 
+I'll begin by explaining why I study mathematics so you can align how seriously you take whatever further I write.
+
+[^aspiration]: Well, I'm a Postdoc. Who is procrastinating writing his job search materials by writing this.
+
+To me, mathematics is my holy cudgel. 
+I have built my proficieny in it as a result of nearly a decade of hermit study.
+I desired it more than I desired those years, because this world is endlessly beautiful and fascinating and these tools are what I need to bend reality to a point where I can see it.
+I did not pursue a career as a mathematician for those reasons; merely the doctorate.
+
+[^well]: Admittedly, at this point, I think I've only really managed to complicate it, research-wise. But, as an example, I will attempt to morally teach the JL Lemma to undergraduates this semester in a regular course. That was absolutely not on the menu back in my day!
+
+I pursue it because I find the goal of taking the cutting-edge boundary of human mathematical knowledge and *smashing* it into a shape trivial enough to teach your average mathematically inclined layman, fulfilling life work[^well].
+I pursue it because (frankly) my ego is ablaze at the thought of being able to tell an compelling argument of why you should view X problem through Y lens, or why Z technique is mathematically rich and powerful, and having people listen and agree.
+I pursue it because I want to water the grove in which people can spar and whose fruits spread into nooks and corners of the world I never would have imagined.
+
+Last Tuesday, a few hundred proofs of problems the community found interesting was uploaded.
+Autonomously generated, with seemingly very little expert input, excluding the unfathomable depth of mathematical research it's been trained on.
+This likely cuts short the research programme of many current professionals.
+<!--
+Moreover, I think it has been proved unambigiously that LLMs are an integral research tool for the future generation of mathematical seekers.
+-->
+
+Many among us have tried, at minimum, to crack open these proofs in search of power and fun.
+However, both the writeups and lean certificates are an uniquely terrible experience to digest.
+LLMs are hardly original in their ability to write technical lemmas shaped like torture devices; humans have done so for a long time.
+LLMs, however, never do so from a perspective of enlightened understanding (with details omitted to the reader).
+Never, would they claim that the proof is trivial.
+Instead, we're all collectivity buried in a mountain of horseshit, with incredibly lean ratios of insight to mathematical symbols.
+Many in the field reason that if this is the future of a mathematician's professional duties, none of the next generation will be interested.
+Even if LLMs eventually improve their writing (non-trivial), are people going to be passionate about endlessly distilling the word of machines?
+Indeed, likely I wouldn't want to do this, and I haven't[^applied-proofs].
+
+[^applied-proofs]: I did try! There wasn't much computational mathematics in there. I did see the Courzeix conjecture; I remember attending some talks on it, that should sharpen some rates for Krylov methods. For that matter... Why wasn't there much computational mathematics? Come on!
+
+Let us consider a parallel to a situation many computational mathematicians deal with on the daily.
+I am given a dataset, say describing fluid flow, or disease transmission, or images from many different classes.
+This dataset, is gigabytes, terabytes, maybe larger.
+I want to understand, quantify, extrapolate, compress, etc. on the back of this information.
+There is something fascinating in here, I know this to be true.
+
+I would never do so by opening the first image in the CIFAR-10 image dataset and inspecting the first row of pixel values in my editor!
+For decades, the data science community has developed ways to machine analyze swathes of data.
+Graph based analysis, clustering, regression, dimensionality reduction, and, indeed, generation.
+In an era with a million proofs, and more possible on demand, I sincerely believe that we've stumbled into the capability to carry out *data-driven meta-mathematics*[^grant].
+
+[^grant]: How's that for a grant fundable title. God, I've got to get back to my grant writing. 
+
+I care deeply about the proof, about the core fundamental truths it holds about the structure at hand.
+With tools like LLMs, paired with the intention to explore proofs like data, we are more capable than we have ever been of leveraging computational might to help us explore structure we never would have thought (or indeed had the ability) of visiting.
+Imagine the potential simplifications in the route to the cutting-edge, after the equivalent of minimum-path algorithms have identified the core.
+Again, imagine the surprise connections we might find when two ideas appear clustered despite their apparent distance.
+Think about the stories we might tell to humanity (and, perhaps to machine) as people who care to explore this new vast ocean.
+Indeed, as mathematicians, we are the people who care and make the case to care.
+
+
+Today, the world is wondering if they should care.
+Care, damn it!
+I am excited for the mathematics of 2027, the mathematics of 2030, and that of 2100 (should I be so lucky to witness).
+My holy cudgel, that I traded life for and continue to burn for fuel, has grown grander.
+My ambition scales with my capabilities, and indeed with the capabilities of an LLM.
+We *are* going to be able to tell outstanding mathematical tales.
+It's up to us to us to illustrate the difference between those and [this](https://github.com/openai/math).
+
+::: {.callout-tip collapse="true"}
+## AI Disclosure \& Literature: 
+All writing and mistakes in the above article is, regrettably, my own.
+I would like to note that this notion, of data-driven meta-mathematics is not new.
+People, in particular the formalization community, I think saw this vision.
+I'm not one of those visionaries, I've chanced upon this after the fact.
+If you wish to peruse some works by experts in this direction, I asked Opus 5.5 to literature search for work in the direction of "data science for meta-mathematics".
+These are some of the papers it found (after I made a curation pass; note, hardly comprehensive).
+I will be reading these over the next short while, perhaps you might consider doing so too.
+Henceforth is generated text:
+
+- @etp2025: The Equational Theories Project settled all 22,028,942 implications between 4,694 equational laws on magmas, with the human-written and automated proofs all checked in Lean.
+  At this scale, the answer to a single structured question is a graph, not a theorem, and it has to be explored the way you'd explore a dataset.
+- @fan2026meno: Introduces *tactic ablation*, which removes proof techniques (here, non-constructive ones) from an autoformalizer and studies what it does instead on theorems from Tao's *Analysis I*.
+  Embedding the resulting proofs, they find these proofs lie on one- or two-dimensional structures inside a much larger space, and differ substantially from the human-written proofs.
+  This is empirical metamathematics in the most literal sense.
+- @georgiev2025alphaevolve: Runs AlphaEvolve, an LLM-guided evolutionary search, on 67 problems across analysis, combinatorics, geometry, and number theory, matching most of the best known constructions and improving several.
+  It's more about generating mathematical objects at scale than analyzing proofs, but it shows what a "search first, understand later" workflow looks like in practice.
+- @li2026mathlib: Treats Mathlib as a network (roughly 308,000 declarations and 8.4 million dependency edges) and asks what the graph says about the mathematics.
+  About half of the dependencies cross namespace boundaries, and centrality mostly picks out language infrastructure rather than mathematically important results.
+  This is the closest to the proofs-as-data program described above.
+:::
+
+::: {.callout-warning collapse="true"}
+## Opinion on the drama, flee, don't open this
+
+It is a tragedy that the stories contained in the solution to hundreds of open, interesting, problems are buried apathetically in a Github repository under mountains of slop.
+As a knife twist, people have found themselves a source of entertainment in the perverse glee of watching mathematicians collectively cringe and write at the lost opportunity.
+Some of you, fellow mathematicians, have negatively contributed to this by saying some stupid ass shit on social media, get it together.
+There will be more opportunities, and this one is only lost if we decide to give up on it.
+If the professional realities of being a mathematician constrain us, let us break them, for we define them.
+:::
