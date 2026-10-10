@@ -10,7 +10,7 @@ bibliography: references.bib
 
 [The great slop-drop of 2026](https://github.com/openai/math), as I've heard it called, has unfolded quite dramatically, perhaps even traumatically.
 Largely, I've tried to avoid social media since, as the back and forth between the mathematical community and AI community has gotten pretty ugly[^pain].
-I don't want weigh on that business, other than to say to other mathematicians that people are paying attention to your words right now.
+I don't want dwell on that business, other than to say to other mathematicians that people are paying attention to your words right now.
 Your enthusiasm, doom, joy, and hatred will enter the perception of people who will likely interact with a mathematician this one time.
 Make sure you say what you want and need to, our field depends on it.
 
@@ -66,22 +66,22 @@ For decades, the data science community has developed ways to machine analyze sw
 Graph based analysis, clustering, regression, dimensionality reduction, and, indeed, generation[^indeed].
 In an era with a million proofs, and more possible on demand, I sincerely believe that we've stumbled into the capability to carry out *data-driven meta-mathematics*[^grant].
 
-[^indeed]: Indeed, after these stages, I might zoom into the pieces of data it has identified.
+[^indeed]: After these stages, I might zoom into the pieces of data it has identified.
 [^grant]: How's that for a grant fundable title. God, I've got to get back to my grant writing. 
 
 I care deeply about the proof, about the core fundamental truths it holds about the structure at hand.
-With tools like LLMs, paired with the intention to explore proofs like data, we are more capable than we have ever been of leveraging computational might to help us find structure we never would have thought (or indeed had the ability) of visiting.
+With tools like LLMs, paired with the intention to explore proofs like data, we are more capable than we have ever been of leveraging computational might to help us find structure we never would have thought (or had the ability) of visiting.
 Imagine the potential simplifications in the route to the cutting-edge, after the equivalent of minimum-path algorithms have identified the core.
 Again, imagine the surprise connections we might find when two ideas appear clustered despite their apparent distance.
 Think about the stories we might tell to humanity (and, perhaps to machine) as people who care to explore this new vast ocean.
-Indeed, as mathematicians, we are the people who care and make the case to care.
-
+As mathematicians, we are the people who care and make the case to care.
 
 Today, the world is wondering if they should care.
 Care, damn it!
 I am excited for the mathematics of 2027, the mathematics of 2030, and that of 2100 (should I be so lucky to witness).
+I look at visualizations like those of <https://landofproof.com/>, and I *see* the mathematics of the future.
 My holy cudgel, that I traded life for and continue to burn for fuel, has grown grander.
-My ambition scales with my capabilities, and indeed with the capabilities of an LLM.
+My ambition scales with my capabilities, and with the capabilities of an LLM.
 We *are* going to be able to tell outstanding mathematical tales.
 It's up to us to us to illustrate the difference between those and [this](https://github.com/openai/math).
 
@@ -91,11 +91,10 @@ All writing and mistakes in the above article is, regrettably, my own.
 I would like to note that this notion, of data-driven meta-mathematics is not new.
 People, in particular the formalization community, I think saw this vision.
 I'm not one of those visionaries, I've chanced upon this after the fact.
-In particular, after seeing the lean formalized proof of FLT visualized as a graph <https://landofproof.com/>
 If you wish to peruse some works by experts in this direction, I asked Opus 5.5 to literature search for work in the direction of "data science for meta-mathematics".
 These are some of the papers it found (after I made a curation pass; note, hardly comprehensive).
 I will be reading these over the next short while, perhaps you might consider doing so too.
-Henceforth is generated text:
+Henceforth is generated text summarizing the projects:
 
 - @etp2025: The Equational Theories Project settled all 22,028,942 implications between 4,694 equational laws on magmas, with the human-written and automated proofs all checked in Lean.
   At this scale, the answer to a single structured question is a graph, not a theorem, and it has to be explored the way you'd explore a dataset.
