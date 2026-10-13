@@ -16,7 +16,7 @@ listing:
   - id: recent-news
     contents: news
     sort: "date desc"
-    max-items: 4
+    max-items: 5
     type: table
     fields: [date, description]
     date-format: "MMM YYYY"
@@ -29,8 +29,7 @@ I am a computational mathematician!
 Currently, I'm working on algorithms in uncertainty quantification, machine learning, and optimization.
 I've also been known to write a theorem or two.
 
-Outside of math, I enjoy Dungeons \& Dragons / Pathfinder with friends across
-the continent, chess, fighting games, and am very into computers.
+Outside of math, I enjoy [Pathfinder](https://paizo.com/pathfinder) with friends across the continent, chess, fighting games, and am very into computers.
 
 ---
 
