@@ -32,6 +32,67 @@
   notes: Requests come from Research.gov with an invitation code. Letters are due with the proposal, 5 pm Eastern on Oct 21.
   statements: "Project Description 5 pages, figures included; references go in a separate section with no limit. Project Summary 1 page. Data Management Plan 2 pages."
 
+- institution: Northwestern University (Mathematics)
+  position: Boas Assistant Professor
+  role: postdoc
+  systems: [mathjobs]
+  url: https://www.mathjobs.org/jobs/list/29221
+  deadline: 2026-12-01
+  notes: Four letters; one should discuss teaching in depth. Review starts Dec 1.
+
+- institution: St John's College, University of Oxford
+  position: Supernumerary Teaching Fellow in Mathematics (5-year postdoc)
+  role: postdoc
+  systems: [email]
+  url: https://www.mathjobs.org/jobs/list/29219
+  letter_url: mailto:academic.vacancies@sjc.ox.ac.uk?subject=Reference%20for%20Abhijit%20Chowdhary%20(Mathematics%20STF)
+  deadline: 2026-11-05
+  notes: Only two referees. Email letters to academic.vacancies@sjc.ox.ac.uk by noon UK time on Nov 5 (7 am Eastern). The post is heavily tutorial-teaching, so comments on teaching help.
+  statements: "Research at most 3 pages (current interests and a 5-year plan), plus a statement of which Prelims and Part A courses I can tutor. The ad does not say whether references count."
+
+- institution: New York University (Simons Center for Computational Geophysical Flows)
+  position: Simons Center Postdoctoral Fellow in Computational Climate
+  role: postdoc
+  systems: [interfolio]
+  url: https://www.mathjobs.org/jobs/list/29218
+  letter_url: https://apply.interfolio.com/193211
+  deadline: 2026-12-01
+  notes: Three letters.
+  statements: "Research max 2 pages (future plans and fit with the center). Cover letter max 1 page, CV max 2 pages. The ad does not say whether references count."
+
+- institution: Duke University
+  position: Elliott / Griffiths Assistant Research Professor
+  role: postdoc
+  systems: [mathjobs]
+  url: https://www.mathjobs.org/jobs/list/29210
+  deadline: 2026-12-01
+  notes: Four letters; one should evaluate teaching. Full consideration by Dec 1; letters accepted until Jan 1.
+
+- institution: Rutgers University (New Brunswick)
+  position: Hill Assistant Professor / Postdoctoral Positions
+  role: postdoc
+  systems: [mathjobs]
+  url: https://www.mathjobs.org/jobs/list/29189
+  deadline: 2026-12-01
+  notes: Four letters; one should primarily evaluate teaching and, if possible, cite quantitative teaching-evaluation results. (I also apply on Rutgers' ROCS site; letters go only to MathJobs.)
+  statements: "Research \"up to about 5 pages\". The ad does not say whether references count."
+
+- institution: Cornell University
+  position: H.C. Wang Assistant Professor
+  role: postdoc
+  systems: [mathjobs]
+  url: https://www.mathjobs.org/jobs/list/29164
+  deadline: 2026-12-01
+  notes: Four letters; one should address teaching.
+
+- institution: Carnegie Mellon University (Mathematical Sciences)
+  position: Postdoctoral Research Fellow
+  role: postdoc
+  systems: [mathjobs]
+  url: https://www.mathjobs.org/jobs/list/29141
+  deadline: 2026-12-01
+  notes: Three letters; one should address teaching. My application also goes on Interfolio, but letters go only to MathJobs.
+
 - institution: New York University (Courant)
   position: Courant Instructor
   role: postdoc
@@ -39,6 +100,7 @@
   url: https://www.mathjobs.org/jobs/list/29082
   letter_url: https://apply.interfolio.com/193426
   deadline: 2026-11-15
+  notes: Three letters; one must address teaching.
 
 - institution: Flatiron Institute (Center for Computational Mathematics)
   position: Flatiron Research Fellow
@@ -47,6 +109,7 @@
   url: https://www.mathjobs.org/jobs/list/29080
   letter_url: https://apply.interfolio.com/193799
   deadline: 2026-11-15
+  notes: Three letters, due by Nov 15 for full consideration.
   statements: "Research \"preferably no more than 4 pages\". The ad does not say whether references count."
 
 - institution: University of California (President's Postdoctoral Fellowship)
@@ -160,7 +223,7 @@
   position: John von Neumann Fellowship in Computational Science
   role: postdoc
   systems: [email]
-  url: https://www.sandia.gov/careers/careers/students-and-postdocs/fellowships/john-von-neumann-fellowship/
+  url: https://www.mathjobs.org/jobs/list/29209
   letter_url: mailto:vonneumann@sandia.gov?subject=2027%20VN%20Fellowship
   deadline: 2026-11-18
   notes: Email letters to vonneumann@sandia.gov with the subject line "2027 VN Fellowship".
@@ -222,6 +285,57 @@
   notes: Reviewed on a rolling basis (final deadline May 31, 2027), so earlier is better.
 
 # ---------------------------------------------------------- Tenure-track
+
+- institution: University of Colorado Boulder (Applied Mathematics)
+  position: Assistant Professor (Computational / Physical Applied Mathematics)
+  role: tt
+  systems: [bespoke]
+  url: https://www.mathjobs.org/jobs/list/29177
+  letter_url: https://jobs.colorado.edu/jobs/JobDetail/?jobId=75336
+  deadline: 2026-11-08
+  notes: Requests come from CU Boulder Jobs as soon as I submit. Three letters, asked for within two weeks of the request.
+
+- institution: Montana State University
+  position: Assistant Professor of Mathematics
+  role: tt
+  systems: [bespoke]
+  url: https://www.mathjobs.org/jobs/list/29159
+  letter_url: https://jobs.montana.edu/postings/53203
+  deadline: 2026-11-02
+  notes: Requests are emailed automatically by MSU's system after I submit. Three letters; one should speak to teaching. Letters must be in by the Nov 2 screening date.
+  statements: "Research max 3 pages. Teaching max 3 pages. The posting does not say whether references count."
+
+- institution: Tulane University
+  position: Assistant Professor (Mathematical Foundations of ML and AI)
+  role: tt
+  systems: [mathjobs]
+  url: https://www.mathjobs.org/jobs/list/29143
+  deadline: 2026-12-01
+  notes: Four letters; one should address teaching. Review begins Nov 15; full consideration by Dec 1.
+
+- institution: University of Massachusetts Boston
+  position: Assistant Professor (Mathematics)
+  role: tt
+  systems: [mathjobs]
+  url: https://www.mathjobs.org/jobs/list/29136
+  deadline: 2026-12-18
+  notes: Four letters; one should address teaching. (I must also submit a cover letter and CV on UMass Boston's HR site, job 530146.)
+
+- institution: Mississippi State University
+  position: Assistant Professor (Mathematics)
+  role: tt
+  systems: [mathjobs]
+  url: https://www.mathjobs.org/jobs/list/29132
+  deadline: 2026-11-01
+  notes: Four letters; one must address teaching. Screening begins Nov 1. (I must also apply on msujobs.msstate.edu, job 511250.)
+
+- institution: Australian National University (Mathematical Sciences Institute)
+  position: Lecturer / Senior Lecturer (continuing)
+  role: tt
+  systems: [mathjobs]
+  url: https://www.mathjobs.org/jobs/list/29092
+  deadline: 2026-12-01
+  notes: Three letters. The deadline is end of day Dec 1 in Canberra, which is about 8 am Eastern on Dec 1.
 
 - institution: University of Illinois Chicago
   position: Assistant Professor (Mathematical Computer Science)
@@ -405,6 +519,7 @@
   url: https://www.mathjobs.org/jobs/list/28907
   deadline: 2026-10-23
   notes: References are contacted only for candidates being considered for a screening interview.
+  status: withdrawn
 
 - institution: Tufts University
   position: Assistant Professor for Applied Math

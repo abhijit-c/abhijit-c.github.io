@@ -38,11 +38,6 @@ I pursue it because I want to water the grove in which people can spar and whose
 
 Last Tuesday, a few hundred proofs of problems the community found interesting was uploaded.
 Autonomously generated, with seemingly very little expert input, excluding the unfathomable depth of mathematical research it's been trained on.
-This likely cuts short the research programme of many current professionals.
-<!--
-Moreover, I think it has been proved unambigiously that LLMs are an integral research tool for the future generation of mathematical seekers.
--->
-
 Many among us have tried, at minimum, to crack open these proofs in search of power and fun.
 However, both the writeups and lean certificates are an uniquely terrible experience to digest.
 LLMs are hardly original in their ability to write technical lemmas shaped like torture devices; humans have done so for a long time.
@@ -50,8 +45,8 @@ LLMs, however, never do so from a perspective of enlightened understanding (with
 Never, would they claim that the proof is trivial.
 Instead, we're all collectivity buried in a mountain of horseshit, with incredibly lean ratios of insight to mathematical symbols.
 Many in the field reason that if this is the future of a mathematician's professional duties, none of the next generation will be interested.
-Even if LLMs eventually improve their writing (non-trivial), are people going to be passionate about endlessly distilling the word of machines?
 Indeed, likely I wouldn't want to do this, and I haven't[^applied-proofs].
+Even if LLMs eventually improve their writing (non-trivial), are people going to be passionate about endlessly distilling the word of machines?
 
 [^applied-proofs]: I did try! There wasn't much computational mathematics in there. I did see the Courzeix conjecture; I remember attending some talks on it, that should sharpen some rates for Krylov methods. For that matter... Why wasn't there much computational mathematics? Come on!
 
