@@ -17,6 +17,7 @@
 #                (full-consideration / review-start date when the ad gives one)
 #   letter_url   (optional) direct letter-upload link (interfolio / ajo / portal / mailto)
 #   notes        (optional) anything a letter writer should know (markdown ok)
+#   statements   (optional) page limits on my statements, and whether references count
 #   status       (optional) set to "withdrawn" to hide an entry without deleting it
 
 # ---------------------------------------------------------------- Postdocs
@@ -29,6 +30,7 @@
   letter_url: https://www.research.gov
   deadline: 2026-10-21
   notes: Requests come from Research.gov with an invitation code. Letters are due with the proposal, 5 pm Eastern on Oct 21.
+  statements: "Project Description 5 pages, figures included; references go in a separate section with no limit. Project Summary 1 page. Data Management Plan 2 pages."
 
 - institution: Northwestern University (Mathematics)
   position: Boas Assistant Professor
@@ -46,6 +48,7 @@
   letter_url: mailto:academic.vacancies@sjc.ox.ac.uk?subject=Reference%20for%20Abhijit%20Chowdhary%20(Mathematics%20STF)
   deadline: 2026-11-05
   notes: Only two referees. Email letters to academic.vacancies@sjc.ox.ac.uk by noon UK time on Nov 5 (7 am Eastern). The post is heavily tutorial-teaching, so comments on teaching help.
+  statements: "Research at most 3 pages (current interests and a 5-year plan), plus a statement of which Prelims and Part A courses I can tutor. The ad does not say whether references count."
 
 - institution: New York University (Simons Center for Computational Geophysical Flows)
   position: Simons Center Postdoctoral Fellow in Computational Climate
@@ -55,6 +58,7 @@
   letter_url: https://apply.interfolio.com/193211
   deadline: 2026-12-01
   notes: Three letters.
+  statements: "Research max 2 pages (future plans and fit with the center). Cover letter max 1 page, CV max 2 pages. The ad does not say whether references count."
 
 - institution: Duke University
   position: Elliott / Griffiths Assistant Research Professor
@@ -71,6 +75,7 @@
   url: https://www.mathjobs.org/jobs/list/29189
   deadline: 2026-12-01
   notes: Four letters; one should primarily evaluate teaching and, if possible, cite quantitative teaching-evaluation results. (I also apply on Rutgers' ROCS site; letters go only to MathJobs.)
+  statements: "Research \"up to about 5 pages\". The ad does not say whether references count."
 
 - institution: Cornell University
   position: H.C. Wang Assistant Professor
@@ -105,6 +110,7 @@
   letter_url: https://apply.interfolio.com/193799
   deadline: 2026-11-15
   notes: Three letters, due by Nov 15 for full consideration.
+  statements: "Research \"preferably no more than 4 pages\". The ad does not say whether references count."
 
 - institution: University of California (President's Postdoctoral Fellowship)
   position: UC President's Postdoctoral Fellowship
@@ -160,6 +166,7 @@
   url: https://www.mathjobs.org/jobs/list/29035
   deadline: 2026-11-16
   notes: Requests come from UChicago's InfoReady portal. Review begins Nov 16.
+  statements: "Research 3 pages max, plus a separate 250-word research summary. The ad does not say whether references count."
 
 - institution: University of Tokyo (Kavli IPMU)
   position: Kavli IPMU Postdoctoral Fellowship
@@ -177,6 +184,7 @@
   systems: [mathjobs]
   url: https://www.mathjobs.org/jobs/list/28996
   deadline: 2026-11-20
+  statements: "Research 1 page. The ad does not say whether references count."
 
 - institution: Rice University (CMOR)
   position: Pfeiffer Postdoctoral Instructor
@@ -209,6 +217,7 @@
   url: https://www.mathjobs.org/jobs/list/28946
   deadline: 2026-10-30
   notes: I only list your contact info; the lab will reach out if it needs a letter.
+  statements: "Research 5 pages, **including** figures and references. Letter paper, 1-inch margins, font at least 11 pt."
 
 - institution: Sandia National Laboratories
   position: John von Neumann Fellowship in Computational Science
@@ -218,6 +227,7 @@
   letter_url: mailto:vonneumann@sandia.gov?subject=2027%20VN%20Fellowship
   deadline: 2026-11-18
   notes: Email letters to vonneumann@sandia.gov with the subject line "2027 VN Fellowship".
+  statements: "Research proposal 2-3 pages, references excluded (per job posting 699129). One PDF with cover letter and CV."
 
 - institution: Purdue University
   position: Golomb Visiting Assistant Professor
@@ -257,6 +267,7 @@
   systems: []
   url: https://www.mathjobs.org/jobs/list/28796
   deadline: 2026-12-01
+  statements: "Research narrative at most 2 pages. The ad does not say whether references count."
 
 - institution: Princeton University
   position: Junior Faculty (Postdoctorate)
@@ -292,6 +303,7 @@
   letter_url: https://jobs.montana.edu/postings/53203
   deadline: 2026-11-02
   notes: Requests are emailed automatically by MSU's system after I submit. Three letters; one should speak to teaching. Letters must be in by the Nov 2 screening date.
+  statements: "Research max 3 pages. Teaching max 3 pages. The posting does not say whether references count."
 
 - institution: Tulane University
   position: Assistant Professor (Mathematical Foundations of ML and AI)
@@ -348,6 +360,7 @@
   url: https://www.mathjobs.org/jobs/list/29071
   deadline: 2026-11-13
   notes: Requests come from CSU's Workday system after I submit.
+  statements: "Research 2-3 pages, references excluded. Teaching 2-3 pages. Limits are in the Workday posting, not the MathJobs ad."
 
 - institution: University of North Carolina at Chapel Hill (School of Data and Information Sciences)
   position: Open Rank Professor (Data Science)
@@ -497,6 +510,7 @@
   url: https://www.mathjobs.org/jobs/list/28915
   deadline: 2026-12-01
   notes: I only list your contact info; one of four should address teaching.
+  statements: "Research up to 5 pages. Teaching up to 2 pages. The ad does not say whether references count."
 
 - institution: Virginia Tech
   position: Assistant Professor
@@ -505,6 +519,7 @@
   url: https://www.mathjobs.org/jobs/list/28907
   deadline: 2026-10-23
   notes: References are contacted only for candidates being considered for a screening interview.
+  status: withdrawn
 
 - institution: Tufts University
   position: Assistant Professor for Applied Math
