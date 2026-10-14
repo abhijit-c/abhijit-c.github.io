@@ -74,6 +74,7 @@ COLUMNS = {
     "systems": ("Letters via", systems_cell),
     "deadline": ("Deadline", deadline_cell),
     "notes": ("Notes", lambda a: a.get("notes", "").replace("\n", " ")),
+    "statements": ("Statement limits", lambda a: a.get("statements", "").replace("\n", " ")),
 }
 
 def table(rows, cols):
@@ -110,6 +111,11 @@ for key, name in ROLES.items():
     if rows:
         print(f"### {name} ({len(rows)})\n")
         print(table(rows, ["deadline", "institution", "position", "systems", "notes"]))
+
+rows = [a for a in apps if a.get("statements")]
+if rows:
+    print("## Statement limits\n")
+    print(table(rows, ["deadline", "institution", "position", "statements"]))
 
 print(":::\n")
 ```
