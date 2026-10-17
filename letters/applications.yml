@@ -286,6 +286,15 @@
 
 # ---------------------------------------------------------- Tenure-track
 
+- institution: University of Virginia (Computer Science)
+  position: Tenured / Tenure-Track Faculty (all ranks)
+  role: tt
+  systems: [later]
+  url: https://apply.interfolio.com/190949
+  deadline: 2026-11-15
+  notes: I only list your contact info (at least three references); UVA will reach out if it needs a letter. Review starts Nov 15.
+  statements: "Research, teaching and service statements, plus three representative papers. The ad gives no page limits."
+
 - institution: University of Colorado Boulder (Applied Mathematics)
   position: Assistant Professor (Computational / Physical Applied Mathematics)
   role: tt
