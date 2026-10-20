@@ -12,6 +12,9 @@ about:
     - icon: github
       text: GitHub
       href: https://github.com/abhijit-c
+    - icon: key
+      text: GPG Key
+      href: assets/gpg/abhijit-chowdhary.asc
 listing:
   - id: recent-news
     contents: news
@@ -23,6 +26,8 @@ listing:
     sort-ui: false
     filter-ui: false
 page-layout: full
+resources:
+  - assets/gpg/abhijit-chowdhary.asc
 ---
 
 I am a computational mathematician! 
