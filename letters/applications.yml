@@ -303,6 +303,7 @@
   letter_url: https://jobs.colorado.edu/jobs/JobDetail/?jobId=75336
   deadline: 2026-11-08
   notes: Requests come from CU Boulder Jobs as soon as I submit. Three letters, asked for within two weeks of the request.
+  status: withdrawn
 
 - institution: Montana State University
   position: Assistant Professor of Mathematics
@@ -571,6 +572,7 @@
   letter_url: https://apply.interfolio.com/194226
   deadline: 2026-11-01
   notes: Review begins Nov 1; full consideration by Dec 1.
+  status: withdrawn
 
 - institution: University of Michigan
   position: LSA Collegiate Fellow / Tenure-Track Assistant Professor
