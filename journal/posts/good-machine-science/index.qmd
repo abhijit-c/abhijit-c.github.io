@@ -1,0 +1,9 @@
+---
+title: "What does useful machine assisted mathematics research look like?"
+date: 2026-10-23
+description: ""
+categories: []
+draft: true
+reference-location: margin
+---
+
