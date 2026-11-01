@@ -315,6 +315,7 @@
   deadline: 2026-11-02
   notes: Requests are emailed automatically by MSU's system after I submit. Three letters; one should speak to teaching. Letters must be in by the Nov 2 screening date.
   statements: "Research max 3 pages. Teaching max 3 pages. The posting does not say whether references count."
+  status: withdrawn
 
 - institution: Tulane University
   position: Assistant Professor (Mathematical Foundations of ML and AI)
@@ -389,6 +390,7 @@
   url: https://www.mathjobs.org/jobs/list/29050
   deadline: 2026-11-01
   notes: Four or more letters; one should primarily address teaching.
+  status: withdrawn
 
 - institution: Columbia University
   position: Assistant Professor in Mathematics
@@ -415,6 +417,7 @@
   letter_url: https://apply.interfolio.com/193868
   deadline: 2026-11-15
   notes: One letter must address teaching.
+  status: withdrawn
 
 - institution: Wake Forest University
   position: Assistant Professor (Applied Mathematics)
@@ -441,6 +444,7 @@
   url: https://www.mathjobs.org/jobs/list/29009
   deadline: 2026-10-15
   notes: Four letters; one should address teaching.
+  status: withdrawn
 
 - institution: University of Arkansas
   position: Assistant Professor in Computational Methods in Math
@@ -555,6 +559,7 @@
   url: https://www.mathjobs.org/jobs/list/28729
   deadline: 2026-11-02
   notes: One letter should address teaching.
+  status: withdrawn
 
 - institution: University of Florida
   position: Assistant Professor
