@@ -1,0 +1,677 @@
+---
+title: "Matérn Covariances and the FFT"
+date: 2026-11-03
+description: "Matrix-vector products, solves, square roots, and log-determinants of Matérn covariance matrices on grids, via circulant structure and the FFT."
+categories: [math, linear algebra, gaussian processes]
+from: markdown+tex_math_single_backslash
+format:
+  html:
+    filters:
+      - callouty-theorem
+callouty-theorem:
+  thm:
+    override-title: false
+    callout:
+      type: note
+      appearance: minimal
+  prp:
+    override-title: false
+    callout:
+      type: note
+      appearance: minimal
+  lem:
+    override-title: false
+    callout:
+      type: note
+      appearance: minimal
+  cor:
+    override-title: false
+    callout:
+      type: note
+      appearance: minimal
+  def:
+    override-title: false
+    callout:
+      type: note
+      appearance: minimal
+  proof:
+    override-title: true
+    callout:
+      type: note
+      appearance: default
+      collapse: true
+      icon: false
+  remark:
+    override-title: true
+    callout:
+      type: tip
+      appearance: simple
+      icon: false
+reference-location: margin
+draft: true
+---
+
+<!--
+DRAFTING NOTES (delete before publishing)
+- Math is a first sketch. The prose is yours; every PROSE comment marks a slot.
+- CHECK comments mark claims that still need a citation or a closer look.
+- These identities were checked numerically (1D and 2D, nu = 3/2):
+  Poisson-summation eigenvalues, the circulant quadratic form and logdet,
+  the Toeplitz embedding matvec, symbol = periodized eigenvalues, the SPDE
+  variance normalization, the complex-noise sampling trick, the strong Szegő
+  constant (log det K_n - log det C_per -> E(f) = 6.6708 exactly), and the
+  2D logdet gap growing like n (perimeter).
+  The script is in the appendix.
+-->
+
+<!-- PROSE: motivation. Why Matérn, why grids, why the dense O(N^3) story is
+the wrong one. Maybe: "a Matérn covariance on a grid is never really a dense
+matrix, it's a convolution". Mention the two settings: periodic (everything
+exact) and free-space (only the matvec is exact). -->
+
+## Setup and conventions
+
+<!-- PROSE: brief roadmap. -->
+
+**Grid.**
+Fix a spacing $h>0$ and $n$ points per dimension, so that the grid is
+\[
+  x_j = jh, \qquad j \in \mathbb Z_n^d := \{0,1,\dots,n-1\}^d,
+  \qquad N := n^d, \qquad L := nh.
+\]
+Index arithmetic on $\mathbb Z_n^d$ is mod $n$, componentwise.
+Using the same $n$ in every direction keeps the notation light; nothing below depends on it.
+
+**DFT.**
+The (unnormalized) $d$-dimensional DFT $F\in\mathbb C^{N\times N}$ is
+\[
+  (Fv)_p = \sum_{j\in\mathbb Z_n^d} v_j\, e^{-2\pi i\, p\cdot j/n},
+  \qquad p \in \mathbb Z_n^d,
+  \qquad F^{-1} = N^{-1}F^*.
+\]{#eq-dft}
+Applying $F$ or $F^{-1}$ costs $O(N\log N)$.
+With lexicographic ordering, $F = F_n\otimes\cdots\otimes F_n$, and in code it is `fftn`.
+
+**Fourier transform.**
+For $g\in L^1(\mathbb R^d)$ we use the ordinary-frequency convention
+\[
+  \hat g(\xi) = \int_{\mathbb R^d} g(x)\, e^{-2\pi i\,\xi\cdot x}\,dx,
+  \qquad
+  g(x) = \int_{\mathbb R^d} \hat g(\xi)\, e^{2\pi i\,\xi\cdot x}\,d\xi.
+\]
+In this convention $\widehat{-\Delta g}(\xi) = 4\pi^2|\xi|^2\hat g(\xi)$, and Poisson summation has no stray $2\pi$s:
+\[
+  \sum_{m\in\mathbb Z^d} g(x + mL)
+  = L^{-d}\sum_{q\in\mathbb Z^d}\hat g(q/L)\,e^{2\pi i\, q\cdot x/L}.
+\]{#eq-poisson}
+
+**Matérn.**
+
+::: {#def-matern}
+## Matérn covariance
+For $\sigma^2,\nu,\ell>0$, set $\kappa := \sqrt{2\nu}/\ell$ and $\alpha := \nu + d/2$.
+The Matérn covariance function is
+\[
+  k(x) = \sigma^2\,\frac{2^{1-\nu}}{\Gamma(\nu)}\,(\kappa|x|)^{\nu}\,K_\nu(\kappa|x|),
+  \qquad x\in\mathbb R^d,
+\]
+where $K_\nu$ is the modified Bessel function of the second kind.
+Its spectral density is
+\[
+  S(\xi) := \hat k(\xi) = \tau^2\,(\kappa^2 + 4\pi^2|\xi|^2)^{-\alpha},
+  \qquad
+  \tau^2 := \sigma^2\,\frac{(4\pi)^{d/2}\,\Gamma(\alpha)\,\kappa^{2\nu}}{\Gamma(\nu)}.
+\]{#eq-matern-spectral}
+:::
+
+<!-- CHECK: cite Rasmussen & Williams (2006) eq. (4.15) for the spectral
+density. The constant matches theirs after expanding kappa^{2nu} =
+(2nu)^nu / ell^{2nu}. -->
+
+::: {.remark}
+## Normalization check
+$k(0) = \int S = \tau^2\int_{\mathbb R^d}(\kappa^2+4\pi^2|\xi|^2)^{-\alpha}\,d\xi$.
+Substitute $\omega = 2\pi\xi$ and use
+$\int_{\mathbb R^d}(\kappa^2+|\omega|^2)^{-\alpha}\,d\omega = \pi^{d/2}\,\Gamma(\alpha-d/2)\,\Gamma(\alpha)^{-1}\,\kappa^{d-2\alpha}$.
+With $\alpha - d/2 = \nu$, this gives
+\[
+  k(0) = \tau^2\,\frac{\Gamma(\nu)}{(4\pi)^{d/2}\,\Gamma(\alpha)\,\kappa^{2\nu}} = \sigma^2.
+\]
+:::
+
+::: {.remark}
+## The SPDE view (Whittle)
+Since $\widehat{(\kappa^2-\Delta)g} = (\kappa^2+4\pi^2|\xi|^2)\,\hat g$, @eq-matern-spectral says that the covariance *operator* of a Matérn field is
+\[
+  \mathcal C = \tau^2(\kappa^2 - \Delta)^{-\alpha},
+\]
+so a Matérn field solves $(\kappa^2-\Delta)^{\alpha/2}u = \tau\,\mathcal W$, where $\mathcal W$ is white noise.
+Everything below rests on one fact: the Fourier basis diagonalizes the Laplacian, so it diagonalizes $\mathcal C$.
+The FFT is the discrete version of that fact.
+:::
+
+<!-- CHECK: cite Whittle (1954/1963) and Lindgren, Rue & Lindström (2011)
+for the SPDE link. Their marginal-variance formula should match the
+remark above with tau -> 1/tau, since they put tau on the left. -->
+
+<!-- PROSE: the two discretizations we care about.
+(1) Free space: K_{jk} = k(x_j - x_k), which is multilevel Toeplitz.
+(2) Torus: periodize, which gives a multilevel circulant matrix.
+(2) is "wrong" at the boundary but everything about it is exact and fast.
+(1) is "right" but only the matvec is exact and fast. -->
+
+## Circulant matrices are diagonalized by the DFT
+
+::: {#def-circulant}
+## Multilevel circulant
+$C\in\mathbb R^{N\times N}$ is ($d$-level) circulant if $C_{jk} = c_{j-k}$ for a vector $c\in\mathbb R^{N}$ indexed by $\mathbb Z_n^d$, with the subtraction taken mod $n$.
+We call $c$ the *generating vector*; it is the first column of $C$.
+:::
+
+::: {#lem-circulant-diag}
+If $C$ is circulant with generating vector $c$, then
+\[
+  C = F^{-1}\,\mathrm{diag}(\lambda)\,F,
+  \qquad \lambda := Fc.
+\]
+If in addition $c$ is real and even ($c_{-j} = c_j$), then $\lambda$ is real and $\lambda_{-p} = \lambda_p$.
+:::
+
+::: {.proof}
+For $p\in\mathbb Z_n^d$, let $\phi^{(p)}_k := e^{2\pi i\,p\cdot k/n}$, so that $\phi^{(p)}$ is column $p$ of $F^*$.
+Then
+\[
+  (C\phi^{(p)})_j
+  = \sum_k c_{j-k}\,e^{2\pi i\,p\cdot k/n}
+  = e^{2\pi i\,p\cdot j/n}\sum_{k} c_{j-k}\,e^{-2\pi i\,p\cdot (j-k)/n}
+  = \lambda_p\,\phi^{(p)}_j,
+\]
+where the last step reindexes $m = j-k$, which runs over all of $\mathbb Z_n^d$.
+So $CF^* = F^*\mathrm{diag}(\lambda)$.
+Since $F^* = NF^{-1}$, this gives $C = F^{-1}\mathrm{diag}(\lambda)F$.
+If $c$ is real and even, then
+$\lambda_p = \sum_j c_j\cos(2\pi\,p\cdot j/n)$, which is real and even in $p$.
+:::
+
+::: {#cor-circulant-ops}
+## Circulant toolkit
+Let $C = F^{-1}\mathrm{diag}(\lambda)F$ be symmetric positive definite, $v,y\in\mathbb R^N$, and $\hat y := Fy$.
+Then, with $\odot$ and $\oslash$ denoting entrywise operations:
+\[
+\begin{aligned}
+  Cv &= F^{-1}(\lambda\odot Fv), \\
+  C^{-1}v &= F^{-1}(Fv\oslash\lambda), \\
+  C^{1/2}v &= F^{-1}(\lambda^{1/2}\odot Fv), \\
+  y^\mathsf{T} C^{-1}y &= \frac{1}{N}\sum_{p}\frac{|\hat y_p|^2}{\lambda_p}, \\
+  \log\det C &= \sum_p \log\lambda_p.
+\end{aligned}
+\]
+The first three cost $O(N\log N)$.
+Once $\lambda$ and $\hat y$ are known, the last two cost $O(N)$.
+:::
+
+::: {.proof}
+Use @lem-circulant-diag together with $f(C) = F^{-1}\mathrm{diag}(f(\lambda))F$ for any $f$ defined on the spectrum.
+This holds because $N^{-1/2}F$ is unitary, so the diagonalization is a unitary similarity.
+For the quadratic form, $y^\mathsf{T} F^{-1} = N^{-1}y^*F^* = N^{-1}(Fy)^*$, so
+$y^\mathsf{T} C^{-1}y = N^{-1}\hat y^*\mathrm{diag}(\lambda)^{-1}\hat y$.
+The determinant is the product of the eigenvalues.
+For $C^{1/2}v$ to be real, we need $\lambda^{1/2}$ to be even in $p$, which @lem-circulant-diag gives.
+:::
+
+<!-- PROSE: comment that lambda never has to come from an FFT of c. If you
+know the eigenvalues in closed form (next section), you skip the kernel
+entirely and never evaluate a Bessel function. -->
+
+## The periodic case: everything is exact
+
+### Periodizing the kernel
+
+Define the periodized kernel on the torus $\mathbb T_L^d := \mathbb R^d/L\mathbb Z^d$:
+\[
+  k_L(x) := \sum_{m\in\mathbb Z^d} k(x + mL).
+\]
+The sum converges absolutely because $k$ decays exponentially.
+The covariance matrix $C^{\mathrm{per}}_{jk} := k_L(x_j - x_k)$ is circulant with generating vector $c_j = k_L(jh)$.
+
+::: {#prp-aliasing}
+## Eigenvalues are the aliased spectral density
+The eigenvalues of $C^{\mathrm{per}}$ are
+\[
+  \lambda^{\mathrm{per}}_p
+  = h^{-d}\sum_{m\in\mathbb Z^d} S\!\left(\frac{p + mn}{L}\right),
+  \qquad p\in\mathbb Z_n^d.
+\]{#eq-aliasing}
+In particular $\lambda^{\mathrm{per}}_p > 0$, so $C^{\mathrm{per}}$ is positive definite for **every** $\sigma^2,\nu,\ell,h,n$.
+:::
+
+::: {.proof}
+By Poisson summation (@eq-poisson), $k_L(x) = L^{-d}\sum_{q\in\mathbb Z^d}S(q/L)\,e^{2\pi i\,q\cdot x/L}$.
+This series converges absolutely because $S(\xi)\sim|\xi|^{-2\alpha}$ and $2\alpha = 2\nu+d > d$.
+By @lem-circulant-diag,
+\[
+\begin{aligned}
+  \lambda^{\mathrm{per}}_p
+  &= \sum_{j\in\mathbb Z_n^d} k_L(jh)\,e^{-2\pi i\,p\cdot j/n}
+  = L^{-d}\sum_{q\in\mathbb Z^d} S(q/L)\sum_{j\in\mathbb Z_n^d} e^{2\pi i\,(q-p)\cdot j/n} \\
+  &= L^{-d}\,n^d\sum_{q\equiv p\ (\mathrm{mod}\ n)} S(q/L)
+  = h^{-d}\sum_{m\in\mathbb Z^d} S\!\left(\frac{p+mn}{L}\right),
+\end{aligned}
+\]
+since $hL^{-1} = n^{-1}$ and the inner geometric sum is $n^d\,\mathbf 1[q\equiv p]$.
+Positivity follows from $S>0$.
+:::
+
+<!-- PROSE: interpretation. Sampling on a grid of spacing h folds the
+spectrum onto the Brillouin zone [-1/2h, 1/2h)^d. Periodizing in space with
+period L samples the spectrum at frequencies q/L. One sampling in each
+domain, which is exactly the DFT picture. -->
+
+::: {.remark}
+## Sanity check
+$\frac1N\sum_p\lambda^{\mathrm{per}}_p = c_0 = k_L(0)$.
+So the average eigenvalue is the pointwise variance, which is $\approx\sigma^2$ when $\ell\ll L$.
+:::
+
+::: {#prp-torus-spde}
+## Periodized Matérn = Matérn SPDE on the torus
+On $\mathbb T_L^d$, the operator $\mathcal C_L := \tau^2(\kappa^2-\Delta)^{-\alpha}$ has covariance kernel $k_L$.
+:::
+
+::: {.proof}
+The functions $e_q(x) := L^{-d/2}e^{2\pi i\,q\cdot x/L}$, $q\in\mathbb Z^d$, form an orthonormal eigenbasis of $-\Delta$ on $\mathbb T_L^d$ with eigenvalues $4\pi^2|q|^2/L^2$.
+So $\mathcal C_L e_q = S(q/L)\,e_q$, and its kernel is
+$\sum_q S(q/L)\,e_q(x)\overline{e_q(y)} = L^{-d}\sum_q S(q/L)\,e^{2\pi i\,q\cdot(x-y)/L} = k_L(x-y)$,
+by the Poisson summation identity in the proof of @prp-aliasing.
+:::
+
+<!-- PROSE: so "periodize the kernel" and "solve the SPDE with periodic
+boundary conditions" are the same model. That's nice; it means the next
+two discretizations are discretizations of the same thing. -->
+
+### Discretizing the SPDE on the torus
+
+There are three natural choices of $\lambda$ for a periodic Matérn model on the grid.
+Write $\tilde p\in\{-\lfloor n/2\rfloor,\dots,\lceil n/2\rceil-1\}^d$ for the signed representative of $p$.
+
+1. **Exact (periodized kernel).** $\lambda^{\mathrm{per}}_p$ from @eq-aliasing.
+2. **Spectral (Fourier truncation).** Keep only the $m=0$ alias:
+   \[
+     \lambda^{\mathrm{spec}}_p = h^{-d}\,S(\tilde p/L) = h^{-d}\,\tau^2\left(\kappa^2 + \frac{4\pi^2|\tilde p|^2}{L^2}\right)^{-\alpha}.
+   \]
+3. **Finite differences.** Let $L_h$ be the periodic $(2d+1)$-point negative Laplacian.
+   Its eigenvalues are $\mu_p = \frac{4}{h^2}\sum_{i=1}^d\sin^2(\pi p_i/n)$.
+   Take the discrete model
+   \[
+     (\kappa^2 I + L_h)^{\alpha/2}u = \tau\,h^{-d/2}\,\xi,\qquad \xi\sim\mathcal N(0,I),
+   \]
+   which gives $\mathrm{Cov}(u) = \tau^2h^{-d}(\kappa^2I + L_h)^{-\alpha}$ and
+   \[
+     \lambda^{\mathrm{FD}}_p = h^{-d}\,\tau^2\,(\kappa^2 + \mu_p)^{-\alpha}.
+   \]
+
+<!-- PROSE: explain the h^{-d/2}: the cell average of white noise over a
+cell of volume h^d has variance h^{-d}. -->
+
+::: {.remark}
+## Agreement and disagreement
+For fixed $p$ as $h\to0$, $\mu_p = (2\pi|\tilde p|/L)^2(1 + O(|\tilde p|^2/n^2))$.
+So all three choices agree on the low frequencies and differ only near the Nyquist corner, where the aliases matter.
+When $\alpha$ is an integer (for example $\nu = 1$, $d = 2$), the FD precision $Q = \tau^{-2}h^d(\kappa^2I+L_h)^{\alpha}$ is a sparse GMRF.
+The FFT does not need $\alpha$ to be an integer.
+:::
+
+<!-- CHECK: numerically (d=1, nu=3/2, ell=0.2, n=64) the mean eigenvalue,
+i.e. the marginal variance, is 1.3043 (spectral) and 1.3073 (FD) against
+sigma^2 = 1.3. Worth a plot of lambda^per, lambda^spec and lambda^FD
+against |p|. -->
+
+### The full toolkit in the periodic case
+
+Let $\lambda$ be any of the three choices above, let $C = F^{-1}\mathrm{diag}(\lambda)F$, and add a nugget $\eta^2\ge0$.
+Then $C + \eta^2I = F^{-1}\mathrm{diag}(\lambda + \eta^2)F$, and @cor-circulant-ops applies directly.
+
+**Action, inverse, square root:** see @cor-circulant-ops; each costs $O(N\log N)$.
+
+**Sampling.**
+With $\xi\sim\mathcal N(0,I_N)$, set $u := C^{1/2}\xi = F^{-1}(\lambda^{1/2}\odot F\xi)$.
+Then $\mathrm{Cov}(u) = C^{1/2}C^{1/2} = C$.
+
+::: {#prp-complex-sampling}
+## Two samples for one FFT
+Let $\zeta = a + ib$ with $a,b\sim\mathcal N(0,I_N)$ independent, and set
+$z := N^{1/2}F^{-1}(\lambda^{1/2}\odot\zeta)$.
+Then $\mathrm{Re}\,z$ and $\mathrm{Im}\,z$ are independent $\mathcal N(0,C)$.
+:::
+
+::: {.proof}
+Let $U := N^{-1/2}F$, which is unitary, so that $z = U^*\Lambda^{1/2}\zeta$.
+Since $\mathbb E[\zeta\zeta^*] = 2I$ and $\mathbb E[\zeta\zeta^\mathsf{T}] = \mathbb E[aa^\mathsf{T}] - \mathbb E[bb^\mathsf{T}] + i(\cdots) = 0$, we get
+$\mathbb E[zz^*] = 2U^*\Lambda U = 2C$ and $\mathbb E[zz^\mathsf{T}] = 0$.
+Write $z = x + iy$.
+From $\mathbb E[zz^\mathsf{T}]=0$: $\mathbb E[xx^\mathsf{T}] = \mathbb E[yy^\mathsf{T}]$ and $\mathbb E[xy^\mathsf{T}] = -\mathbb E[yx^\mathsf{T}]$.
+From $\mathbb E[zz^*] = 2C$ being real: $\mathbb E[xx^\mathsf{T}]+\mathbb E[yy^\mathsf{T}] = 2C$ and $\mathbb E[yx^\mathsf{T}] = \mathbb E[xy^\mathsf{T}]$.
+So $\mathbb E[xx^\mathsf{T}] = \mathbb E[yy^\mathsf{T}] = C$ and $\mathbb E[xy^\mathsf{T}] = 0$.
+Joint Gaussianity then gives independence.
+:::
+
+<!-- CHECK: Dietrich & Newsam (1997) / Wood & Chan (1994) for this trick. -->
+
+**Log-likelihood.**
+For data $y\sim\mathcal N(0, C_\theta+\eta^2I)$ with $\hat y = Fy$,
+\[
+  \mathcal L(\theta,\eta^2)
+  = -\frac{1}{2N}\sum_p\frac{|\hat y_p|^2}{\lambda_p(\theta)+\eta^2}
+    - \frac12\sum_p\log\big(\lambda_p(\theta)+\eta^2\big)
+    - \frac N2\log 2\pi.
+\]{#eq-loglik}
+This is exact: in the periodic setting the Whittle likelihood *is* the likelihood.
+After one FFT of $y$, each evaluation of $\mathcal L$ costs $O(N)$.
+
+**Gradient.**
+Write $s_p := \lambda_p+\eta^2$.
+Differentiating @eq-loglik,
+\[
+  \frac{\partial\mathcal L}{\partial\theta}
+  = \frac12\sum_p\frac{\partial\lambda_p}{\partial\theta}\left(\frac{|\hat y_p|^2}{N s_p^2} - \frac{1}{s_p}\right).
+\]
+For $\lambda^{\mathrm{spec}}$, and term by term for $\lambda^{\mathrm{per}}$, the parameter derivatives come from $\log S$.
+Let $Q(\xi) := \kappa^2 + 4\pi^2|\xi|^2$.
+Then
+\[
+\begin{aligned}
+  \partial_{\sigma^2}\log S &= \sigma^{-2}, \\
+  \partial_{\ell}\log S &= \frac{1}{\ell}\left(-2\nu + \frac{2\alpha\kappa^2}{Q(\xi)}\right), \\
+  \partial_{\nu}\log S &= \psi(\alpha) - \psi(\nu) + 2\log\kappa + 1 - \log Q(\xi) - \frac{\alpha\kappa^2}{\nu\,Q(\xi)},
+\end{aligned}
+\]
+where $\psi$ is the digamma function and $\kappa = \sqrt{2\nu}/\ell$ moves with both $\nu$ and $\ell$.
+
+<!-- These derivatives were checked by finite differences. -->
+
+<!-- PROSE: remark that nu is usually fixed in practice, but here it's no
+harder to fit than ell. In free space that isn't true, since you need
+d/dnu of K_nu. -->
+
+**Posterior on a fully observed grid (Wiener filter).**
+If $y = u + \varepsilon$ with $u\sim\mathcal N(0,C)$ and $\varepsilon\sim\mathcal N(0,\eta^2I)$, then
+\[
+  \mathbb E[u\mid y] = C(C+\eta^2I)^{-1}y = F^{-1}\!\left(\frac{\lambda}{\lambda+\eta^2}\odot\hat y\right),
+  \qquad
+  \mathrm{Cov}(u\mid y) = F^{-1}\mathrm{diag}\!\left(\frac{\lambda\eta^2}{\lambda+\eta^2}\right)F.
+\]
+
+**Conditioning.**
+$\kappa_2(C) = \max_p\lambda_p/\min_p\lambda_p$.
+For $\lambda^{\mathrm{spec}}$, the maximum is at $p=0$ and the minimum is at the Nyquist corner $|\tilde p|^2/L^2 = d/(4h^2)$.
+This gives
+\[
+  \kappa_2(C^{\mathrm{spec}}) = \left(1 + \frac{d\pi^2}{\kappa^2h^2}\right)^{\alpha}
+  \;\sim\; \left(\frac{\pi\sqrt d\,\ell}{\sqrt{2\nu}\,h}\right)^{2\nu+d},
+  \qquad
+  \kappa_2(C^{\mathrm{FD}}) = \left(1 + \frac{4d}{\kappa^2h^2}\right)^{\alpha}.
+\]
+<!-- PROSE: the point is that conditioning blows up algebraically, with
+exponent 2nu+d, in ell/h. That doesn't matter at all when you diagonalize
+exactly (up to floating point: the small eigenvalues are where the
+roundoff lives). It matters a lot for the iterative methods in the next
+section, and it's why smoother fields are harder. With a nugget,
+kappa_2 <= (lambda_max + eta^2)/eta^2. -->
+
+| Operation | Periodic (circulant) | Free space (Toeplitz) |
+|:--|:--|:--|
+| $Kv$ | $O(N\log N)$, exact | $O(2^dN\log N)$, exact (embedding) |
+| $K^{-1}v$ | $O(N\log N)$, exact | PCG; $O(N\log N)$ per iteration |
+| sample $\mathcal N(0,K)$ | $O(N\log N)$, exact | exact if the embedding is PSD |
+| $\log\det K$ | $O(N)$ given $\lambda$, exact | Szegő / SLQ / Levinson ($d=1$) |
+
+: Summary of costs. {#tbl-summary}
+
+## The free-space case: Toeplitz structure
+
+Now take the true Matérn covariance restricted to the grid, $K_{jk} := k(x_j - x_k) = k((j-k)h)$, with **no** wraparound.
+$K$ is $d$-level Toeplitz: entry $(j,k)$ depends only on $j-k\in\{-(n-1),\dots,n-1\}^d$, with no reduction mod $n$.
+
+### The symbol
+
+::: {#def-symbol}
+## Symbol
+The symbol (generating function) of $K$ is
+\[
+  f(\theta) := \sum_{j\in\mathbb Z^d} k(jh)\,e^{-i\,j\cdot\theta},
+  \qquad \theta\in[-\pi,\pi]^d.
+\]
+In Toeplitz notation $K = T_n(f)$, where $T_n(f)_{jk} = \hat f_{j-k}$ are the Fourier coefficients of $f$.
+:::
+
+::: {#prp-symbol}
+\[
+  f(\theta) = h^{-d}\sum_{m\in\mathbb Z^d} S\!\left(\frac{\theta/2\pi + m}{h}\right),
+  \qquad\text{and so}\qquad
+  \lambda^{\mathrm{per}}_p = f(2\pi p/n).
+\]
+That is, the periodized circulant $C^{\mathrm{per}}$ is the circulant whose eigenvalues are the Toeplitz symbol sampled at the Fourier frequencies.
+:::
+
+::: {.proof}
+Apply Poisson summation to $g(x) := k(xh)\,e^{-i\,x\cdot\theta}$, whose Fourier transform is $\hat g(s) = h^{-d}S((s+\theta/2\pi)/h)$:
+$\sum_j g(j) = \sum_m\hat g(m)$.
+For the second claim, $(p+mn)/L = (p/n + m)/h$, so @eq-aliasing is $f$ evaluated at $\theta = 2\pi p/n$.
+:::
+
+::: {#cor-toeplitz-spectrum}
+$f$ is continuous and strictly positive, and the spectrum of $K$ lies in $[\min f, \max f]$.
+In particular $K\succ0$ and $\kappa_2(K)\le\max f/\min f$.
+:::
+
+::: {.proof}
+For $v\in\mathbb R^N$, let $V(\theta) := \sum_{j\in\mathbb Z_n^d} v_je^{i\,j\cdot\theta}$.
+Then
+\[
+  v^\mathsf{T} Kv = \sum_{j,k}v_jv_k\,\frac{1}{(2\pi)^d}\int f(\theta)\,e^{i(j-k)\cdot\theta}\,d\theta
+  = \frac{1}{(2\pi)^d}\int_{[-\pi,\pi]^d} f(\theta)\,|V(\theta)|^2\,d\theta,
+\]
+and Parseval gives $\frac{1}{(2\pi)^d}\int|V|^2 = \|v\|^2$.
+Continuity follows from $\sum_j|k(jh)|<\infty$, which holds by exponential decay.
+:::
+
+<!-- CHECK: the claim that the max is at theta=0 and the min at the corner
+theta=pi*1 needs S radially decreasing plus an argument about the alias
+sum. It's plausible, but prove it or soften it. -->
+
+### Action: circulant embedding
+
+::: {#lem-embedding}
+## Circulant embedding (1D; apply per dimension for $d>1$)
+Let $T\in\mathbb R^{n\times n}$ be symmetric Toeplitz with first column $t = (t_0,\dots,t_{n-1})$, $n\ge2$.
+Let $m = 2n-2$ and
+\[
+  c = (t_0, t_1,\dots,t_{n-1}, t_{n-2},\dots,t_1)\in\mathbb R^{m}.
+\]
+Then the circulant $C$ generated by $c$ satisfies $C_{0:n,\,0:n} = T$.
+So
+\[
+  Tx = \big[\,F_m^{-1}\big(Fc\odot F_m[x;0_{n-2}]\big)\big]_{0:n},
+\]
+which costs $O(m\log m)$.
+Any $m\ge 2n-1$ with $c = (t_0,\dots,t_{n-1},0,\dots,0,t_{n-1},\dots,t_1)$ also works.
+:::
+
+::: {.proof}
+For $0\le j,k\le n-1$, $C_{jk} = c_{(j-k)\bmod m}$.
+If $j\ge k$, then $(j-k)\bmod m = j-k\le n-1$ and $c_{j-k} = t_{j-k}$.
+If $j<k$, then $(j-k)\bmod m = m-(k-j)\in[n-1,\,2n-3]$.
+On that range, $c_i = t_{m-i}$ (at $i = n-1$ both formulas give $t_{n-1}$), so $C_{jk} = t_{k-j}$.
+:::
+
+In $d$ dimensions the embedded grid has $(2n-2)^d\approx2^dN$ points, which is where the $2^d$ in @tbl-summary comes from.
+
+### Sampling: when is the embedding PSD?
+
+If the embedded circulant $C$ (size $m^d$) is PSD, then sampling $z\sim\mathcal N(0,C)$ with @prp-complex-sampling and restricting to the original grid gives an *exact* $\mathcal N(0,K)$ sample.
+PSD is **not** automatic: $\lambda = Fc$ can have negative entries, because $c$ is a truncation of $k$, not a periodization.
+
+<!-- CHECK: cite Dietrich & Newsam (1997), Wood & Chan (1994), and
+Graham, Kuo, Nuyens, Scheichl & Sloan (2018, J. Comput. Phys.). The last
+gives bounds on the padding needed for Matérn: it grows with ell and with
+nu. Get the exact statement. In my 1D test (ell=0.2, L=1, nu=3/2) the
+minimal embedding was PSD (min eigenvalue ~1.2e-4 > 0). -->
+
+<!-- PROSE: the trade-off. Either pad until PSD, which is exact but may be
+expensive for large ell. Or use C^per on a bigger torus L' > L, which is
+always PD (prp-aliasing) but is only approximate, with error roughly
+sup_{|x| >= L' - diam} k(x), exponentially small in (L' - L)/ell. -->
+
+### Inverse: preconditioned CG
+
+$K$ is not diagonalized by the DFT, so there is no FFT-exact solve.
+The standard route is PCG with matvecs from @lem-embedding and a circulant preconditioner $P = F^{-1}\mathrm{diag}(\pi)F$, so that $P^{-1}$ is also FFT-cheap.
+Natural choices:
+
+- **Symbol-sampled / periodized:** $\pi_p = f(2\pi p/n) = \lambda^{\mathrm{per}}_p$. By @prp-symbol this is $C^{\mathrm{per}}$, and it is always PD.
+- **Strang:** copy the central diagonals, $c_j = t_j$ for $|j|\le n/2$, wrapped.
+- **T. Chan (optimal):** $\arg\min_{C\text{ circulant}}\|C - T\|_F$, which in 1D gives $c_j = \frac{(n-j)t_j + jt_{n-j}}{n}$.
+
+<!-- CHECK: in 1D, for f positive and in the Wiener class (true here),
+the Strang and T. Chan preconditioners give eigenvalues of P^{-1}T
+clustered at 1, hence superlinear PCG convergence (R. Chan 1989; Chan &
+Strang 1989; survey: Chan & Ng, SIAM Review 1996). Does the same hold
+for the symbol-sampled P? I believe yes, since it differs from T. Chan's
+P by a matrix that is small plus low-rank, but verify. For d >= 2 there
+are negative results: Serra-Capizzano & Tyrtyshnikov (1999), multilevel
+circulant preconditioners can't give superlinear convergence for
+multilevel Toeplitz, with O(n^{d-1}) outliers. That fits the boundary
+picture in the logdet section. -->
+
+<!-- PROSE: what this means in practice. Iteration counts scale with the
+square root of kappa(P^{-1}K), which in d >= 2 is governed by the
+boundary. A nugget helps a lot. -->
+
+### Log-determinant
+
+There is no exact $O(N\log N)$ formula.
+There are several good approximations.
+
+**(i) Szegő: the circulant logdet as an approximation.**
+Let $g := \log f$ with Fourier coefficients $g_k$.
+In 1D, the strong Szegő limit theorem gives
+\[
+  \log\det T_n(f) = n\,g_0 + E(f) + o(1),
+  \qquad
+  E(f) := \sum_{k\ge1}k\,|g_k|^2.
+\]{#eq-szego}
+By @prp-symbol,
+$\log\det C^{\mathrm{per}} = \sum_{p}\log f(2\pi p/n) = n\sum_{r\in\mathbb Z}g_{rn} = n\,g_0 + n\sum_{r\neq0}g_{rn}$.
+This is the trapezoidal rule for $\int\log f$, which is spectrally accurate since $\log f$ is smooth and periodic.
+Hence
+\[
+  \log\det K - \log\det C^{\mathrm{per}} \;\longrightarrow\; E(f)\qquad (n\to\infty,\ h\text{ fixed}).
+\]
+So in 1D the circulant logdet is off by an $O(1)$ constant.
+That constant depends on $\theta$, so it biases the likelihood, but it is computable: $E(f)\approx\sum_{k=1}^{n/2}k\,|\hat g_k|^2$ with $\hat g = n^{-1}F\log\lambda^{\mathrm{per}}$.
+
+<!-- Checked: d=1, nu=3/2, ell=0.2, h=1/64. The gap is 6.67008 at n=64
+and 6.67077 at n >= 128, against E(f) = 6.67077.
+CHECK: how accurate is the cheap n-point estimate of E(f) when ell is
+comparable to L? Cite Böttcher & Silbermann, or Simon's OPUC book, for the
+hypotheses of strong Szegő. -->
+
+**(ii) The boundary in $d\ge2$.**
+Numerically, the analogous gap grows like the boundary, $\log\det K - \log\det C^{\mathrm{per}} = \Theta(n^{d-1})$.
+The relative error per grid point is still $O(1/n)$, but the absolute error, which is what enters likelihood ratios, grows.
+
+<!-- Checked: d=2, nu=3/2, ell=0.2, h=1/64, n = 8, 16, 24, 32. The gap is
+31.3, 62.1, 91.5, 120.5, so gap/n ~ 3.8 (slowly drifting).
+CHECK: link to the edge-effect bias of the Whittle likelihood (Guyon
+1982; Dahlhaus & Künsch 1987, tapering) and to the multilevel
+Szegő-type results (Widom? Doktorsky?). -->
+
+**(iii) Stochastic Lanczos quadrature (SLQ).**
+$\log\det K = \mathrm{tr}\log K\approx\frac1M\sum_{i=1}^M z_i^\mathsf{T}\log(K)z_i$, with each quadratic form estimated by $s$ steps of Lanczos started at $z_i/\|z_i\|$.
+The cost is $O(Ms\cdot 2^dN\log N)$.
+With Gaussian probes, the Hutchinson variance is $2\|\log K\|_F^2/M$.
+
+<!-- CHECK: cite Ubaru, Chen & Saad (2017) for SLQ error bounds; the
+number of Lanczos steps s scales like sqrt(kappa) log(1/eps). -->
+
+**(iv) Preconditioned split.**
+With $P = C^{\mathrm{per}}$,
+\[
+  \log\det K = \underbrace{\sum_p\log\lambda^{\mathrm{per}}_p}_{\text{exact, }O(N)} + \log\det\big(P^{-1/2}KP^{-1/2}\big),
+\]
+where $P^{-1/2}KP^{-1/2} = F^{-1}\Lambda^{-1/2}F\,K\,F^{-1}\Lambda^{-1/2}F$ is symmetric and FFT-applicable.
+Estimate the second term with SLQ.
+If the spectrum of $P^{-1}K$ clusters at 1, then $\|\log(P^{-1/2}KP^{-1/2})\|_F$ is small, which means low Hutchinson variance and few Lanczos steps.
+In 1D the second term tends to $E(f)$ by (i).
+
+<!-- PROSE: this is my favorite. The circulant does the bulk and the
+stochastic estimator only has to find the boundary correction. -->
+
+**(v) Exact in 1D: Levinson–Durbin.**
+$O(n^2)$, with $\log\det T = \sum_{k=0}^{n-1}\log v_k$, where $v_k$ are the one-step prediction-error variances from the recursion.
+Superfast $O(n\log^2n)$ variants exist.
+
+**Gradient of the logdet.**
+$\partial_\theta\log\det K = \mathrm{tr}(K^{-1}\partial_\theta K)\approx\frac1M\sum_i z_i^\mathsf{T} K^{-1}(\partial_\theta K)z_i$.
+Here $\partial_\theta K$ is again Toeplitz, with first column $\partial_\theta k(jh)$, so it has an FFT matvec, and each $K^{-1}$ is a PCG solve.
+
+## Remarks and extensions
+
+<!-- PROSE: short. -->
+
+- **Anisotropy.** Replace $|\xi|^2$ by $\xi^\mathsf{T} A\xi$ in $S$. Everything above goes through unchanged.
+- **Missing data / irregular subdomains of a grid.** Observe $y = Ru + \varepsilon$ with $R$ a row selector. Then $RKR^\mathsf{T} + \eta^2I$ has an FFT matvec (scatter, embed, gather) but no circulant structure; use PCG.
+  <!-- CHECK: good preconditioners here? -->
+- **Scattered data.** Interpolate onto a grid: $K\approx WK_{\mathrm{grid}}W^\mathsf{T}$ with sparse $W$ (SKI / KISS-GP, Wilson & Nickisch 2015), or use NUFFTs with $S$ directly.
+- **Nonstationarity** breaks all of this. <!-- PROSE: but SPDE-with-variable-coefficients + multigrid? -->
+
+## Appendix: numerical checks
+
+<!-- PROSE: maybe convert this into an executed cell with a plot of the
+three eigenvalue choices, and of the logdet gap against n. -->
+
+```python
+import numpy as np
+from scipy.special import kv, gamma
+from scipy.linalg import toeplitz, circulant
+
+def matern(r, sig2, nu, ell):
+    z = np.sqrt(2 * nu) * np.abs(r) / ell
+    out = np.full_like(z, sig2, dtype=float)
+    m = z > 0
+    out[m] = sig2 * 2 ** (1 - nu) / gamma(nu) * z[m] ** nu * kv(nu, z[m])
+    return out
+
+def S(s, sig2, nu, ell, d=1):
+    kap, a = np.sqrt(2 * nu) / ell, nu + d / 2
+    tau2 = sig2 * (4 * np.pi) ** (d / 2) * gamma(a) * kap ** (2 * nu) / gamma(nu)
+    return tau2 * (kap**2 + 4 * np.pi**2 * s**2) ** (-a)
+
+sig2, nu, ell, n, L = 1.3, 1.5, 0.2, 64, 1.0
+h, j, p = L / n, np.arange(n), np.arange(n)
+
+# periodized kernel vs aliased spectral density (prp-aliasing)
+kL = sum(matern(j * h + m * L, sig2, nu, ell) for m in range(-200, 201))
+lam = np.fft.fft(kL).real
+alias = sum(S((p + m * n) / L, sig2, nu, ell) for m in range(-2000, 2001)) / h
+print(np.max(np.abs(lam - alias) / alias))            # ~1e-11
+
+# logdet and quadratic form (cor-circulant-ops)
+C, y = circulant(kL), np.random.default_rng(0).standard_normal(n)
+print(np.linalg.slogdet(C)[1] - np.log(lam).sum())    # ~1e-12
+print(y @ np.linalg.solve(C, y) - np.sum(np.abs(np.fft.fft(y))**2 / lam) / n)
+
+# Toeplitz matvec via embedding (lem-embedding)
+t = matern(j * h, sig2, nu, ell)
+c = np.concatenate([t, t[-2:0:-1]])
+x = np.random.default_rng(1).standard_normal(n)
+Tx = np.fft.ifft(np.fft.fft(c) * np.fft.fft(np.r_[x, np.zeros(n - 2)]))[:n].real
+print(np.max(np.abs(Tx - toeplitz(t) @ x)))           # ~1e-15
+
+# strong Szegő gap (eq-szego): tends to E(f) ~ 6.6708 here
+for nn in [64, 128, 256, 512]:
+    jn = np.arange(nn)
+    kLn = sum(matern(jn * h + m * nn * h, sig2, nu, ell) for m in range(-50, 51))
+    print(nn, np.linalg.slogdet(toeplitz(matern(jn * h, sig2, nu, ell)))[1]
+              - np.log(np.fft.fft(kLn).real).sum())
+```
