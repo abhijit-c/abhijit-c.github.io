@@ -375,6 +375,7 @@
   deadline: 2026-11-13
   notes: Requests come from CSU's Workday system after I submit.
   statements: "Research 2-3 pages, references excluded. Teaching 2-3 pages. Limits are in the Workday posting, not the MathJobs ad."
+  status: withdrawn
 
 - institution: University of North Carolina at Chapel Hill (School of Data and Information Sciences)
   position: Open Rank Professor (Data Science)
@@ -519,6 +520,7 @@
   url: https://www.mathjobs.org/jobs/list/28939
   deadline: 2026-11-30
   notes: Requests are emailed automatically by Northwestern's faculty recruiting system.
+  status: withdrawn
 
 - institution: University of Texas at Arlington
   position: Assistant Professor in Mathematics (Inverse Problems & Imaging)

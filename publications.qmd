@@ -14,7 +14,7 @@ import html as htmllib
 import re
 
 SKIP_FIELDS = {'bibtex_show', 'selected', 'preview', 'arxiv',
-               'language', 'ENTRYTYPE', 'ID'}
+               'language', 'submitted', 'ENTRYTYPE', 'ID'}
 ARXIV_FIELDS = {'eprint', 'archiveprefix', 'primaryclass'}
 
 def clean_title(t):
@@ -51,6 +51,9 @@ def venue_html(e):
         return f'<em>PhD Thesis</em>, {htmllib.escape(school)}'
     is_preprint = etype == 'misc' or ('eprint' in e and 'journal' not in e)
     if is_preprint:
+        submitted = e.get('submitted', '').strip()
+        if submitted:
+            return f'<em>Preprint</em>, submitted to <em>{htmllib.escape(submitted)}</em>'
         return '<em>Preprint</em>'
     j = htmllib.escape(e.get('journal', '').strip())
     vol, num, pages = e.get('volume',''), e.get('number',''), e.get('pages','')
