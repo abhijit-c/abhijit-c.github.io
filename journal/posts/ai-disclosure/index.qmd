@@ -1,0 +1,42 @@
+---
+title: "What are AI declarations for?"
+date: 2026-11-17
+description: "Working notes on AI disclosure, trust, and incentives in mathematical publishing."
+categories: [personal, math, ai, opinion, academic]
+draft: true
+reference-location: margin
+---
+
+## Starting point
+
+[Abhishek Saha's post](https://x.com/ObhishekSaha/status/2122693818155749700) raises a concern about AI declarations in mathematical publishing: a request for transparency can become difficult to interpret and can create incentives to conceal use.
+Writing from his experience as a JLMS editor, he reports disagreement over what declarations mean and referees using them to reject papers.
+He argues that requiring more detail could worsen these problems.
+These are his observations and concerns; they are a starting point for thinking through the issue.
+
+In the [preceding reply](https://x.com/thomasfbloom/status/2122684105938899159), Thomas Bloom argues that AI use varies enough to make disclosure useful, and that a brief statement is easy to include without harming the paper.
+The disagreement seems to turn partly on what happens to a declaration after it is written: how editors, referees, and readers interpret and act on it.
+
+## What should a declaration help someone decide?
+
+- Who is the intended reader: an editor, a referee, a future researcher?
+- Is the purpose to assign credit, assess reliability, make a method reproducible, or enforce a journal's rules?
+- What information would change that reader's assessment of the mathematics?
+
+## Which distinctions matter?
+
+- Editing prose, searching the literature, writing code, suggesting an argument, and producing a proof: which uses need different treatment, and why?
+- How should a declaration describe what the authors checked and take responsibility for?
+- What would a useful declaration look like for a concrete paper?
+
+## What incentives does the requirement create?
+
+- When does honest disclosure help an author, and when might it expose them to inconsistent judgments?
+- How much does a disclosure policy depend on a shared understanding of acceptable use?
+- What evidence would support or challenge Saha's concern that more detailed declarations make matters worse?
+
+## Where do I stand?
+
+<!-- Develop my own reaction here: what I agree with, what troubles me,
+     and what would change my mind. Try a concrete example before settling
+     on a general policy. -->
