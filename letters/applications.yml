@@ -32,6 +32,14 @@
   notes: Requests come from Research.gov with an invitation code. Letters are due with the proposal, 5 pm Eastern on Oct 21.
   statements: "Project Description 5 pages, figures included; references go in a separate section with no limit. Project Summary 1 page. Data Management Plan 2 pages."
 
+- institution: Northeastern University (Mathematics)
+  position: Zelevinsky Postdoctoral Fellow
+  role: postdoc
+  systems: [mathjobs]
+  url: https://www.mathjobs.org/jobs/list/29572
+  deadline: 2026-12-30
+  notes: Three letters.
+
 - institution: Northwestern University (Mathematics)
   position: Boas Assistant Professor
   role: postdoc
