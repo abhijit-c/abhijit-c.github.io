@@ -1,7 +1,7 @@
 ---
 title: "Abhijit Chowdhary"
 subtitle: "Postdoctoral Researcher at [Tufts University](https://math.tufts.edu/)<br><input class='copyable-email' type='text' value='abhijit.chowdhary@tufts.edu' readonly onclick='this.select();' onfocus='this.select();' aria-label='Email address' />"
-image: assets/img/prof_pic.jpg
+image: assets/img/prof_pic.webp
 about:
   template: trestles
   image-shape: rounded
@@ -26,6 +26,9 @@ listing:
     sort-ui: false
     filter-ui: false
 page-layout: full
+format:
+  html:
+    html-math-method: plain
 resources:
   - assets/gpg/abhijit-chowdhary.asc
 ---
